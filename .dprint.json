@@ -3,7 +3,8 @@
     "**/*.{json}"
   ],
   "excludes": [
-    "**/*-lock.json"
+    "**/*-lock.json",
+    ".vale"
   ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.17.4.wasm"
