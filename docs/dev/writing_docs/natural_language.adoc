@@ -1,12 +1,14 @@
 = Natural Language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T20:07:37+09:00
-:revremark: add vale of linter
+:revnumber: v0.5.0
+:revdate: 2023-07-13T20:37:59+09:00
+:revremark: add spell check
 :copyright: Copyright (C) 2023 {author}
 
+:github_url: https://github.com
 :root_directory: ../../..
+:base_directory: {root_directory}/.vale/styles/Vocab/Base
 
 == Lint
 
@@ -30,6 +32,16 @@ link:{root_directory}/.vale.ini[Configuration File^]
 :vale_topic_docs_url: {vale_url}/docs/topics
 For more supported file types,
 please read link:{vale_topic_docs_url}/scoping[Vale Scoping^].
+
+== Spell check
+
+=== Documentations
+
+.Spelling
+Vale can check spelling (`Vale.Spelling`).
+We can ignore words in link:{base_directory}/vocab.txt[vocab.txt^] with
+link:{github_url}/errata-ai/vale/blob/v2/internal/rule/Vale/Spelling.yml[
+spell check^].
 
 '''
 
