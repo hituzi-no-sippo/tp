@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-14T07:03:36+09:00
-:revremark: add dprint as JSON formatter
+:revnumber: v0.5.0
+:revdate: 2023-07-14T15:24:57+09:00
+:revremark: add dprint as YAML formatter
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -17,6 +17,12 @@
 :json_plugin_link: link:{dprint_url}/plugins/json[JSON plugin^]
 [horizontal]
 Format:: {dprint_link} with {json_plugin_link}
+
+== YAML
+
+:prettier_plugin_link: link:{dprint_url}/plugins/prettier[Prettier plugin^]
+[horizontal]
+Format:: {dprint_link} with {prettier_plugin_link}
 
 // end::main[]
 
