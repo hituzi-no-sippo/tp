@@ -1,0 +1,22 @@
+= Tool version manager
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-12T19:47:03+09:00
+:revremark: add overview of aqua
+:copyright: Copyright (C) 2023 {author}
+
+:aqua_url: https://aquaproj.github.io
+
+Use link:{aqua_url}[aqua^].
+
+Declaratively manage tool versions.
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
