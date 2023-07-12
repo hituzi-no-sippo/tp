@@ -1,9 +1,9 @@
 = Tool version manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-12T19:47:03+09:00
-:revremark: add overview of aqua
+:revnumber: v0.5.0
+:revdate: 2023-07-12T20:31:06+09:00
+:revremark: add configuration file for version manager
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -11,6 +11,18 @@
 Use link:{aqua_url}[aqua^].
 
 Declaratively manage tool versions.
+
+:display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration File
+:file_path_from_root: .aqua/aqua.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+:aqua_docs_url: {aqua_url}/docs
+:aqua_guides_url: {aqua_docs_url}/guides
+.References
+* link:{aqua_guides_url}/keep-in-one-dir/[
+  Keep configuration files in one directory^]
 
 '''
 
