@@ -1,0 +1,38 @@
+= Introduction
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-13T07:24:02+09:00
+:revremark: add setup
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:github_url: https://github.com
+
+// tag::main[]
+
+:owner_name: hituzi-no-sippo
+:repository_name: template-repository
+:repository: {owner_name}/{repository_name}
+:repository_url: {github_url}/{repository}
+
+.Setup
+. Create repository with this template
+* `gh repo create <REPOSITORY_NAME> --public --template {repository}`
+* link:{repository_url}/generate[Use this template^]
+. Clone repository +
+  `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
