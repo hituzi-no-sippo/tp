@@ -1,9 +1,24 @@
+= Dependence
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-13T13:22:50+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-13T13:25:00+09:00
+:revremark: add aqua as tool version manager
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Tool Version Manager
+
+:aqua_link: link:https://aquaproj.github.io[aqua^]
+[horizontal]
+Declarative Manage:: {aqua_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
