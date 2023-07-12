@@ -1,9 +1,9 @@
 = Template Repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-12T19:46:21+09:00
-:revremark: add tools
+:revnumber: v0.7.0
+:revdate: 2023-07-13T07:42:11+09:00
+:revremark: define root_dir_path document attribute
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -21,6 +21,7 @@ include::{dev_docs_dir_path}/supported_platforms.adoc[tag=main, leveloffset=+1]
 
 == Introduction
 
+:root_dir_path: .
 include::{dev_docs_dir_path}/introduction.adoc[tag=main, leveloffset=+1]
 
 '''
