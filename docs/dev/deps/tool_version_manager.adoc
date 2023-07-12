@@ -1,11 +1,15 @@
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.2.0
+:revnumber: v0.3.0
 :revdate: 2023-07-13T07:59:53+0900
-:revremark: add copyright
+:revremark: set this document license to MIT-0
 :copyright: Copyright (C) 2023 {author}
 
 '''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
 
 :author_link: link:https://github.com/hituzi-no-sippo[{author}^]
 Copyright (C) 2023 {author_link}
