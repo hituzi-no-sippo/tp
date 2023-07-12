@@ -1,15 +1,16 @@
 = Introduction
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-13T07:28:19+09:00
-:revremark: add how to install aqua
+:revnumber: v0.6.0
+:revdate: 2023-07-13T07:29:18+09:00
+:revremark: add how to run setup shell
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 :github_url: https://github.com
 :aqua_url: https://aquaproj.github.io
+:root_dir_path: ../..
 
 // tag::main[]
 
@@ -17,6 +18,7 @@
 :repository_name: template-repository
 :repository: {owner_name}/{repository_name}
 :repository_url: {github_url}/{repository}
+:setup_shell_path: {root_dir_path}/scripts/setup.sh
 
 .Setup
 . Create repository with this template
@@ -26,6 +28,8 @@
   `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
 . link:{aqua_url}/docs/tutorial/#install-aqua[
   Install aqua^]
+. Run link:./{setup_shell_path}[setup shell^] +
+  `bash {setup_shell_path}`
 
 // end::main[]
 
