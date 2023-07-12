@@ -1,9 +1,32 @@
+= Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-13T07:22:13+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-13T07:24:02+09:00
+:revremark: add setup
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:github_url: https://github.com
+
+// tag::main[]
+
+== Build a Local Development Environment
+
+:owner_name: hituzi-no-sippo
+:repository_name: template-repository
+:repository: {owner_name}/{repository_name}
+:repository_url: {github_url}/{repository}
+. Create repository with this template
+* `gh repo create <REPOSITORY_NAME> --public --template {repository}`
+* link:{repository_url}/generate[Use this template^]
+. Clone repository +
+  `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
+
+// end::main[]
+
+// end::body[]
 
 '''
 
