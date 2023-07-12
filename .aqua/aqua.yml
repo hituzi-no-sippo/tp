@@ -8,5 +8,6 @@
 #   - all
 registries:
   - type: standard
+    # yamllint disable-line rule:comments
     ref: v4.32.0 # renovate: depName=aquaproj/aqua-registry
 packages:
