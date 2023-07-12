@@ -1,9 +1,16 @@
+= Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-12T18:37:11+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-12T20:50:31+09:00
+:revremark: add supported platforms
 :copyright: Copyright (C) 2023 {author}
+
+:dev_docs_dir_path: ./docs/dev
+
+== Supported platforms
+
+include::{dev_docs_dir_path}/supported_platforms.adoc[tag=main, leveloffset=+1]
 
 '''
 
