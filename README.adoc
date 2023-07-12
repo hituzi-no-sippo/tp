@@ -1,0 +1,22 @@
+= Template Repository
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-12T20:50:31+09:00
+:revremark: add supported platforms
+:copyright: Copyright (C) 2023 {author}
+
+:dev_docs_dir_path: ./docs/dev
+
+== Supported Platforms
+
+include::{dev_docs_dir_path}/supported_platforms.adoc[tag=main, leveloffset=+1]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
