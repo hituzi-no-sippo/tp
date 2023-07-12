@@ -1,8 +1,9 @@
 ---
 # aqua - Declarative CLI Version Manager
 # https://aquaproj.github.io/
-# checksum:
-#   enabled: true
+checksum:
+  # https://aquaproj.github.io/docs/reference/config/checksum#aquayamls-checksum-configuration
+  enabled: true
 #   require_checksum: true
 #   supported_envs:
 #   - all
