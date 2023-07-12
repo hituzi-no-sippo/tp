@@ -4,9 +4,11 @@
 checksum:
   # https://aquaproj.github.io/docs/reference/config/checksum#aquayamls-checksum-configuration
   enabled: true
+  supported_envs:
+    # Because it is only supported on Ubuntu,
+    # as stated in the Supported Platforms section this README.
+    - linux/amd64
 #   require_checksum: true
-#   supported_envs:
-#   - all
 registries:
   - type: standard
     ref: v4.59.0 # renovate: depName=aquaproj/aqua-registry
