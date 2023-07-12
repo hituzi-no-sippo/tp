@@ -1,9 +1,24 @@
+= Tool List
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-13T07:57:56+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-13T13:24:14+09:00
+:revremark: add dependencies
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+See `docs/dev` for more details.
+
+== Dependencies
+
+include::./deps.adoc[tag=main, leveloffset=+1]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
