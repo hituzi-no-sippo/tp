@@ -5,7 +5,8 @@
     "group:monorepos",
     "group:recommended",
     "workarounds:all",
-    "github>aquaproj/aqua-renovate-config#1.6.0"
+    "github>aquaproj/aqua-renovate-config#1.6.0",
+    "github>aquaproj/aqua-renovate-config:file#1.6.0(^.aqua/.*\\.yml$)"
   ],
   "patch": {
     "automerge": true
@@ -26,7 +27,8 @@
   "packageRules": [
     {
       "matchFileNames": [
-        ".aqua.yml"
+        ".aqua.yml",
+        ".aqua/*.yml"
       ],
       "addLabels": [
         "aqua"
