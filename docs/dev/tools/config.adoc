@@ -1,9 +1,26 @@
+= Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-14T07:01:35+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-14T07:03:36+09:00
+:revremark: add dprint as JSON formatter
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:dprint_url: https://dprint.dev
+:dprint_link: link:{dprint_url}[dprint^]
+== JSON
+
+:json_plugin_link: link:{dprint_url}/plugins/json[JSON plugin^]
+[horizontal]
+Format:: {dprint_link} with {json_plugin_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
