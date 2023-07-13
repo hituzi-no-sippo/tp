@@ -2,8 +2,9 @@
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
 :revnumber: v0.4.0
-:revdate: 2023-07-13T13:24:14+09:00
+:revdate: 2023-07-13T13:26:28+09:00
 :revremark: add aqua
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -11,6 +12,10 @@
 // tag::main[]
 
 See `docs/dev` for more details.
+
+== Dependence
+
+include::./dependence.adoc[tag=main, leveloffset=+1]
 
 == Tool Version Manager
 
