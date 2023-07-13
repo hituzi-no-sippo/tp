@@ -1,13 +1,16 @@
 = Renovate
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:13:27+09:00
-:revremark: add overview
+:revnumber: v0.5.0
+:revdate: 2023-07-13T13:40:13+09:00
+:revremark: add configuration file for Renovate
+:icons: font
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 :renovate_doc_url: https://docs.renovatebot.com
 :github_docs_url: https://docs.github.com/en
+:root_directory: ../../..
 
 link:{renovate_doc_url}[
 Renovate^] is automated dependency updater.
@@ -48,6 +51,60 @@ Renovate^] is automated dependency updater.
   cargo^]
 
 See link:{supported_managers_url}[Supported Managers^] for more details.
+
+== Configuration
+
+:block_title_name: Configuration File
+:file_path_from_root: .renovaterc.json
+:file_lang: JSON
+include::../_partials/display_file_in_details_disclosure_element.adoc[]
+
+.Automerge
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: disable
+Minor(`1.0.0` => `1.1.0`):: disable
+Patch(`1.0.0` => `1.0.1`):: Enable
+
+.Schedule
+[horizontal]
+Create branch (`schedule`)::
+  link:{config_options_url}/#schedule[
+  `at any time` (default)^]
+Automerge (`automergeschedule`)::
+  link:{config_options_url}/#automergeschedule[
+  `at any time` (default)^]
+
+.Limit
+[horizontal]
+Maximum number of concurrent opened PRs(`prConcurrentLimit`)::
+  link:{config_options_url}/#prconcurrentlimit[
+  "0 = no limit (default)"^]
+Maximum number of concurrent branches(`branchConcurrentLimit`)::
+  link:{config_options_url}/#branchconcurrentlimit[
+  "0 = no limit (default,inherits value from `prConcurrentLimit`)"^]
+Maximum number of PRs created per hour (`prHourlyLimit`)::
+  link:{config_options_url}/#prhourlylimit[
+  "0 = no limit (default)"^]
+
+.Dashboard
+* link:{config_options_url}/#dependencyDashboard[
+  Create a "Dependency Dashboard" issue^]
+* link:{config_options_url}/#dependencyDashboardAutoclose[
+  Close "Dependency Dashboard" issue if there are no more updates^]
+
+.If you feel that Renovate is too noisy
+[NOTE]
+====
+.Let's change the values of the following options
+* schedule
+** `schedule`
+** `automergeschedule`
+* Limit
+** `prConcurrentLimit`
+** `branchConcurrentLimit`
+
+See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
+====
 
 '''
 
