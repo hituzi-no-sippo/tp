@@ -4,6 +4,8 @@
 :revnumber: v0.7.0
 :revdate: 2023-07-13T07:42:11+09:00
 :revremark: define root_dir_path document attribute
+:revremark: change icon to Font Awesome
+:icons: font
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
