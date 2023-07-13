@@ -1,29 +1,34 @@
-= Tools
+= Writing Docs
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-14T07:51:06+09:00
-:revremark: add writing docs
-:toc: right
+:revnumber: v0.4.0
+:revdate: 2023-07-13T18:02:09+09:00
+:revremark: add vale
+:icons: font
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
-See `docs/dev` for more details.
+== Natural language
 
-== Writing Docs
+:vale_url: https://vale.sh
+:vale_link: link:{vale_url}[Vale^]
+[horizontal]
+Lint:: {vale_link}
+Spell Check::
++
+--
+[horizontal]
+Docs:: Vale
+--
 
-include::./writing_docs.adoc[tag=main, leveloffset=+1]
-
-== Dependence
-
-include::./dependence.adoc[tag=main, leveloffset=+1]
-
-== Tool Version Manager
-
-include::./tool_version_manager.adoc[tag=main, leveloffset=+1]
+[CAUTION]
+====
+link:https://asciidoctor.org[
+Asciidoctor^] is required to lint an AsciiDoc file.
+====
 
 // end::main[]
 
