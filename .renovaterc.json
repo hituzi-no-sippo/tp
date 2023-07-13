@@ -24,10 +24,9 @@
   ],
   "semanticCommits": "enabled",
   "configMigration": true,
-
   "packageRules": [
     {
-      "matchPaths": [
+      "matchFileNames": [
         ".aqua.yml",
         ".aqua/*.yml"
       ],
