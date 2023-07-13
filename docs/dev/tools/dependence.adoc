@@ -1,25 +1,18 @@
-= Tools
+= Dependence
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
 :revnumber: v0.4.0
-:revdate: 2023-07-13T13:26:28+09:00
-:revremark: add aqua
-:toc:
+:revdate: 2023-07-13T13:20:05+09:00
+:revremark: add renovate
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
-See `docs/dev` for more details.
-
-== Dependence
-
-include::./dependence.adoc[tag=main, leveloffset=+1]
-
-== Tool Version Manager
-
-include::./tool_version_manager.adoc[tag=main, leveloffset=+1]
+:renovate_link: link:https://docs.renovatebot.com[Renovate^]
+[horizontal]
+Automating dependency updater:: {renovate_link}
 
 // end::main[]
 
