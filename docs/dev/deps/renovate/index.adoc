@@ -1,0 +1,5 @@
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.1.0
+:revdate: 2023-07-13T13:11:34+0900
+:revremark: add document header
