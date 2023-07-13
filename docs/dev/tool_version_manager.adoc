@@ -1,11 +1,12 @@
 = Tool Version Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-07-16T11:24:43+09:00
-:revremark: add GitHub Action to update aqua checksum
+:revnumber: v0.8.0
+:revdate: 2023-07-16T15:36:34+09:00
+:revremark: add support for Renovate
 :copyright: Copyright (C) 2023 {author}
 
+:github_url: https://github.com
 :aqua_url: https://aquaproj.github.io
 
 Use link:{aqua_url}[aqua^].
@@ -40,6 +41,14 @@ include::./_partials/display_file_in_details_disclosure_element.adoc[]
 .Refrences
 * link:{aqua_docs_url}/products/update-checksum-workflow[
   update-checksum-workflow^]
+
+== Renovate Support
+
+:aqua_renovate_config_link: link:{github_url}/aquaproj/aqua-renovate-config[aqua-renovate-config^]
+Use {aqua_renovate_config_link} to support aqua in Renovate.
+
+Enable automerge of minor update.
+For example `1.0.0` => `1.1.0`.
 
 '''
 
