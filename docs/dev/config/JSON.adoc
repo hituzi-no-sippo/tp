@@ -1,0 +1,22 @@
+= JSON
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-14T06:56:40+09:00
+:revremark: add dprint as formatter
+:copyright: Copyright (C) 2023 {author}
+
+== Format
+
+:dprint_url: https://dprint.dev/
+:json_plugin_link: link:{dprint_url}/plugins/json[JSON plugin^]
+Use link:{dprint_url}[dprint^] with {json_plugin_link}.
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
