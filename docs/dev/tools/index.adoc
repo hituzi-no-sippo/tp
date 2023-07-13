@@ -1,9 +1,10 @@
 = Tools
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:24:14+09:00
-:revremark: add aqua
+:revnumber: v0.5.0
+:revdate: 2023-07-14T07:50:47+09:00
+:revremark: add dependence
+:toc: right
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -11,6 +12,10 @@
 // tag::main[]
 
 See `docs/dev` for more details.
+
+== Dependence
+
+include::./dependence.adoc[tag=main, leveloffset=+1]
 
 == Tool Version Manager
 
