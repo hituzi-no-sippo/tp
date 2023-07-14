@@ -1,9 +1,9 @@
 = Tools
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-07-14T07:51:33+09:00
-:revremark: add configuration
+:revnumber: v0.8.0
+:revdate: 2023-07-14T16:17:21+09:00
+:revremark: add CI
 :toc: right
 :copyright: Copyright (C) 2023 {author}
 
@@ -16,6 +16,10 @@ See `docs/dev` for more details.
 == Configuration
 
 include::./config.adoc[tag=main, leveloffset=+1]
+
+== CI
+
+include::./ci.adoc[tag=main, leveloffset=+1]
 
 == Writing Docs
 

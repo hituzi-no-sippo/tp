@@ -1,9 +1,26 @@
+= CI
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-14T16:06:24+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-14T16:08:15+09:00
+:revremark: add actionlint of GitHub Actions linter
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:github_url: https://github.com
+== GitHub Actions
+
+:actionlint_link: link:{github_url}/rhysd/actionlint[actionlint^]
+[horizontal]
+Lint::
+  * {actionlint_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
