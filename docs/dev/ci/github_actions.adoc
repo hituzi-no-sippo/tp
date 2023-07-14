@@ -1,0 +1,26 @@
+= GitHub Actions
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-14T16:51:50+09:00
+:revremark: add actionlint as linter
+:copyright: Copyright (C) 2023 {author}
+
+:github_url: https://github.com
+
+== Lint
+
+=== actionlint
+
+:actionlint_url: {github_url}/rhysd/actionlint
+:actionlint_link: link:{actionlint_url}[actionlint^]
+Use {actionlint_link}.
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
