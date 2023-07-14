@@ -7,3 +7,4 @@ dprint
 actionlint
 shellcheck
 pyflakes
+reviewdog
