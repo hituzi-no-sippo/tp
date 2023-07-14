@@ -1,9 +1,22 @@
+= YAML
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-14T15:27:05+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-14T15:30:22+09:00
+:revremark: add dprint as formatter
 :copyright: Copyright (C) 2023 {author}
+
+:root_directory: ../../..
+
+== Format
+
+:dprint_url: https://dprint.dev
+:prettier_plugin_link: link:{dprint_url}/plugins/prettier[Prettier plugin^]
+Use link:{dprint_url}[dprint^] with {prettier_plugin_link}.
+
+:config_file_name: .dprint.json
+.Configuration File
+link:{root_directory}/{config_file_name}[{config_file_name}^]
 
 '''
 
