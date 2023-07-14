@@ -1,0 +1,53 @@
+= reviewdog
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-15T07:40:04+09:00
+:revremark: add overview
+:copyright: Copyright (C) 2023 {author}
+
+:github_domain: github.com
+:github_docs_url: docs.{github_domain}
+:reviewdog_url: https://{github_domain}/reviewdog/reviewdog
+:reviewdog_link: link:{reviewdog_url}[reviewdog^]
+:root_directory: ../../..
+:workflows_directory: {root_directory}/.github/workflows
+
+{reviewdog_link} is automated code review tool integrated
+with any code analysis tools.
+
+:reporter_link: link:{reviewdog_url}#reporters[reporter^]
+:github_checks_link: link:https://{github_docs_url}/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks[GitHub Checks^]
+:github_check_link: {reviewdog_url}#reporter-github-checks-%2Dreportergithub-check[github-check^]
+:github_pr_check_link: {reviewdog_url}#reporter-github-checks-%2Dreportergithub-pr-check[github-pr-check^]
+:github_pr_review_link: {reviewdog_url}#reporter-github-pullrequest-review-comment-%2Dreportergithub-pr-review[github-pr-review^]
+:set_reporter_url: {workflows_directory}/lint_github_actions.yml#:~:text=reporter%3A%20%24%7B%7B%20(github.event_name%20%3D%3D%20%27pull_request%27%20%26%26%20%27github%2Dpr%2Dreview%27)%20%7C%7C%20%27github%2Dcheck%27%20%7D%7D
+.Result Reporting Method and {reporter_link}
+{github_checks_link}::
+* {github_check_link}  +
+  link:{set_reporter_url}[
+  Use this reporter on push event of GitHub Action^].
+* {github_pr_check_link} +
+  Unlike github-check,
+  reviewdog doesn't reports result on push event of GitHub Actions.
+GitHub Pull Request Review Comment::
+* {github_pr_review_link} +
+  link:{set_reporter_url}[
+  Use this reporter on pull request event of GitHub Action^].
++
+--
+.Need to a Token
+* link:https://{github_docs_url}/actions/security-guides/automatic-token-authentication[
+  `GITHUB_TOKEN`^]
+* link:https://{github_docs_url}/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens[
+  GitHub Personal API Access Token^]
+--
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}

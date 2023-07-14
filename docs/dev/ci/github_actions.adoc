@@ -1,0 +1,36 @@
+= GitHub Actions
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-07-14T17:51:15+09:00
+:revremark: add reviewdog to lint GitHub Actions with reviewdog
+:copyright: Copyright (C) 2023 {author}
+
+:github_url: https://github.com
+:root_directory: ../../..
+:workflows_directory: {root_directory}/.github/workflows
+
+== Lint
+
+=== actionlint
+
+:actionlint_url: {github_url}/rhysd/actionlint
+:actionlint_link: link:{actionlint_url}[actionlint^]
+Use {actionlint_link}.
+
+:filename: lint_github_actions.yml
+:github_actions_marketplace_url: {github_url}/marketplace/actions
+:actionlint_with_reviewdog_link: link:{github_actions_marketplace_url}/actionlint-with-reviewdog[actionlint-with-reviewdog^]
+.GitHub Actions
+* link:{workflows_directory}/{filename}[{filename}^] +
+  Use {actionlint_with_reviewdog_link}.
+  shellcheck and pyflakes integrations are enabled by default.
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
