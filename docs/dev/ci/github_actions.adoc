@@ -1,12 +1,14 @@
 = GitHub Actions
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-14T16:51:50+09:00
-:revremark: add actionlint as linter
+:revnumber: v0.5.0
+:revdate: 2023-07-14T17:51:15+09:00
+:revremark: add reviewdog to lint GitHub Actions with reviewdog
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
+:root_directory: ../../..
+:workflows_directory: {root_directory}/.github/workflows
 
 == Lint
 
@@ -15,6 +17,14 @@
 :actionlint_url: {github_url}/rhysd/actionlint
 :actionlint_link: link:{actionlint_url}[actionlint^]
 Use {actionlint_link}.
+
+:filename: lint_github_actions.yml
+:github_actions_marketplace_url: {github_url}/marketplace/actions
+:actionlint_with_reviewdog_link: link:{github_actions_marketplace_url}/actionlint-with-reviewdog[actionlint-with-reviewdog^]
+.GitHub Actions
+* link:{workflows_directory}/{filename}[{filename}^] +
+  Use {actionlint_with_reviewdog_link}.
+  shellcheck and pyflakes integrations are enabled by default.
 
 '''
 

@@ -5,3 +5,5 @@ dockerfile
 gomod
 dprint
 actionlint
+shellcheck
+pyflakes
