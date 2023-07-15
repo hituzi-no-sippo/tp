@@ -1,9 +1,9 @@
 = GitHub Actions
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-14T17:51:15+09:00
-:revremark: add reviewdog to lint GitHub Actions with reviewdog
+:revnumber: v0.6.0
+:revdate: 2023-07-15T09:15:46+09:00
+:revremark: add ghalint as permissions and secrets linter
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
@@ -25,6 +25,19 @@ Use {actionlint_link}.
 * link:{workflows_directory}/{filename}[{filename}^] +
   Use {actionlint_with_reviewdog_link}.
   shellcheck and pyflakes integrations are enabled by default.
+
+=== ghalint
+
+:ghalint_url: {github_url}/suzuki-shunsuke/ghalint
+:ghalint_link: link:{ghalint_url}[ghalint^]
+Use {ghalint}.
+
+link:{ghalint_url}#why-not-actionlint[
+ghalint and actionlint can be used together.^]
+
+.Lint Target
+* Secrets
+* Permissions
 
 '''
 
