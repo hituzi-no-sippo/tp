@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-15T19:44:07+09:00
-:revremark: add overview
+:revnumber: v0.5.0
+:revdate: 2023-07-15T19:49:42+09:00
+:revremark: add configuration file for linter
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -15,6 +15,12 @@
 :vale_topic_docs_url: {vale_url}/docs/topics
 
 Use link:{vale_url}[Vale^].
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration file
+:file_path_from_root: .vale.ini
+:file_lang: INI
+include::{display_file_path}[]
 
 .Supported formats
 * HTML

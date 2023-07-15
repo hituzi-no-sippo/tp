@@ -10,6 +10,11 @@
 /README.html
 /docs/**/*.html
 
+# For Vale
+# https://vale.sh/docs/topics/packages/#packages-and-vcs
+/.vale/styles/*
+!/.vale/styles/Vocab/
+
 ###----------------###
 ###  TopTal: node  ###
 ###----------------###
