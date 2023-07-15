@@ -1,13 +1,18 @@
 {
   "checksums": [
     {
+      "id": "github_release/github.com/evilmartians/lefthook/v1.4.9/lefthook_1.4.9_Linux_x86_64.gz",
+      "checksum": "375CB760D6EA6E3F46CC71F5CCA3D13C4CC8DA95E3D3632084599949EA0FC7FC",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_linux_amd64.zip",
       "checksum": "6B9D9C9A7B834237B6579353477DF3BB3730C11788170AD2A9E5D1230ABC6216",
       "algorithm": "sha256"
     },
     {
-      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.32.0/registry.yaml",
-      "checksum": "09C55AB52C5064221C057A2AB0E6449E5618ABA3E38DA0180B18AF59010DB775C0F7873A71029889D1026BAFA55DDA73A032CE8C960DEF020E2C7457E4A77801",
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.39.0/registry.yaml",
+      "checksum": "A316C5CF26998A0BD5917C182F28135B64097FE6314A6E396401FCAAF24E429AC5A5623735EC25194A5B572679410D0AAF47DF955555D37AC09FB400417BC5CD",
       "algorithm": "sha512"
     }
   ]
