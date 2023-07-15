@@ -1,9 +1,9 @@
 = CI
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-14T16:08:15+09:00
-:revremark: add actionlint of GitHub Actions linter
+:revnumber: v0.5.0
+:revdate: 2023-07-15T09:01:26+09:00
+:revremark: add ghalint of GitHub Actions linter
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -14,9 +14,11 @@
 == GitHub Actions
 
 :actionlint_link: link:{github_url}/rhysd/actionlint[actionlint^]
+:ghalint_link: link:{github_url}/suzuki-shunsuke/ghalint[ghalint^]
 [horizontal]
 Lint::
   * {actionlint_link}
+  * {ghalint_link}
 
 // end::main[]
 
