@@ -1,6 +1,11 @@
 {
   "checksums": [
     {
+      "id": "github_release/github.com/evilmartians/lefthook/v1.4.7/lefthook_1.4.7_Linux_x86_64.gz",
+      "checksum": "3D5F54AA541224C87199CACA3D84CE56A75B89EA7F1B18F014CEB5F765D144B8",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_linux_amd64.zip",
       "checksum": "6B9D9C9A7B834237B6579353477DF3BB3730C11788170AD2A9E5D1230ABC6216",
       "algorithm": "sha256"
