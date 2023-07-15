@@ -1,9 +1,17 @@
+= Git Hook Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T18:02:16+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-15T18:05:40+09:00
+:revremark: add lefthook overivew
 :copyright: Copyright (C) 2023 {author}
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+Linter and formatter hooks are written in a other document.
+For example, JSON formatter hook are written in the JSON document.
 
 '''
 
