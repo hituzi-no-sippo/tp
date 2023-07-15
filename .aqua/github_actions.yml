@@ -1,3 +1,4 @@
 ---
 packages:
   - name: rhysd/actionlint@v1.6.25
+  - name: suzuki-shunsuke/ghalint@v0.2.2
