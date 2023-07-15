@@ -1,9 +1,30 @@
+= Natural Language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T19:12:00+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-13T18:02:09+09:00
+:revremark: add vale
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:vale_url: https://vale.sh
+:vale_link: link:{vale_url}[Vale^]
+[horizontal]
+Lint:: {vale_link}
+
+[CAUTION]
+====
+link:https://asciidoctor.org[
+Asciidoctor^] is link:{vale_url}/docs/topics/scoping/#asciidoc[
+required to lint an AsciiDoc file^].
+====
+
+// end::main[]
+
+// end::body[]
 
 '''
 
