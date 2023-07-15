@@ -1,9 +1,28 @@
+= Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T18:02:16+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-09T15:58:48+09:00
+:revremark: add lefthook overivew
 :copyright: Copyright (C) 2023 {author}
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+The hooks for formatter and linter are in a other document.
+For example, JSON formatter hook is in the JSON document.
+
+== Configuration
+
+.Supported formats
+* YAML
+* JSON
+* TOML
+
+.Configuration file
+* `.lefthook.<yml|json|toml>`
+* `lefthook.<yml|json|toml>`
 
 '''
 
