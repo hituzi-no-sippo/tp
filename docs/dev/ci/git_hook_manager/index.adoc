@@ -1,9 +1,102 @@
+= Git Hook Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T18:02:16+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-09T15:58:48+09:00
+:revremark: add lefthook overivew
 :copyright: Copyright (C) 2023 {author}
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+Linter and formatter hooks are written in a other document.
+For example, JSON formatter hook are written in the JSON document.
+
+== Configuration
+
+.Supported Formats
+* YAML
+* JSON
+* TOML
+
+.Configuration File
+* `.lefthook.<yml|json|toml>`
+* `lefthook.<yml|json|toml>`
+
+== Usage
+
+.Install git hooks
+[source, console]
+----
+$ lefthook install
+----
+
+.Configuration File (`.lefthook.yml`)
+[source, YAML]
+----
+pre-commit:  # <1>
+  commands:
+    print: &print
+      run: printf 'Example'
+
+hello:  # <2>
+  commands:
+    print-hello:
+      run: printf 'Hello World'
+
+using-anchor-and-alias:  # <3>
+  commands:
+    example: *print
+----
+
+<1> {empty}
++
+.On pre-commit hook is triggered
+[source, console]
+----
+$ git commit
+Lefthook v1.4.8
+RUNNING HOOK: pre-commit
+
+  EXECUTE > print
+Example
+
+SUMMARY: (done in 0.01 seconds)
+✔️  print
+----
+
+<2> {empty}
++
+.Run tasks
+[source, console]
+----
+$ lefthook run hello
+Lefthook v1.4.8
+RUNNING HOOK: hello
+
+  EXECUTE > print-hello
+Hello World
+
+SUMMARY: (done in 0.00 seconds)
+✔️  print-hello
+----
+
+<3> {empty}
++
+.Run tasks using YAML anchors and aliases
+[source, console]
+----
+$ lefthook run using-anchor-and-alias
+Lefthook v1.4.8
+RUNNING HOOK: using-anchor-and-alias
+
+  EXECUTE > example
+Example
+
+SUMMARY: (done in 0.00 seconds)
+✔️  example
+----
 
 '''
 
