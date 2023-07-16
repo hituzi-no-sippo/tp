@@ -1,9 +1,9 @@
 = Tool Version Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-12T20:31:06+09:00
-:revremark: add configuration file for version manager
+:revnumber: v0.6.0
+:revdate: 2023-07-16T11:07:45+09:00
+:revremark: add description of `import` for aqua config
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -18,11 +18,15 @@ Declaratively manage tool versions.
 :file_lang: YAML
 include::{display_file_path}[]
 
+Use `import` to split config file.
+
 :aqua_docs_url: {aqua_url}/docs
 :aqua_guides_url: {aqua_docs_url}/guides
 .References
 * link:{aqua_guides_url}/keep-in-one-dir/[
   Keep configuration files in one directory^]
+* link:{aqua_guides_url}/split-config/[
+  Split the list of packages^]
 
 '''
 
