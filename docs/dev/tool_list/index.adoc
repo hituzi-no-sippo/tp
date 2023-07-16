@@ -1,9 +1,9 @@
 = Tool list
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-10-07T12:58:26+09:00
-:revremark: add security
+:revnumber: v0.6.0
+:revdate: 2023-07-15T18:17:36+09:00
+:revremark: add CI
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -12,6 +12,10 @@
 // tag::main[]
 
 See `docs/dev` for more details.
+
+== CI
+
+include::./ci.adoc[tag=main, leveloffset=+1]
 
 == Security
 
