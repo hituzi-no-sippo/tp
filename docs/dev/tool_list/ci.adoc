@@ -1,25 +1,20 @@
-= Tool List
+= CI
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-15T18:17:36+09:00
-:revremark: add CI
-:toc:
+:revnumber: v0.4.0
+:revdate: 2023-07-15T18:16:33+09:00
+:revremark: add lefthook as git hook manager
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
-See `docs/dev` for more details.
+== Git Hook
 
-== CI
-
-include::./ci.adoc[tag=main, leveloffset=+1]
-
-== Dependence
-
-include::./dependence.adoc[tag=main, leveloffset=+1]
+:lefthook_link: link:https://github.com/evilmartians/lefthook[Lefthook^]
+[horizontal]
+Manage:: {lefthook_link}
 
 // end::main[]
 
