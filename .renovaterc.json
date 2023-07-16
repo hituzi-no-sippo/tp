@@ -1,0 +1,52 @@
+{
+  "extends": [
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "configMigration": true,
+  "patch": {
+    "automerge": true
+  },
+  "automergeStrategy": "merge-commit",
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "rangeStrategy": "auto",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ],
+  "labels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "github-actions"
+    },
+    {
+      "matchFileNames": [
+        ".github/workflows/*.yml",
+        ".github/actions/**/*.yml"
+      ],
+      "addLabels": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "github-actions"
+    }
+  ]
+}
