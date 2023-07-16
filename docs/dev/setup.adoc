@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-10-08T20:50:31+09:00
-:revremark: add repository setting on GitHub for GitHub Actions
+:revnumber: v0.8.0
+:revdate: 2023-08-18T16:53:05+09:00
+:revremark: add repository setting on GitHub for Renovate
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -60,6 +60,12 @@ include directive in AsciiDoc^].
 ==== GitHub Actions
 
 include::./ci/github_actions.adoc[tag=repository_setting_on_github, leveloffset=+1]
+
+=== Dependencies
+
+==== Renovate
+
+include::./deps/renovate.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 // end::main[]
 
