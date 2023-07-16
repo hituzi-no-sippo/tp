@@ -36,7 +36,7 @@ Use `import` to split config file.
 :block_title_name: GitHub Action
 :file_path_from_root: {workflow_directory}/update_aqua_checksum.yml
 :file_lang: YAML
-include::./_partials/display_file_in_details_disclosure_element.adoc[]
+include::{display_file_path}[]
 
 .References
 * link:{aqua_docs_url}/products/update-checksum-workflow[
