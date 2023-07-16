@@ -1,0 +1,88 @@
+= Tool version manager
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.7.0
+:revdate: 2023-08-18T16:32:36+09:00
+:revremark: add GitHub Action to update aqua checksum
+:copyright: Copyright (C) 2023 {author}
+
+:aqua_url: https://aquaproj.github.io
+
+Use link:{aqua_url}[aqua^].
+
+Declaratively manage tool versions.
+
+:display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration File
+:file_path_from_root: .aqua/aqua.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+Use `import` to split config file.
+
+:aqua_docs_url: {aqua_url}/docs
+:aqua_guides_url: {aqua_docs_url}/guides
+.References
+* link:{aqua_guides_url}/keep-in-one-dir/[
+  Keep configuration files in one directory^]
+* link:{aqua_guides_url}/split-config/[
+  Split the list of packages^]
+
+:workflow_directory: .github/workflows
+== GitHub Actions
+
+=== Update aqua checksum
+
+:block_title_name: GitHub Action
+:file_path_from_root: {workflow_directory}/update_aqua_checksum.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+.References
+* link:{aqua_docs_url}/products/update-checksum-workflow[
+  update-checksum-workflow^]
+
+== Setup
+
+=== Repository setting on GitHub
+
+// tag::repository_setting_on_github[]
+
+==== Install GitHub App and create secrets for update aqua checksums
+
+Required to create commit to update aqua checksums on GitHub Actions.
+
+. Create GitHub App
++
+.GitHub App permission
+[CAUTION]
+====
+Need to GitHub app has `Read and Write` permissions to
+content of repository permission.
+====
+. Install the GitHub App into a repository
+. Create the following two secrets encrypted secrets for the GitHub App
+** `APP_ID`
+** `PRIVATE_KEY`
+
+:github_docs_url: https://docs.github.com/en
+.References
+* link:{github_docs_url}/actions/security-guides/encrypted-secrets?tool=webui#creating-encrypted-secrets-for-an-environment[
+  Creating encrypted secrets for an environment - Encrypted secrets^]
+* link:{github_docs_url}/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app#choosing-permissions-for-rest-api-access[
+  Choosing permissions for REST API access - Choosing permissions for a GitHub App^]
+* link:{github_docs_url}/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys[
+  Generating private keys - Managing private keys for GitHub Apps^]
+* link:{github_docs_url}/rest/overview/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents[
+  Repository permissions for "Contents" - Permissions required for GitHub Apps^]
+
+// end::repository_setting_on_github[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
