@@ -1,0 +1,45 @@
+{
+  "extends": [
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "configMigration": true,
+  "automergeStrategy": "merge-commit",
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "internalChecksFilter": "strict",
+  "minimumReleaseAge": "1 week",
+  "major": {
+    "automerge": false,
+    "minimumReleaseAge": "2 weeks"
+  },
+  "minor": {
+    "automerge": false
+  },
+  "patch": {
+    "automerge": true,
+    "minimumReleaseAge": "3 days"
+  },
+  "rangeStrategy": "auto",
+  "schedule": "at any time",
+  "automergeSchedule": "at any time",
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 2,
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ],
+  "labels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ]
+}
