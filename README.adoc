@@ -1,13 +1,18 @@
 = Template Repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-12T19:30:06+09:00
-:revremark: add how to clone this repository
+:revnumber: v0.7.0
+:revdate: 2023-07-13T07:42:11+09:00
+:revremark: define root_dir_path document attribute
+:toc: right
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
 :dev_docs_dir_path: ./docs/dev
+
+== Tools
+
+include::{dev_docs_dir_path}/tools/index.adoc[tag=main, leveloffset=+1]
 
 == Supported Platforms
 
@@ -15,6 +20,7 @@ include::{dev_docs_dir_path}/supported_platforms.adoc[tag=main, leveloffset=+1]
 
 == Introduction
 
+:root_dir_path: .
 include::{dev_docs_dir_path}/introduction.adoc[tag=main, leveloffset=+1]
 
 '''
