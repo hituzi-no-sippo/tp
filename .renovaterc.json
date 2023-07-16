@@ -1,0 +1,37 @@
+{
+  "extends": [
+    ":ignoreModulesAndTests",
+    ":semanticPrefixFixDepsChoreOthers",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "patch": {
+    "automerge": true
+  },
+  "platformAutomerge": true,
+  "labels": [
+    "dependencies"
+  ],
+  "rangeStrategy": "auto",
+  "dependencyDashboard": true,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "dependencies",
+    "automated issue"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "configMigration": true,
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "github-actions"
+    }
+  ]
+}
