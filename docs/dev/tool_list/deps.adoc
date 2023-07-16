@@ -1,9 +1,9 @@
 = Dependencies
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:25:00+09:00
-:revremark: add aqua as tool version manager
+:revnumber: v0.5.0
+:revdate: 2023-07-17T04:57:51+09:00
+:revremark: add Renovate as automatic tool version updater
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -15,6 +15,12 @@
 :aqua_link: link:https://aquaproj.github.io[aqua^]
 [horizontal]
 Declarative manage:: {aqua_link}
+
+== Automatic tool version updater
+
+:renovate_link: link:https://docs.renovatebot.com[Renovate^]
+[horizontal]
+Automatic dependency update:: {renovate_link}
 
 // end::main[]
 
