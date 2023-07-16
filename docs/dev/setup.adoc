@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T07:24:02+09:00
-:revremark: add setup
+:revnumber: v0.7.0
+:revdate: 2023-08-18T16:37:13+09:00
+:revremark: add repository setting on GitHub for tool version manager
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -18,11 +18,39 @@
 :repository_name: template-repository
 :repository: {owner_name}/{repository_name}
 :repository_url: {github_url}/{repository}
+:aqua_url: https://aquaproj.github.io
+:setup_shell_path_from_root: ./scripts/setup.sh
 . Create repository with this template
 * `gh repo create <REPOSITORY_NAME> --public --template {repository}`
 * link:{repository_url}/generate[Use this template^]
 . Clone repository +
   `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
+. link:{aqua_url}/docs/tutorial/#install-aqua[
+  Install aqua that's tool version manager^]
+. Run setup shell +
+  `bash {setup_shell_path_from_root}`
+
+:block_title_name: Setup Shell
+:file_lang: bash
+:file_path_from_root: {setup_shell_path_from_root}
+include::./_partials/display_file_in_details_disclosure_element.adoc[]
+
+== Repository Setting on GitHub
+
+[NOTE]
+====
+The exact same content as the following is written in
+a another document under `docs/dev` directory.
+This is because it includes a content from another file.
+Include a content using link:https://docs.asciidoctor.org/asciidoc/latest/directives/include/[
+include directive in AsciiDoc^].
+====
+
+=== Dependencies
+
+==== Tool Version Manager
+
+include::./deps/tool_version_manager.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 // end::main[]
 
