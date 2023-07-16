@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-13T07:28:19+09:00
-:revremark: add how to install aqua
+:revnumber: v0.6.0
+:revdate: 2023-07-13T07:29:18+09:00
+:revremark: add how to run setup shell
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -21,6 +21,7 @@
 :aqua_url: https://aquaproj.github.io
 :script_directory_from_root: ./scripts
 :download_aqua_shell_path_from_root: {script_directory_from_root}/download_aqua.sh
+:setup_shell_path_from_root: {script_directory_from_root}/setup.sh
 . Create repository with this template
 * `gh repo create <REPOSITORY_NAME> --public --template {repository}`
 * link:{repository_url}/generate[Use this template^]
@@ -32,11 +33,18 @@
     `bash {download_aqua_shell_path_from_root}`
   .. Add aqua to the environment variable `PATH` +
     `export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"`
+. Run setup shell script +
+  `bash {setup_shell_path_from_root}`
 
 :block_title_name: Download aqua shell script
 :file_lang: bash
 :file_path_from_root: {download_aqua_shell_path_from_root}
 :display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
+
+:block_title_name: Setup shell script
+:file_lang: bash
+:file_path_from_root: {setup_shell_path_from_root}
 include::{display_file_path}[]
 
 // end::main[]
