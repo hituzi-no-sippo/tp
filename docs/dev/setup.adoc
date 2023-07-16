@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T07:24:02+09:00
-:revremark: add setup
+:revnumber: v0.7.0
+:revdate: 2023-10-08T20:50:31+09:00
+:revremark: add repository setting on GitHub for GitHub Actions
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -18,11 +18,51 @@
 :repository_name: template-repository
 :repository: {owner_name}/{repository_name}
 :repository_url: {github_url}/{repository}
+:aqua_url: https://aquaproj.github.io
+:script_directory_from_root: ./scripts
+:download_aqua_shell_path_from_root: {script_directory_from_root}/download_aqua.sh
+:setup_shell_path_from_root: {script_directory_from_root}/setup.sh
 . Create repository with this template
 * `gh repo create <REPOSITORY_NAME> --public --template {repository}`
 * link:{repository_url}/generate[Use this template^]
 . Clone repository +
   `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
+. link:{aqua_url}/docs/tutorial/#install-aqua[
+  Install aqua that is tool version manager^] with shell script
+  .. Download aqua +
+    `bash {download_aqua_shell_path_from_root}`
+  .. Add aqua to the environment variable `PATH` +
+    `export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"`
+. Run setup shell script +
+  `bash {setup_shell_path_from_root}`
+
+:block_title_name: Download aqua shell script
+:file_lang: bash
+:file_path_from_root: {download_aqua_shell_path_from_root}
+:display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
+
+:block_title_name: Setup shell script
+:file_lang: bash
+:file_path_from_root: {setup_shell_path_from_root}
+include::{display_file_path}[]
+
+== Repository setting on GitHub
+
+[NOTE]
+====
+The following content is the same as the content
+in a document under `docs/dev` directory.
+This is because it includes a content from another file.
+Include a content by using link:https://docs.asciidoctor.org/asciidoc/latest/directives/include/[
+include directive in AsciiDoc^].
+====
+
+=== CI
+
+==== GitHub Actions
+
+include::./ci/github_actions.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 // end::main[]
 
