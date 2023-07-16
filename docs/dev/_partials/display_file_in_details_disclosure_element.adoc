@@ -1,0 +1,8 @@
+.{block_title_name}
+[%collapsible]
+==========
+[source, {file_lang}]
+----------
+include::../../../{file_path_from_root}[]
+----------
+==========
