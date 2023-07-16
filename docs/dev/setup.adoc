@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.9.0
-:revdate: 2023-10-07T08:51:55+09:00
-:revremark: add repository setting on GitHub for security for GitHub Actions
+:revnumber: v0.10.0
+:revdate: 2023-08-18T16:53:05+09:00
+:revremark: add repository setting on GitHub for Renovate
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -78,6 +78,12 @@ If you want to notify security alert, install GitHub App.
 ====
 
 include::./security/github_actions.adoc[tag=security_alert_notification, leveloffset=+2]
+
+=== Dependencies
+
+==== Renovate
+
+include::./deps/renovate/index.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 :workflow_directory: .github/workflows
 == GitHub Actions
