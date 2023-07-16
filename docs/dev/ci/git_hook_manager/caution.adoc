@@ -1,0 +1,104 @@
+= CAUTIONS
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-09-06T20:35:53+09:00
+:revremark: add caution that pre-push hook may be skipped
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+
+// tag::main[]
+
+== Symlink isn't supported
+
+We plan to support symlink once the following Pull Request is merged.
+
+.Pull Request
+link:{lefthook_url}/pull/538[feat: add skip symlinks option to commands^]
+
+== Pre-push hook may be skipped
+
+:remote_HEAD_ref_path: .git/refs/remotes/origin/HEAD
+=== Skipped Conditions
+
+* Push a new branch
+* `{remote_HEAD_ref_path}` doesn't exist
+* Lefthook Configuration
+** `{all_files}` within `run` isn't used
+** `files` isn't changed +
+    Therefore if `files` is `git ls-files`, pre-push hook will work.
+
+=== Reason to Skip
+
+No files for inspection.
+
+This is because Lefthook run the following two commands to
+can't fetch a file name.
+
+.Commands to fetch a file name
+. `git diff --name-only HEAD @{push}`
+. `git diff --name-only HEAD <HEAD_BRANCH>` +
+  `<HEAD_BRANCH>` is value from result of `git branch --remotes` command.
+
+=== How to Reproduce with Bash
+
+.Bash Script
+[%collapsible]
+======
+[source, bash, subs="+attributes"]
+----
+#!/usr/bin/env bash
+
+# Clone a repository
+git clone <REPOSITORY> test && cd "$_"
+
+# Create a new branch
+git switch --create new_branch
+
+# Create Lefthook configuration file
+cat > .lefthook.yml << "END"
+---
+min_version: 1.4.10
+
+pre-push:
+  commands:
+    hello:
+      run: echo 'Hello World'
+END
+
+# Install git hook with Lefthook
+lefthook install
+
+git add --all
+git commit --message="ci: add Lefthook config"
+
+# Remove reference for `HEAD` of remote
+rm {remote_HEAD_ref_path}
+
+# Push a new branch
+git push origin new_branch
+----
+======
+
+=== References
+
+:lefthook_version: v1.4.10
+* link:{lefthook_url}/blob/{lefthook_version}/internal/git/repository.go#L104-L128[
+  PushFiles() - Lefthook Code^]
+* link:{lefthook_url}/pull/429[
+  fix: Use correct branch for \{push_files\} template - Lefthook Pull Request^]
+* link:{lefthook_url}/blob/{lefthook_version}/docs/configuration.md#files-global[
+  files - Lefthook Configuration^]
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
