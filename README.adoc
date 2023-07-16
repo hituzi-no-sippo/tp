@@ -1,13 +1,18 @@
 = Template Repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-12T19:30:06+09:00
-:revremark: add how to clone this repository
+:revnumber: v0.6.0
+:revdate: 2023-07-12T19:46:21+09:00
+:revremark: add tool list
+:toc: right
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
 :dev_docs_dir_path: ./docs/dev
+
+== Tool List
+
+include::{dev_docs_dir_path}/tool_list/index.adoc[tag=main, leveloffset=+1]
 
 == Supported Platforms
 
