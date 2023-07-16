@@ -1,9 +1,9 @@
 = Renovate
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-13T13:40:13+09:00
-:revremark: add configuration
+:revnumber: v0.7.0
+:revdate: 2023-07-16T15:40:23+09:00
+:revremark: add GitHub Action to reenable automerge
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -54,6 +54,17 @@ See link:{supported_managers_url}[Supported Managers^] for more details.
 == Configuration
 
 include::./configuration.adoc[tag=main, leveloffset=+1]
+
+:workflow_directory: .github/workflows
+== GitHub Actions
+
+=== Reenable automerge
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: GitHub Actions workflow
+:file_path_from_root: {workflow_directory}/reenable_automerge.yml
+:file_lang: YAML
+include::{display_file_path}[]
 
 == Setup
 
