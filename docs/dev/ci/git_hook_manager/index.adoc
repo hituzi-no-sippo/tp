@@ -1,0 +1,36 @@
+= Git hook manager
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.7.0
+:revdate: 2023-09-06T17:20:16+09:00
+:revremark: add caution
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+The hooks for formatter and linter are in a other document.
+For example, JSON formatter hook is in the JSON document.
+
+== Usage
+
+include::./usage.adoc[tag=main, leveloffset=+1]
+
+== Configuration
+
+include::./configuration.adoc[tag=main, leveloffset=+1]
+
+== CAUTION
+
+include::./caution.adoc[tag=main, leveloffset=+1]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
