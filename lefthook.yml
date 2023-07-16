@@ -1,0 +1,5 @@
+---
+min_version: 1.4.5
+
+extends:
+  - ./.lefthook/config/dependence/tool_version_manager.yml

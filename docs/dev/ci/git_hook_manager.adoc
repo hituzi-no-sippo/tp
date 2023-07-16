@@ -2,7 +2,7 @@
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
 :revnumber: v0.4.0
-:revdate: 2023-07-15T18:05:40+09:00
+:revdate: 2023-07-17T20:29:00+09:00
 :revremark: add lefthook overivew
 :copyright: Copyright (C) 2023 {author}
 
@@ -19,6 +19,84 @@ For example, JSON formatter hook are written in the JSON document.
 include::../_partials/display_file_in_details_disclosure_element.adoc[]
 
 Use `extends` to separate config file.
+
+== Usage
+
+.Install git hooks
+[source, console]
+----
+$ lefthook install
+----
+
+.Configuration File
+[source, YAML]
+----
+---
+pre-commit:  # <1>
+  commands:
+    echo: &example
+      run: echo 'Example'
+
+hello:  # <2>
+  commands:
+    echo-hello:
+      run: echo 'Hello World'
+
+using-anchor-and-alias:  # <3>
+  commands:
+    example: *example
+----
+
+<1> {empty}
++
+.On pre-commit hook is triggered
+[source, console]
+----
+$ git commit
+Lefthook v1.4.5
+RUNNING HOOK: pre-commit
+
+  EXECUTE > echo
+Example
+
+
+SUMMARY: (done in 0.01 seconds)
+✔️  echo
+----
+
+<2> {empty}
++
+.Run tasks
+[source, console]
+----
+$ lefthook run hello
+Lefthook v1.4.5
+RUNNING HOOK: hello
+
+  EXECUTE > echo-hello
+Hello World
+
+
+SUMMARY: (done in 0.00 seconds)
+✔️  echo-hello
+----
+
+<3> {empty}
++
+.Run tasks using YAML anchors and aliases
+[source, console]
+----
+$ lefthook run using-anchor-and-alias
+Lefthook v1.4.5
+RUNNING HOOK: using-anchor-and-alias
+
+  EXECUTE > example
+Example
+
+
+SUMMARY: (done in 0.00 seconds)
+✔️  example
+----
 
 '''
 
