@@ -1,9 +1,9 @@
 = Tool version manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-16T11:07:45+09:00
-:revremark: add description of `import` for aqua config
+:revnumber: v0.7.0
+:revdate: 2023-08-18T16:32:36+09:00
+:revremark: add GitHub Action to update aqua checksum
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -27,6 +27,20 @@ Use `import` to split config file.
   Keep configuration files in one directory^]
 * link:{aqua_guides_url}/split-config/[
   Split the list of packages^]
+
+:workflow_directory: .github/workflows
+== GitHub Actions
+
+=== Update aqua checksum
+
+:block_title_name: GitHub Action
+:file_path_from_root: {workflow_directory}/update_aqua_checksum.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+.References
+* link:{aqua_docs_url}/products/update-checksum-workflow[
+  update-checksum-workflow^]
 
 '''
 
