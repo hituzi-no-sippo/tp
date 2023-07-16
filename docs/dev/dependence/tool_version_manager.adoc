@@ -1,9 +1,9 @@
 = Tool Version Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2023-07-16T15:36:34+09:00
-:revremark: add support for Renovate
+:revnumber: v0.9.0
+:revdate: 2023-07-17T07:09:21+09:00
+:revremark: add configuration for git hooks
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
@@ -28,6 +28,13 @@ Use `import` to split config file.
   Keep configuration files in one directory^]
 * link:{aqua_guides_url}/split-config/[
   Split the list of packages^]
+
+== Git Hooks
+
+:block_title_name: Configuration File
+:file_path_from_root: .lefthook/config/dependence/tool_version_manager.yml
+:file_lang: YAML
+include::{display_file_path}[]
 
 :workflow_directory: .github/workflows
 == GitHub Actions
