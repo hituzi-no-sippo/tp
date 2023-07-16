@@ -1,0 +1,14 @@
+{
+  "checksums": [
+    {
+      "id": "github_release/github.com/int128/ghcp/v1.13.2/ghcp_linux_amd64.zip",
+      "checksum": "6B9D9C9A7B834237B6579353477DF3BB3730C11788170AD2A9E5D1230ABC6216",
+      "algorithm": "sha256"
+    },
+    {
+      "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.110.0/registry.yaml",
+      "checksum": "D4995D43A883F80F81D5738D0DC7F76BA253DE1909F722FEC0BCFC7F5E560F74",
+      "algorithm": "sha256"
+    }
+  ]
+}
