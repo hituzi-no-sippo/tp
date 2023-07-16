@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-13T07:29:18+09:00
-:revremark: add how to run setup shell
+:revnumber: v0.7.0
+:revdate: 2023-08-18T16:37:13+09:00
+:revremark: add repository setting on GitHub for tool version manager
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -34,6 +34,23 @@
 :file_lang: bash
 :file_path_from_root: {setup_shell_path_from_root}
 include::./_partials/display_file_in_details_disclosure_element.adoc[]
+
+== Repository Setting on GitHub
+
+[NOTE]
+====
+The exact same content as the following is written in
+a another document under `docs/dev` directory.
+This is because it includes a content from another file.
+Include a content using link:https://docs.asciidoctor.org/asciidoc/latest/directives/include/[
+include directive in AsciiDoc^].
+====
+
+=== Dependence
+
+==== Tool Version Manager
+
+include::./dependence/tool_version_manager.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 // end::main[]
 
