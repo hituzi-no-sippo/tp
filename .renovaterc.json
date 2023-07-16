@@ -3,7 +3,9 @@
     ":ignoreModulesAndTests",
     "group:monorepos",
     "group:recommended",
-    "workarounds:all"
+    "workarounds:all",
+    "github>aquaproj/aqua-renovate-config#1.10.0",
+    "github>aquaproj/aqua-renovate-config:file#1.10.0(^\\.aqua/imports/.*\\.yml$)"
   ],
   "configMigration": true,
   "patch": {
@@ -47,6 +49,52 @@
         "github-actions"
       ],
       "semanticCommitScope": "github-actions"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/aqua.yml",
+        ".aqua/imports/*.yml"
+      ],
+      "addLabels": [
+        "aqua"
+      ],
+      "minor": {
+        "automerge": true
+      },
+      "semanticCommitScope": "aqua"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/imports/github.yml"
+      ],
+      "addLabels": [
+        "github"
+      ],
+      "semanticCommitScope": "github"
+    },
+    {
+      "matchPackagePatterns": [
+        "aquaproj/aqua"
+      ],
+      "addLabels": [
+        "aqua"
+      ],
+      "minor": {
+        "automerge": true
+      },
+      "semanticCommitScope": "aqua"
+    },
+    {
+      "matchFileNames": [
+        ".renovaterc.json"
+      ],
+      "addLabels": [
+        "renovate-config"
+      ],
+      "minor": {
+        "automerge": true
+      },
+      "semanticCommitScope": "renovate"
     }
   ]
 }
