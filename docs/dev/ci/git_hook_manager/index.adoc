@@ -1,0 +1,133 @@
+= Git Hook Manager
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-09-02T07:55:02+09:00
+:revremark: add local configuration
+:copyright: Copyright (C) 2023 {author}
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+Linter and formatter hooks are written in a other document.
+For example, JSON formatter hook are written in the JSON document.
+
+== Configuration
+
+.Supported Formats
+* YAML
+* JSON
+* TOML
+
+.Configuration File
+* `.lefthook.<yml|json|toml>`
+* `lefthook.<yml|json|toml>`
+
+[CAUTION]
+====
+Skip symlinks in files templates.
+
+.Files Templates
+* `{staged_files}`
+* `{push_files}`
+* `{all_files}`
+
+.References
+* link:{lefthook_url}/blob/ac918cb70a10dedc9297b263609d2ffb141bb9b2/docs/configuration.md#run[
+  run - lefthook Configuration^]
+* link:{lefthook_url}/pull/538[
+  feat: add skip_symlinks option to commands - lefthook pull requests^]
+====
+
+=== Local Configuration
+
+If you want to local configuration, write config to `.lefthook-local.yml`.
+The local configuration will overwrite configuration file (`.lefthook.yml`).
+
+.References
+* link:{lefthook_url}/blob/v1.4.9/docs/usage.md#local-config[
+  Local config - lefthook Usage^]
+
+== Usage
+
+.Install git hooks
+[source, console]
+----
+$ lefthook install
+----
+
+.Configuration File (`.lefthook.yml`)
+[source, YAML]
+----
+pre-commit:  # <1>
+  commands:
+    print: &print
+      run: printf 'Example'
+
+hello:  # <2>
+  commands:
+    print-hello:
+      run: printf 'Hello World'
+
+using-anchor-and-alias:  # <3>
+  commands:
+    example: *print
+----
+
+<1> {empty}
++
+.On pre-commit hook is triggered
+[source, console]
+----
+$ git commit
+Lefthook v1.4.8
+RUNNING HOOK: pre-commit
+
+  EXECUTE > print
+Example
+
+SUMMARY: (done in 0.01 seconds)
+✔️  print
+----
+
+<2> {empty}
++
+.Run tasks
+[source, console]
+----
+$ lefthook run hello
+Lefthook v1.4.8
+RUNNING HOOK: hello
+
+  EXECUTE > print-hello
+Hello World
+
+SUMMARY: (done in 0.00 seconds)
+✔️  print-hello
+----
+
+<3> {empty}
++
+.Run tasks using YAML anchors and aliases
+[source, console]
+----
+$ lefthook run using-anchor-and-alias
+Lefthook v1.4.8
+RUNNING HOOK: using-anchor-and-alias
+
+  EXECUTE > example
+Example
+
+SUMMARY: (done in 0.00 seconds)
+✔️  example
+----
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
