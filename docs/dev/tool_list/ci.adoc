@@ -1,9 +1,24 @@
+= CI
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T18:09:32+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-15T18:16:33+09:00
+:revremark: add lefthook as git hook manager
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Git Hook
+
+:lefthook_link: link:https://github.com/evilmartians/lefthook[Lefthook^]
+[horizontal]
+Manage:: {lefthook_link}.
+
+// end::main[]
+
+// end::body[]
 
 '''
 
