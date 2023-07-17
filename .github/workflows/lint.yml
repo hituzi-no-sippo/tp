@@ -64,6 +64,12 @@ jobs:
         # yamllint disable-line rule:line-length
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
+      - name: Install Natural Languages linter
+        uses: ./.github/actions/install_tools_with_aqua
+
+      - name: Download and install external rules of Natural Languages linter
+        run: vale sync
+
       - name: Install Ruby and RubyGems
         uses: ./.github/actions/install_ruby_and_rubygems
 

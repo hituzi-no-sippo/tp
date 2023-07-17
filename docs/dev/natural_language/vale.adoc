@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-09-02T20:53:46+09:00
-:revremark: add vocabularies
+:revnumber: v0.7.0
+:revdate: 2024-01-19T14:56:27+09:00
+:revremark: add a Git hooks to lint docs
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -117,6 +117,27 @@ BasedOnStyles = Vale
 .{avoid_file_path}
 * Add entered terms to existence rule (`Vale.Avoid`) +
   If the entered term is in document, Vale generate an error.
+
+== Git hook
+
+=== Lint docs
+
+:hook_type: natural_language
+:config_file_path_from_hook_directory: lint.yml
+
+:file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Lint
+
+:file_path_from_root: .github/workflows/lint.yml
+:block_title_name: Workflow file
+:file_lang: YAML
+include::{display_file_path}[]
 
 // end::main[]
 
