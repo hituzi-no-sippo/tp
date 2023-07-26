@@ -6,7 +6,7 @@
     "group:recommended",
     "workarounds:all",
     "github>aquaproj/aqua-renovate-config",
-    "github>aquaproj/aqua-renovate-config:file#1.6.0(^\\.aqua/imports/.*\\.yml$)"
+    "github>aquaproj/aqua-renovate-config:file#1.7.0(^\\.aqua/imports/.*\\.yml$)"
   ],
   "patch": {
     "automerge": true
