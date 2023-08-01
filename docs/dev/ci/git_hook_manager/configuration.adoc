@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-10-15T10:38:06+09:00
-:revremark: add local configuration
+:revnumber: v0.6.0
+:revdate: 2023-10-15T10:41:44+09:00
+:revremark: add configuration file
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -12,14 +12,15 @@
 
 // tag::main[]
 
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook.yml
+:file_lang: YAML
+include::../../_partials/display_file_in_details_disclosure_element.adoc[]
+
 .Supported formats
 * YAML
 * JSON
 * TOML
-
-.Configuration file
-* `.lefthook.<yml|json|toml>`
-* `lefthook.<yml|json|toml>`
 
 == Local configuration
 
