@@ -1,0 +1,30 @@
+---
+name: Detect
+
+on:
+  - push
+  - pull_request
+
+permissions: {}
+
+jobs:
+  # tag::style[]
+  # `tag::<TAG_NAME>[]` and `end::<TAG_NAME>[]` used to write document.
+  # `<TAG_NAME>` used to tag attribute of include directive in AsciiDoc.
+  # https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4.0.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Trailing Space
+        run: |
+          lefthook run lint \
+            --commands detect-trailing-space
+  # end::style[]
