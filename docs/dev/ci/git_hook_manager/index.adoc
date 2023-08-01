@@ -1,9 +1,9 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-09-06T17:20:16+09:00
-:revremark: add caution
+:revnumber: v0.8.0
+:revdate: 2023-08-01T13:33:38+09:00
+:revremark: add configuration
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -16,14 +16,15 @@ For example, JSON formatter hook is in the JSON document.
 
 == Configuration
 
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook.yml
+:file_lang: YAML
+include::../../_partials/display_file_in_details_disclosure_element.adoc[]
+
 .Supported formats
 * YAML
 * JSON
 * TOML
-
-.Configuration file
-* `.lefthook.<yml|json|toml>`
-* `lefthook.<yml|json|toml>`
 
 === Local configuration
 
