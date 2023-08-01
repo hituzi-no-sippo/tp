@@ -1,9 +1,38 @@
+= Git Hooks for Style
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-08-01T17:01:08+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-12T19:08:46+09:00
+:revremark: add hook to trim trailing white space
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Trim Trailing White Space
+
+`end of line____` (`_` is Space) => `end of line`
+
+Files with the extension `md` will not be trimmed.
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:lefthook_directory_path_for_style: .lefthook/style
+:hook_name: trim_trailing_white_space
+
+:file_path_from_root: {lefthook_directory_path_for_style}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {lefthook_directory_path_for_style}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
