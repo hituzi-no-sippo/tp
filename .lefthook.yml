@@ -1,2 +1,5 @@
 ---
 min_version: 1.5.1
+
+extends:
+  - .lefthook/style/trim_trailing_space/config.yml
