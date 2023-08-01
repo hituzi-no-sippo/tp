@@ -1,0 +1,47 @@
+---
+pre-commit:
+  commands:
+    trim-trailing-space: &trim
+      run: |
+        sh .lefthook/style/trim_trailing_space/trim.sh \
+          {staged_files}
+      exclude: "\\.md"
+      stage_fixed: true
+      tags:
+        - style
+        # Because uses `sed` command in `trim.sh`.
+        - always-update-modify-time
+
+pre-push:
+  commands:
+    detect-trailing-space: &detect
+      <<: *trim
+      run: |
+        sh .lefthook/style/trim_trailing_space/detect.sh \
+          {push_files}
+      tags:
+        - style
+
+pre-merge-commit:
+  commands:
+    detect-trailing-space:
+      <<: *detect
+      run: |
+        sh .lefthook/style/trim_trailing_space/detect.sh \
+          {staged_files}
+
+lint:
+  commands:
+    detect-trailing-space:
+      <<: *detect
+      run: |
+        sh .lefthook/style/trim_trailing_space/detect.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    trim-trailing-space:
+      <<: *trim
+      run: |
+        sh .lefthook/style/trim_trailing_space/trim.sh \
+          {all_files}
