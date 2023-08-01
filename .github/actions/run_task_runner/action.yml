@@ -1,0 +1,24 @@
+---
+name: Run task runner
+description: |
+  This a composite GitHub action to run specified task of task runner.
+  The task runner to be used is Lefthook.
+
+inputs:
+  task_name:
+    required: true
+    description: A task name to run.
+
+runs:
+  using: composite
+  steps:
+    - name: Install task runner
+      uses: ./.github/actions/install_tools_with_aqua
+
+    - name: Run task runner
+      run: |
+        lefthook run \
+          "$TASK_NAME"
+      env:
+        TASK_NAME: ${{ inputs.task_name }}
+      shell: bash
