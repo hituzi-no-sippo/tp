@@ -1,9 +1,40 @@
+= Git hooks for Git
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-08-02T18:38:32+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-12T19:45:21+09:00
+:revremark: add git hook to prevent commit to main branch
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Prevent commit to main branch
+
+* Even with this hook, you can merge into the main branch
+* This hook does not prevent pushing to main branch of remote
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_git: .lefthook/git
+:config_file_path: prevent_commit_to_main_branch.yml
+
+:file_path_from_root: {hook_directory_path_for_git}/{config_file_path}
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: no-commit-to-branch
+
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
