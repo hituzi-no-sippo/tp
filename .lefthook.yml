@@ -7,3 +7,4 @@ extends:
   - .lefthook/style/join_consecutive_blank_lines/config.yml
   - .lefthook/style/insert_final_newline/config.yml
   - .lefthook/style/replace_end_of_line_to_line_feed/config.yml
+  - .lefthook/git/prevent_commit_to_main_branch.yml
