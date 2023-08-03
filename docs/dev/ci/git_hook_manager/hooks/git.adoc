@@ -1,9 +1,10 @@
 = Git hooks for Git
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-12T19:45:21+09:00
-:revremark: add git hook to prevent commit to main branch
+:revnumber: v0.5.0
+:revdate: 2023-08-12T19:46:36+09:00
+:revremark: add git hook to detect merge conflict string
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -19,18 +20,45 @@
 :hook_directory_path_for_git: .lefthook/git
 :config_file_path: prevent_commit_to_main_branch.yml
 
+// tag::display_config_file[]
+
 :file_path_from_root: {hook_directory_path_for_git}/{config_file_path}
 :block_title_name: Configuration File
 :file_lang: YAML
 include::{display_file_path}[]
 
+// end::display_config_file[]
+
 :pre_commit_hooks_repository: pre-commit/pre-commit-hooks
 :pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
 :pre_commit_hook_name: no-commit-to-branch
 
+// tag::pre_commit_hooks_link[]
+
 .References of `{pre_commit_hooks_repository}` repository
 * link:{pre_commit_url}#{pre_commit_hook_name}[
   {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
+
+== Detect merge conflict string
+
+.This hook works
+* merge
+* rebase
+
+This hook stop commit if a line in the file has the following RegExp.
+
+.RegExp to search
+* `<<<<<<< HEAD`
+* `=======`
+* `>>>>>>> .*`
+
+:config_file_path: detect_merge_conflict_string.yml
+include::./git.adoc[tag=display_config_file]
+
+:pre_commit_hook_name: check-merge-conflict
+include::./git.adoc[tag=pre_commit_hooks_link]
 
 // end::main[]
 
