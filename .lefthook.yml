@@ -11,3 +11,4 @@ extends:
   - .lefthook/git/commit/detect_merge_conflict_strings.yml
   - .lefthook/git/commit/prevent_large_commits/config.yml
   - .lefthook/url/detect_github_url_without_commit_SHA/config.yml
+  - .lefthook/file/remove_byte_order_marker_of_utf_8/config.yml
