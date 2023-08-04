@@ -1,0 +1,26 @@
+---
+pre-commit:
+  commands:
+    remove-BOM-for-UTF-8: &remove-BOM
+      run: |
+        sh .lefthook/file/remove_byte_order_marker_for_utf_8/main.sh \
+          {staged_files}
+      stage_fixed: true
+
+pre-push:
+  commands:
+    detect-UTF-8-with-BOM:
+      <<: *remove-BOM
+      run: |
+        sh .lefthook/file/remove_byte_order_marker_for_utf_8/main.sh \
+          {push_files}
+
+        git diff --exit-code {push_files}
+
+lint-fix:
+  commands:
+    remove-BOM-for-UTF-8:
+      <<: *remove-BOM
+      run: |
+        sh .lefthook/file/remove_byte_order_marker_for_utf_8/main.sh \
+          {all_files}
