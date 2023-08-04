@@ -1,9 +1,44 @@
+= Git hooks for file
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-08-05T08:24:59+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-13T09:19:07+09:00
+:revremark: add git hook to remove byte order maker for UTF-8
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Remove Byte Order Maker (BOM) for UTF-8
+
+:display_file_path: ../../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_file: .lefthook/file
+:hook_name: remove_byte_order_marker_for_utf_8
+
+:file_path_from_root: {hook_directory_path_for_file}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:shell_file_name: main
+
+:file_path_from_root: {hook_directory_path_for_file}/{hook_name}/{shell_file_name}.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: fix-byte-order-marker
+
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
