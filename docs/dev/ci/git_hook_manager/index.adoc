@@ -1,9 +1,9 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.11.0
-:revdate: 2023-08-23T21:06:14+09:00
-:revremark: include git hooks for URL
+:revnumber: v0.12.0
+:revdate: 2023-08-05T08:36:20+09:00
+:revremark: include git hooks for file
 :toc:
 :toclevels: 3
 :copyright: Copyright (C) 2023 {author}
@@ -28,6 +28,10 @@ include::./hooks/git.adoc[tag=main, leveloffset=+2]
 === URL
 
 include::./hooks/url.adoc[tag=main, leveloffset=+2]
+
+=== File
+
+include::./hooks/file.adoc[tag=main, leveloffset=+2]
 
 == Configuration
 
