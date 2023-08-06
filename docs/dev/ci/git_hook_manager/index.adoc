@@ -1,9 +1,9 @@
 = Git Hook Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-09T15:58:48+09:00
-:revremark: add lefthook overivew
+:revnumber: v0.5.0
+:revdate: 2023-09-02T07:55:02+09:00
+:revremark: add local configuration
 :copyright: Copyright (C) 2023 {author}
 
 :lefthook_url: https://github.com/evilmartians/lefthook
@@ -23,6 +23,16 @@ For example, JSON formatter hook are written in the JSON document.
 .Configuration File
 * `.lefthook.<yml|json|toml>`
 * `lefthook.<yml|json|toml>`
+
+=== Local Configuration
+
+If you want to local configuration, write config to `.lefthook-local.yml`.
+The local configuration will overwrite configuration file (`.lefthook.yml`).
+
+:lefthook_version: v1.4.10
+.References
+* link:{lefthook_url}/blob/{lefthook_version}/docs/usage.md#local-config[
+  Local config - Lefthook Usage^]
 
 '''
 
