@@ -12,3 +12,4 @@ extends:
   - .lefthook/git/prevent_large_commit/config.yml
   - .lefthook/url/detect_github_url_without_commit_SHA/config.yml
   - .lefthook/file/remove_byte_order_marker_for_utf_8/config.yml
+  - .lefthook/file/detect_hyphen_in_file_path/config.yml
