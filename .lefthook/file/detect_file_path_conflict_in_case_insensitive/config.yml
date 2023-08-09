@@ -1,0 +1,42 @@
+---
+pre-commit:
+  commands:
+    detect-file-path-conflict-in-case-insensitive: &detect
+      # Prettier will change to `&detect-using-hyphen # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_case_insensitive/detect_case_insensitive_conflict.sh \
+          {staged_files}
+      # yamllint enable rule:line-length
+      tags:
+        - file
+
+pre-push:
+  commands:
+    detect-file-path-conflict-in-case-insensitive:
+      <<: *detect
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_case_insensitive/detect_case_insensitive_conflict.sh \
+          {push_files}
+      # yamllint enable rule:line-length
+
+pre-merge-commit:
+  commands:
+    detect-file-path-conflict-in-case-insensitive: *detect
+
+lint:
+  commands:
+    detect-file-path-conflict-in-case-insensitive: &detect-from-all-files
+      <<: *detect
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_case_insensitive/detect_case_insensitive_conflict.sh \
+          {all_files}
+      # yamllint enable rule:line-length
+
+lint-fix:
+  commands:
+    detect-file-path-conflict-in-case-insensitive: *detect-from-all-files
