@@ -13,3 +13,4 @@ extends:
   - .lefthook/url/detect_github_url_without_commit_SHA/config.yml
   - .lefthook/file/remove_byte_order_marker_for_utf_8/config.yml
   - .lefthook/file/detect_hyphen_in_file_path/config.yml
+  - .lefthook/file/detect_file_path_conflict_in_not_case_sensitive/config.yml
