@@ -1,0 +1,32 @@
+---
+name: Setup tool version manager
+description: Setup aqua that is tool version manager
+
+runs:
+  using: composite
+  # References
+  # https://aquaproj.github.io/docs/products/aqua-installer#-caching
+  steps:
+    # This action doesn't automatically create a new cache if the job fails.
+    # Job Results and Automatic Cache Creation
+    # Successfully:Cache is created automatically
+    # Failed:      Cache is not created automatically
+    # https://github.com/actions/cache/tree/v3.3.1#using-a-combination-of-restore-and-save-actions
+    - name: Cache aqua
+      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
+      with:
+        path: ~/.local/share/aquaproj-aqua
+        # yamllint disable-line rule:line-length
+        key: v1-aqua-installer-${{runner.os}}-${{runner.arch}}-${{hashFiles('.aqua/**/*.yml')}}
+        restore-keys: |
+          v1-aqua-installer-${{runner.os}}-${{runner.arch}}-
+
+    - name: Install aqua
+      # yamllint disable-line rule:line-length
+      uses: aquaproj/aqua-installer@36dc5833b04eb63f06e3bb818aa6b7a6e6db99a9 # v2.1.2
+      with:
+        aqua_version: v2.12.2
+        aqua_opts: ""
+      env:
+        AQUA_LOG_LEVEL: debug
+        AQUA_LOG_COLOR: always
