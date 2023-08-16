@@ -1,0 +1,158 @@
+---
+name: Lint
+
+on:
+  - push
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Create a timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@baa62e018ca5504e2d617502ce1eacf9171e757a # v2.0.1
+        with:
+          github-token: ${{ github.token }}
+
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            raw.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      # First of all, Lefthook is name of a task runner.
+      #
+      # This job run all commands of `lint` task.
+      # The files to lint is the all files, which are manged by Git.
+      # Not the all modified files on push.
+      #
+      # NOTE
+      # On Lefthook v1.5.5,
+      # You cannot change the files to lint passed to `lint` task of Lefthook
+      # with using `--file strings` option of Lefthook CLI
+      # because the commands of `lint` task use `{all_files}` files template.
+      #
+      # `--file strings` option of Lefthook v1.5.5:
+      # - `{all_files}`
+      #   The option does not overwrite `{all_files}` file template.
+      #   The commands of `lint` task use `{all_files}` file template.
+      # - `{stagin_files}`
+      #   The option overwrites `{stagin_files}` files template.
+      #
+      # References
+      # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/internal/lefthook/run/prepare_command.go#L78-L79
+      # v1.5.5 Commit on 2023-12-01
+      #
+      ##################################################
+      #
+      # Does not use `lint-fix` task of Lefthook.
+      #
+      # If you would like to fix codes,
+      # you run `lefthook run lint-fix` command on your local
+      # and then you commit to fix codes.
+      #
+      # You can commit to fix codes with using `lint-fix` task on this workflow,
+      # but this workflow does not commit because the following three points.
+      #
+      # The premise is,
+      # which if you use `lint-fix` task,
+      # you would add a GitHub Action step to add a commit to this workflow.
+      #
+      # Example
+      # ``` YAML
+      # - name: run `lint-fix` task
+      #   ...
+      # - name: commit to fix codes
+      #   ...
+      # ```
+      #
+      # - Someone can add or overwrite codes easily
+      #   Someone can it
+      #   because if someone add command to add or overwrite codes
+      #   to `lint-fix` task,
+      #   GitHub Actions workflow would work the following:
+      #
+      #   1. Runs the commands of `lint-fix` task
+      #   2. Runs a added command to add or overwrite codes
+      #   3. Adds a commit to add or overwrite codes
+      #
+      # - The commit to be created has multiple types of fix
+      #   If `lint-fix` task contains
+      #   format (prettier) and lint (eslint) commands
+      #   and than the both commands fix codes,
+      #   which is commit type (style, refactor, docs) of Conventional Commits?
+      #   Also what optional scope of Conventional Commits do you write?
+      #
+      #   hituzi no sippo (maintainer) prefers a commit message
+      #   with one commit type and one optional scope.
+      #   hituzi no sippo does not like a commit message with multiple those.
+      #
+      #   - Good: `docs(hoo): fix typos`
+      #   - Hmm: `docs,style(hoo,bar): fix docs`
+      #
+      #   Conventional Commits
+      #   https://www.conventionalcommits.org/en/v1.0.0/
+      #
+      #   You can certainly create a commit with one kind of fix
+      #   on GitHub Actions workflow,
+      #   if you separate commands of `lint-fix` by GitHub Actions Step.
+      #
+      #   Example
+      #   ``` YAML
+      #   - name: Run prettier
+      #     ...
+      #   - name: commit to fix styles
+      #     ...
+      #   - name: Run eslint
+      #     ...
+      #   - name: commit to fix codes
+      #     ...
+      #   ````
+      #
+      #   hituzi no sippo does not prefer to separate commands
+      #   by GitHub Actions step
+      #   because if you separate commands of `lint-fix` by step,
+      #   every time a tool is added,
+      #   you have to add steps to run a command and add a commit.
+      #   hituzi no sippo feels it tedious to add this GitHub Actions steps.
+      #
+      # - hituzi no sippo would like to modify a commit
+      #   hituzi no sippo would like to modify a commit
+      #   with using `git rebase --interactive --rebase` command.
+      #   This is because
+      #   hituzi no sippo prefers to modify a commit
+      #   rather than add a commit to fix codes.
+      #
+      #   You should create a new commit to fix codes
+      #   if modifying that commit,
+      #   such as a commit of a remote main branch,
+      #   would inconvenience other developers,
+      - name: Lint
+        uses: ./.github/actions/run_task_runner
+        with:
+          task_name: lint
