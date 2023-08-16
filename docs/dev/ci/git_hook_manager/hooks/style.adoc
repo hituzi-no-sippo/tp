@@ -1,9 +1,9 @@
 = Git Hooks for Style
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-12T19:08:46+09:00
-:revremark: add hook to trim trailing white space
+:revnumber: v0.5.0
+:revdate: 2023-08-18T20:24:06+09:00
+:revremark: add workflow file for GitHub Actions
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -29,6 +29,24 @@ include::{display_file_path}[]
 :block_title_name: Shell
 :file_lang: sh
 include::{display_file_path}[]
+
+== GitHub Actions
+
+[NOTE]
+====
+Some content in the following file may have been omitted.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,style"]
+----
+====
 
 // end::main[]
 
