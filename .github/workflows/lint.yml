@@ -32,6 +32,15 @@ jobs:
         uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
         with:
           disable-sudo: true
+          # Disable file monitoring
+          # because this workflow always overwrites files.
+          # "Detect with using `sed` command" action of this workflow
+          # overwrites files with using `sed` command.
+          # If enable file monitoring of HardenRunner
+          # and you enable notifications of HardenRunner,
+          # HardenRunner alert you with such as E-Mail when this workflow run.
+          # https://github.com/step-security/harden-runner?tab=readme-ov-file#-detect-tampering-of-source-code-during-build
+          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
@@ -67,6 +76,74 @@ jobs:
       # References
       # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/internal/lefthook/run/prepare_command.go#L78-L79
       # v1.5.5 Commit on 2023-12-01
+      #
+      ##################################################
+      #
+      # Does not separate the commands of `lint` task
+      # by step or job of GitHub Actions,
+      # as in the following codes:
+      # - Separates commands by step
+      #   Example
+      #   ``` YAML
+      #   # Runs one task for each step.
+      #   - name: Lint
+      #     uses: ./.github/actions/run_task_runner
+      #     with:
+      #       task_name: lint
+      #     - name
+      #     ```
+      # - Separates commands by job
+      #   Example
+      #   ``` YAML
+      #   # Runs one task for each job.
+      #   jobs:
+      #     format:
+      #       runs-on: ubuntu-22.04
+      #       ...
+      #
+      #     lint:
+      #       runs-on: ubuntu-22.04
+      #       ...
+      #   ```
+      #
+      # Does not separate the commands
+      # because without separating the commands by step or job,
+      # you can check the all command results of `lint` task of Lefthok.
+      # To check the all command results of a run task,
+      # you look at Lefthook outputs.
+      #
+      # Example of Lefthook output
+      # ``` console
+      # $ lefthook run lint
+      # ╭────────────────────────────────╮
+      # │ 🥊 lefthook v1.5.5  hook: lint │
+      # ╰────────────────────────────────╯
+      # ┃  bar ❯
+      #
+      #
+      # ┃  foo ❯
+      #
+      # foo
+      #
+      #
+      #   ────────────────────────────────────
+      # summary: (done in 0.00 seconds)
+      # ✔️  foo
+      # 🥊  bar
+      # ```
+      #
+      # Lefthook configuration file (`.lefthook.yml`)
+      # ``` YAML
+      # ---
+      # min_version: 1.5.5
+      #
+      # lint:
+      #   commands:
+      #     foo:
+      #       run: echo 'foo'
+      #     bar:
+      #       run: exit 1
+      # ```
       #
       ##################################################
       #
@@ -156,3 +233,29 @@ jobs:
         uses: ./.github/actions/run_task_runner
         with:
           task_name: lint
+
+      # Runs the detect commands which, is not in `lint` task of Lefthook.
+      # `lint` task of Lefthook does not contain this commands to be run.
+      # because the commands would change codes.
+      # The commands always change the files
+      # because the commands to be run use sed.
+      - name: Detect with using `sed` command
+        uses: ./.github/actions/run_task_runner
+        with:
+          # Runs `pre-merge-commit` task
+          # because commands of `pre-merge-commit` task
+          # use `{staged_files}` files template.
+          # `--all-files` flag of Lefthook CLI can only
+          # overwrite `{staged_files}` files template.
+          # `--all-files` flag can
+          # not overwrite `{push_files}` and `{all_files}` files templates.
+          # References
+          # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/internal/lefthook/run/prepare_command.go#L80-L81
+          # v1.5.5 Commit on 2023-12-01
+          task_name: pre-merge-commit
+          # `--all-files` flag changes the files to detect
+          # to the all files, which are manged by Git.
+          # References
+          # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook-run
+          # v1.5.5 Commit on 2023-12-01
+          task_runner_args: "--all-files"
