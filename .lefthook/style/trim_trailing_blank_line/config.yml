@@ -1,0 +1,29 @@
+---
+pre-commit:
+  commands:
+    trim-trailing-blank-line: &trim
+      run: |
+        sh .lefthook/style/trim_trailing_blank_line/main.sh \
+          {staged_files}
+      stage_fixed: true
+      exclude:
+        # There are example to explain how it works.
+        "docs/dev/ci/git_hook_manager/hooks/style.adoc"
+
+pre-push:
+  commands:
+    detect-trailing-blank-line:
+      <<: *trim
+      run: |
+        sh .lefthook/style/trim_trailing_blank_line/main.sh \
+          {push_files}
+
+        git diff --exit-code {push_files}
+
+lint-fix:
+  commands:
+    trim-trailing-blank-line: &trim-from-all-files
+      <<: *trim
+      run: |
+        sh .lefthook/style/trim_trailing_blank_line/main.sh \
+          {all_files}
