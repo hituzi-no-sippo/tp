@@ -1,13 +1,15 @@
 = Renovate
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:13:27+09:00
-:revremark: add overview
+:revnumber: v0.5.0
+:revdate: 2023-08-18T16:51:21+09:00
+:revremark: add setup for automated dependency updates
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 :renovate_doc_url: https://docs.renovatebot.com
 :github_docs_url: https://docs.github.com/en
+:github_url: https://github.com
 
 link:{renovate_doc_url}[
 Renovate^] is automatic dependency updater.
@@ -48,6 +50,36 @@ Renovate^] is automatic dependency updater.
   cargo^]
 
 See link:{supported_managers_url}[Supported Managers^] for more details.
+
+== Setup
+
+=== Repository setting on GitHub
+
+// tag::repository_setting_on_github[]
+
+==== Install GitHub App for automated dependency updates
+
+Required to automated dependency updates.
+
+Install link:{github_url}/marketplace/renovate[Renovate^] of GitHub App.
+
+See link:{github_url}/renovatebot/tutorial[tutorial^] for more details.
+
+[CAUTION]
+.Need to install Renovate approve
+====
+If link:{github_docs_url}/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule#creating-a-branch-protection-rule[
+`Require approvals` is enable of branch protection rule^],
+need to install approve apps.
+
+:renovate_approve_url: {github_url}/apps/renovate-approve
+.Approve apps
+* link:{renovate_approve_url}[Renovate Approve^]
+* link:{renovate_approve_url}-2[Renovate Approve 2^] +
+  If min 2 PR reviewers.
+====
+
+// end::repository_setting_on_github[]
 
 '''
 
