@@ -7,7 +7,8 @@
 trim_trailing_blank_line() {
   # Change from `[[:space:]]` to `[[:blank:]\n\r]`,
   # if doesn't remove blank lines on using `[[:space:]]`.
-  # https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html
+  # References
+  # - https://www.gnu.org/software/grep/manual/html_node/Character-Classes-and-Bracket-Expressions.html
   echo "$@" |
     xargs \
       sed \
