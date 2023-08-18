@@ -32,6 +32,8 @@ jobs:
         uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
         with:
           disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
@@ -51,4 +53,11 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-trailing-space
+
+      - name: Detect Trailing Blank Line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
   # end::style[]
