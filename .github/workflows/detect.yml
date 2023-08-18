@@ -27,17 +27,13 @@ jobs:
     permissions: {}
     timeout-minutes: 5
     steps:
-      - name: Create a timeline of GitHub Actions workflow
-        # yamllint disable-line rule:line-length
-        uses: Kesin11/actions-timeline@fbbb6f71498dbdb3af862970133257532cd48054 # v1.0.0
-        with:
-          github-token: ${{ github.token }}
-
       - name: Runtime security for GitHub
         # yamllint disable-line rule:line-length
         uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
         with:
           disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
@@ -58,4 +54,22 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-trailing-space
+
+      - name: Detect Trailing Blank Line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
   # end::style[]
+  create-timeline:
+    name: Create timeline of this GitHub Actions workflow
+    needs:
+      - style
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@fbbb6f71498dbdb3af862970133257532cd48054 # v1.0.0
+        with:
+          github-token: ${{ github.token }}
