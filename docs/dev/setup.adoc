@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-08-18T16:37:13+09:00
-:revremark: add repository setting on GitHub for tool version manager
+:revnumber: v0.8.0
+:revdate: 2023-08-18T16:53:05+09:00
+:revremark: add repository setting on GitHub for Renovate
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -51,6 +51,10 @@ include directive in AsciiDoc^].
 ==== Tool Version Manager
 
 include::./deps/tool_version_manager.adoc[tag=repository_setting_on_github, leveloffset=+1]
+
+==== Renovate
+
+include::./deps/renovate.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 // end::main[]
 
