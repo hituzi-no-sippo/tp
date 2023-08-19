@@ -34,4 +34,11 @@ jobs:
             --commands trim-trailing-blank-line
 
           git diff --exit-code --color=always
+
+      - name: Detect Consecutive Blank Lines
+        run: |
+          lefthook run lint-fix \
+            --commands join-consecutive-blank-lines
+
+          git diff --exit-code --color=always
   # end::style[]
