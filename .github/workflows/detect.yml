@@ -67,4 +67,11 @@ jobs:
             --commands join-consecutive-blank-lines
 
           git diff --exit-code --color=always
+
+      - name: Detect File without Final Newline
+        run: |
+          lefthook run lint-fix \
+            --commands insert-final-newline
+
+          git diff --exit-code --color=always
   # end::style[]
