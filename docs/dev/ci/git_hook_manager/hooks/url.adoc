@@ -1,9 +1,10 @@
 = Git Hooks for URL
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-23T21:05:43+09:00
-:revremark: add git hook to detect GitHub URL without commit SHA
+:revnumber: v0.5.0
+:revdate: 2023-08-23T21:10:00+09:00
+:revremark: add workflow file for GitHub Actions
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -46,6 +47,24 @@ include::{display_file_path}[]
 .References
 * link:{pre_commit_url}#check-vcs-permalinks[
   check-vcs-permalinks - pre-commit-hooks^]
+
+== GitHub Actions
+
+[NOTE]
+====
+Some content in the following file may have been omitted.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,url"]
+----
+====
 
 // end::main[]
 
