@@ -114,11 +114,49 @@ jobs:
           lefthook run lint \
             --commands detect-github-url-without-commit-sha
   # end::url[]
+  # tag::file[]
+  file:
+    name: File
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            raw.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install task runner
+        uses: ./.github/actions/install_tools_with_aqua
+
+      - name: Detect UTF-8 with BOM
+        run: |
+          lefthook run lint-fix \
+            --commands remove-bom-for-utf-8
+
+          git diff --exit-code --color=always
+  # end::file[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     needs:
       - style
       - url
+      - file
     runs-on: ubuntu-22.04
     steps:
       - name: Create timeline of this GitHub Actions workflow
