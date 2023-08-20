@@ -110,4 +110,9 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-hyphen-in-file-path
+
+      - name: Detect File Path Conflict in not Case Sensitive
+        run: |
+          lefthook run lint \
+            --commands detect-file-path-conflict-in-not-case-sensitive
   # end::file[]
