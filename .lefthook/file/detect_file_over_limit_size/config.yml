@@ -1,0 +1,33 @@
+---
+pre-commit:
+  commands:
+    detect-file-over-limit-size: &detect
+      run: |
+        sh .lefthook/file/detect_file_over_limit_size/main.sh \
+          {staged_files}
+      tags:
+        - file
+
+pre-push:
+  commands:
+    detect-file-over-limit-size:
+      <<: *detect
+      run: |
+        sh .lefthook/file/detect_file_over_limit_size/main.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-file-over-limit-size: *detect
+
+lint:
+  commands:
+    detect-file-over-limit-size: &detect-from-all-files
+      <<: *detect
+      run: |
+        sh .lefthook/file/detect_file_over_limit_size/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-file-over-limit-size: *detect-from-all-files
