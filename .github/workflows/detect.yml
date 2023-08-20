@@ -99,4 +99,9 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-file-path-conflict-in-case-insensitive
+
+      - name: Detect File Over Limit Size
+        run: |
+          lefthook run lint \
+            --commands detect-file-over-limit-size
   # end::file[]
