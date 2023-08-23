@@ -9,3 +9,4 @@ extends:
   - .lefthook/style/replace_end_of_line_to_line_feed/config.yml
   - .lefthook/git/prevent_commit_to_main_branch.yml
   - .lefthook/git/detect_merge_conflict_string.yml
+  - .lefthook/url/detect_github_url_without_commit_SHA/config.yml
