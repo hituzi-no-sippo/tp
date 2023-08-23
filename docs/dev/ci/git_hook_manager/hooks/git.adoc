@@ -32,9 +32,13 @@ include::{display_file_path}[]
 :pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
 :pre_commit_hook_name: no-commit-to-branch
 
+// tag::pre_commit_hooks_link[]
+
 .References of pre-commit/pre-commit-hooks
 * link:{pre_commit_url}#{pre_commit_hook_name}[
   {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
 
 == Detect Merge Conflict String
 
@@ -52,9 +56,8 @@ This hook stop commit if a line in the file contains the following RegExp.
 :config_file_path: detect_merge_conflict_string.yml
 include::./git.adoc[tag=display_config_file]
 
-.References
-* link:{pre_commit_url}#check-merge-conflict[
-  check-merge-conflict - pre-commit-hooks^]
+:pre_commit_hook_name: check-merge-conflict
+include::./git.adoc[tag=pre_commit_hooks_link]
 
 == Prevent Large Commit
 
