@@ -1,9 +1,56 @@
+= Git hooks for URL
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-08-23T20:50:33+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-23T21:05:43+09:00
+:revremark: add git hook to detect GitHub URL without commit SHA
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Detect GitHub URL without commit SHA
+
+:repository_url: \https://github.com/hituzi-no-sippo/template-repository
+:blob_url: {repository_url}/blob
+:correct_url: pass:normal[{blob_url}/**72c6b481ce4a2b44ffb20e5618c4cf02b256a9d9**/LICENSE]
+:wrong_url: pass:normal[{blob_url}/**main**/LICENSE]
+Correct::
+  * `pass:attributes[{correct_url}]`
+  * `pass:attributes[{correct_url}]#L1`
+  * `pass:attributes[{correct_url}]#L1-10`
+  * `{blob_url}/**72c6**/LICENSE`
+Wrong::
+  * `pass:attributes[{wrong_url}]`
+  * `pass:attributes[{wrong_url}]#L1`
+  * `pass:attributes[{wrong_url}]#L1-10`
+  * `{blob_url}/**release**/LICENSE`
+  * `{repository_url}/tree/v1.0.0`
+
+:lefthook_directory_path_for_url: .lefthook/url
+:hook_name: detect_github_url_without_commit_SHA
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+
+:file_path_from_root: {lefthook_directory_path_for_url}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {lefthook_directory_path_for_url}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#check-vcs-permalinks[
+  check-vcs-permalinks - pre-commit-hooks^]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
