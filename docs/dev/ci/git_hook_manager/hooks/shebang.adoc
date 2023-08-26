@@ -1,16 +1,38 @@
 = Git hooks for shebang
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-26T18:40:24+09:00
-:revremark: add display of utilities shell script
+:revnumber: v0.5.0
+:revdate: 2023-08-26T18:42:39+09:00
+:revremark: add git hook to detect executable script without shebang
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
+== Detect executable script without shebang
+
 :display_file_path: ../../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_shebang: .lefthook/shebang
+:hook_name: detect_executable_script_without_shebang
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: check-executables-have-shebangs
+
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
 
 == Utilities shell script
 
