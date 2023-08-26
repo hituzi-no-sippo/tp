@@ -1,9 +1,27 @@
+= Git hooks for shebang
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-08-26T18:20:35+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-08-26T18:40:24+09:00
+:revremark: add display of utilities shell script
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:display_file_path: ../../../../_partials/display_file_in_details_disclosure_element.adoc
+
+== Utilities shell script
+
+:file_path_from_root: {hook_directory_path_for_shebang}/utils.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
