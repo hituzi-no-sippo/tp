@@ -1,0 +1,27 @@
+---
+pre-commit:
+  commands:
+    detect-executable-script-without-shebang: &detect-file
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {staged_files}
+
+pre-push:
+  commands:
+    detect-executable-script-without-shebang:
+      <<: *detect-file
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {push_files}
+
+lint:
+  commands:
+    detect-executable-script-without-shebang: &detect-file-from-all-files
+      <<: *detect-file
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-executable-script-without-shebang: *detect-file-from-all-files

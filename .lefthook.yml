@@ -15,3 +15,4 @@ extends:
   - .lefthook/file/detect_using_hyphen_in_file_path/config.yml
   - .lefthook/file/detect_file_path_conflict_in_case_insensitive/config.yml
   - .lefthook/file/detect_file_over_limit_size/config.yml
+  - .lefthook/shebang/detect_executable_script_without_shebang/config.yml
