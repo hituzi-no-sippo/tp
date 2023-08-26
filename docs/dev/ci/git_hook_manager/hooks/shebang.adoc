@@ -1,16 +1,45 @@
 = Shebang
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-08-26T18:40:24+09:00
-:revremark: add display of utilities shell script
+:revnumber: v0.5.0
+:revdate: 2023-08-26T18:42:39+09:00
+:revremark: add git hook to detect executable script without shebang
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
+// https://vale.sh/docs/topics/config/#asciidoc
+// https://github.com/redhat-documentation/vale-at-red-hat/blob/3fbf7554afd99a52a69973aa784de83e36c7bca4/.vale/styles/RedHat/TermsErrors.yml#L258
+// Error Message
+// Use 'executable program' rather than 'Executable'
+pass:[<!-- vale RedHat.TermsErrors = NO -->]
+
+== Detect Executable Script without Shebang
+
+pass:[<!-- vale RedHat.TermsErrors = YES -->]
+
 :display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_shebang: .lefthook/shebang
+:hook_name: detect_executable_script_without_shebang
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+:pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: check-executables-have-shebangs
+
+.References of pre-commit/pre-commit-hooks
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
 
 == Utilities Shell Script
 
