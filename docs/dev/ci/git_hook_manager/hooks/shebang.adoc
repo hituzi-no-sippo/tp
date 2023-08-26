@@ -1,9 +1,9 @@
 = Git hooks for shebang
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-08-28T16:50:58+09:00
-:revremark: add workflow file for GitHub Actions
+:revnumber: v0.7.0
+:revdate: 2023-09-12T16:58:33+09:00
+:revremark: add git hook to detect executable script without shebang
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -16,23 +16,44 @@
 :hook_directory_path_for_shebang: .lefthook/shebang
 :hook_name: detect_executable_script_without_shebang
 
+// tag::display_config_file[]
+
 :file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/config.yml
 :block_title_name: Configuration File
 :file_lang: YAML
 include::{display_file_path}[]
+
+// end::display_config_file[]
+
+// tag::display_shell_file[]
 
 :file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/main.sh
 :block_title_name: Shell
 :file_lang: sh
 include::{display_file_path}[]
 
+// end::display_shell_file[]
+
 :pre_commit_hooks_repository: pre-commit/pre-commit-hooks
 :pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
 :pre_commit_hook_name: check-executables-have-shebangs
 
+// tag::pre_commit_hooks_link[]
+
 .References of `{pre_commit_hooks_repository}` repository
 * link:{pre_commit_url}#{pre_commit_hook_name}[
   {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
+
+== Detect non executable script with shebang
+
+:hook_name: detect_non_executable_script_with_shebang
+include::./shebang.adoc[tag=display_config_file]
+include::./shebang.adoc[tag=display_shell_file]
+
+:pre_commit_hook_name: check-shebang-scripts-are-executable
+include::./shebang.adoc[tag=pre_commit_hooks_link]
 
 == Utilities shell script
 
