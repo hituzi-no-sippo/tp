@@ -107,3 +107,20 @@ jobs:
           lefthook run lint \
             --commands detect-file-over-limit-size
   # end::file[]
+  # tag::shebang[]
+  shebang:
+    name: Shebang
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - uses: actions/checkout@v3.6.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Executable Script without Shebang
+        run: |
+          lefthook run lint \
+            --commands detect-executable-script-without-shebang
+  # end::shebang[]
