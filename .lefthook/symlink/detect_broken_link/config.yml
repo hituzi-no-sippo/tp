@@ -1,0 +1,27 @@
+---
+pre-commit:
+  commands:
+    detect-broken-link: &detect-link
+      run: |
+        sh .lefthook/symlink/detect_broken_link/main.sh \
+          {staged_files}
+
+pre-push:
+  commands:
+    detect-broken-link:
+      <<: *detect-link
+      run: |
+        sh .lefthook/symlink/detect_broken_link/main.sh \
+          {push_files}
+
+lint:
+  commands:
+    detect-broken-link: &detect-link-from-all-files
+      <<: *detect-link
+      run: |
+        sh .lefthook/symlink/detect_broken_link/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-broken-link: *detect-link-from-all-files

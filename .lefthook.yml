@@ -16,3 +16,4 @@ extends:
   - .lefthook/file/detect_file_over_limit_size/config.yml
   - .lefthook/shebang/detect_executable_script_without_shebang/config.yml
   - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
+  - .lefthook/symlink/detect_broken_link/config.yml
