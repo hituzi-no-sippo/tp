@@ -1,9 +1,9 @@
 = Git hooks for Git
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-08-12T19:46:36+09:00
-:revremark: add git hook to detect merge conflict string
+:revnumber: v0.6.0
+:revdate: 2023-09-01T19:47:21+09:00
+:revremark: add git hook to prevent large commit
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -59,6 +59,27 @@ include::./git.adoc[tag=display_config_file]
 
 :pre_commit_hook_name: check-merge-conflict
 include::./git.adoc[tag=pre_commit_hooks_link]
+
+== Prevent large commit
+
+:hook_name: prevent_large_commit
+
+:file_path_from_root: {hook_directory_path_for_git}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {hook_directory_path_for_git}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+.How to change max changed lines
+[NOTE]
+====
+If you want to change the max changed lines,
+change the value of the first argument to the shell script.
+====
 
 // end::main[]
 
