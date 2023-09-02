@@ -1,0 +1,28 @@
+---
+pre-commit:
+  commands:
+    update-aqua-checksum: &update
+      run: |
+        aqua update-checksum --prune
+      stage_fixed: true
+      glob: ".aqua/{aqua.yml,imports/*.yml,aqua-checksums.json}"
+      tags:
+        - deps
+        - aqua
+        - network
+
+pre-push:
+  commands:
+    check-aqua-checksum: &check
+      <<: *update
+      run: |
+        aqua update-checksum --prune &&
+          git diff --exit-code --quiet .aqua/aqua-checksums.json
+
+pre-merge-commit:
+  commands:
+    check-aqua-checksum: *check
+
+deps:
+  commands:
+    update-aqua-checksum: *update
