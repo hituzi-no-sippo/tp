@@ -4,3 +4,4 @@ pre-push
 lint
 lint-fix
 test-dev-env
+deps
