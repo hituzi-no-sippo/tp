@@ -108,3 +108,37 @@ jobs:
           lefthook run lint \
             --commands detect-github-url-without-commit-sha
   # end::url[]
+  # tag::file[]
+  file:
+    name: File
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect UTF-8 with BOM
+        run: |
+          lefthook run lint-fix \
+            --commands remove-bom-for-utf-8
+
+          git diff --exit-code --color=always
+  # end::file[]
