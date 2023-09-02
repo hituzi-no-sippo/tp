@@ -1,0 +1,38 @@
+---
+pre-commit:
+  commands:
+    insert-final-newline: &insert-final-newline
+      run: |
+        sh .lefthook/style/insert_final_newline/main.sh \
+          {staged_files}
+      stage_fixed: true
+      tags:
+        - style
+
+pre-push:
+  commands:
+    detect-file-without-final-newline: &detect
+      <<: *insert-final-newline
+      run: |
+        sh .lefthook/style/insert_final_newline/main.sh \
+          {push_files}
+
+        git diff --exit-code --quiet {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-file-without-final-newline:
+      <<: *detect
+      run: |
+        sh .lefthook/style/insert_final_newline/main.sh \
+          {staged_files}
+
+        git diff --exit-code --quiet {staged_files}
+
+lint-fix:
+  commands:
+    insert-final-newline: &insert-final-newline-from-all-files
+      <<: *insert-final-newline
+      run: |
+        sh .lefthook/style/insert_final_newline/main.sh \
+          {all_files}
