@@ -1,0 +1,109 @@
+= Shebang
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.7.0
+:revdate: 2023-08-28T16:50:58+09:00
+:revremark: add git hook to detect executable script without shebang
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+// https://vale.sh/docs/topics/config/#asciidoc
+// https://github.com/redhat-documentation/vale-at-red-hat/blob/3fbf7554afd99a52a69973aa784de83e36c7bca4/.vale/styles/RedHat/TermsErrors.yml#L258
+// Error Message
+// Use 'executable program' rather than 'Executable'
+pass:[<!-- vale RedHat.TermsErrors = NO -->]
+
+== Detect Executable Script without Shebang
+
+pass:[<!-- vale RedHat.TermsErrors = YES -->]
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_shebang: .lefthook/shebang
+:hook_name: detect_executable_script_without_shebang
+
+// tag::display_config_file[]
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_config_file[]
+
+// tag::display_shell_file[]
+
+:file_path_from_root: {hook_directory_path_for_shebang}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_shell_file[]
+
+:pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: check-executables-have-shebangs
+
+// tag::pre_commit_hooks_link[]
+
+.References of pre-commit/pre-commit-hooks
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
+
+// https://vale.sh/docs/topics/config/#asciidoc
+// https://github.com/redhat-documentation/vale-at-red-hat/blob/3fbf7554afd99a52a69973aa784de83e36c7bca4/.vale/styles/RedHat/TermsErrors.yml#L258
+// Error Message
+// Use 'executable program' rather than 'Executable'
+pass:[<!-- vale RedHat.TermsErrors = NO -->]
+
+== Detect Non Executable Script with Shebang
+
+pass:[<!-- vale RedHat.TermsErrors = YES -->]
+
+:hook_name: detect_non_executable_script_with_shebang
+include::./shebang.adoc[tag=display_config_file]
+include::./shebang.adoc[tag=display_shell_file]
+
+:pre_commit_hook_name: check-shebang-scripts-are-executable
+include::./shebang.adoc[tag=pre_commit_hooks_link]
+
+== Utilities Shell Script
+
+:file_path_from_root: {hook_directory_path_for_shebang}/utils.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+== GitHub Actions
+
+[NOTE]
+====
+Some content in the following file may have been omitted.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,shebang"]
+----
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
