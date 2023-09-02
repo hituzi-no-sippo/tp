@@ -8,6 +8,9 @@ inputs:
   task_name:
     required: true
     description: A task name to run.
+  task_runner_args:
+    required: false
+    description: A arguments passed to the task runner.
 
 runs:
   using: composite
@@ -16,9 +19,18 @@ runs:
       uses: ./.github/actions/install_tools_with_aqua
 
     - name: Run task runner
+      # Does not enclose `$TASK_RUNNER_ARGS` in double quotation marks
+      # because the string of `$TASK_RUNNER_ARGS`
+      # is treated as a single argument
+      # even if the string contains multiples arguments.
+      # For example,
+      # the `--all-files --commands=<COMMAND>` entered
+      # in `TASK_RUNNER_ARGS` is treated as a single argument
+      # if `TASK_RUNNER_ARGS` is enclosed in double quotation marks.
       run: |
         lefthook run \
-          "$TASK_NAME"
+          "$TASK_NAME" $TASK_RUNNER_ARGS"
       env:
         TASK_NAME: ${{ inputs.task_name }}
+        TASK_RUNNER_ARGS: ${{ inputs.task_runner_args }}
       shell: bash
