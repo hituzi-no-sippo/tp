@@ -1,0 +1,26 @@
+---
+pre-commit:
+  commands:
+    replace-EOL-to-LF: &replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {staged_files}
+      stage_fixed: true
+
+pre-push:
+  commands:
+    detect-CR-at-EOL:
+      <<: *replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {push_files}
+
+        git diff --exit-code {push_files}
+
+lint-fix:
+  commands:
+    replace-EOL-to-LF:
+      <<: *replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {all_files}

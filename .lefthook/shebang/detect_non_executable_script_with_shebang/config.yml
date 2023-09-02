@@ -1,0 +1,38 @@
+---
+pre-commit:
+  commands:
+    detect-non-executable-script-with-shebang: &detect-file
+      run: |
+        sh .lefthook/shebang/detect_non_executable_script_with_shebang/main.sh \
+          {staged_files}
+      exclude:
+        # Exclude shell file.
+        # Without shebang, shellcheck's SC2148 is violated.
+        # We can solve the SC2012 violation
+        # by writing the comment "# shellcheck shell=sh"
+        # However, we don't write the comment.
+        # Because shebang is more familiar to many people.
+        # References
+        # - https://www.shellcheck.net/wiki/SC2148
+        # - https://github.com/koalaman/shellcheck/wiki/directive#shell
+        ".sh"
+
+pre-push:
+  commands:
+    detect-non-executable-script-with-shebang:
+      <<: *detect-file
+      run: |
+        sh .lefthook/shebang/detect_non_executable_script_with_shebang/main.sh \
+          {push_files}
+
+lint:
+  commands:
+    detect-non-executable-script-with-shebang: &detect-file-from-all-files
+      <<: *detect-file
+      run: |
+        sh .lefthook/shebang/detect_non_executable_script_with_shebang/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-non-executable-script-with-shebang: *detect-file-from-all-files
