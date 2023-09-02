@@ -188,6 +188,11 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-hyphen-in-file-path
+
+      - name: Detect file path conflict in not case sensitive
+        run: |
+          lefthook run lint \
+            --commands detect-file-path-conflict-in-not-case-sensitive
   # end::file_path[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
