@@ -1,0 +1,46 @@
+---
+pre-commit:
+  commands:
+    replace-EOL-to-LF: &replace
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/replace.sh \
+          {staged_files}
+      stage_fixed: true
+      tags:
+        - style
+        # Because uses `sed` command in `replace.sh`.
+        - always-update-modify-time
+
+pre-push:
+  commands:
+    detect-CR-at-EOL: &detect
+      <<: *replace
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/detect.sh \
+          {push_files}
+      tags:
+        - style
+
+pre-merge-commit:
+  commands:
+    detect-CR-at-EOL:
+      <<: *detect
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/detect.sh \
+          {staged_files}
+
+lint:
+  commands:
+    detect-CR-at-EOL:
+      <<: *detect
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/detect.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    replace-EOL-to-LF:
+      <<: *replace
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/replace.sh \
+          {all_files}
