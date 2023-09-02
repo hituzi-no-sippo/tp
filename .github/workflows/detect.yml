@@ -160,6 +160,11 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-file-path-conflict-in-not-case-sensitive
+
+      - name: Detect File Over Limit Size
+        run: |
+          lefthook run lint \
+            --commands detect-file-over-limit-size
   # end::file[]
   create-timeline:
     name: Create timeline of this GitHub Actions workflow
