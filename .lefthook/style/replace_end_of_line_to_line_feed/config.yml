@@ -1,0 +1,72 @@
+---
+pre-commit:
+  commands:
+    replace-EOL-to-LF: &replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {staged_files}
+      stage_fixed: true
+      tags:
+        - style
+
+pre-push:
+  commands:
+    detect-CR-at-EOL: &detect
+      <<: *replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {push_files}
+
+        git diff --exit-code --quiet {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-CR-at-EOL:
+      <<: *detect
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {staged_files}
+
+        git diff --exit-code --quiet {staged_files}
+
+lint:
+  commands:
+    detect-CR-at-EOL:
+      <<: *detect
+      run: |
+        git_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../../scripts/exclude_binary_file.sh
+        . "$git_dir/.lefthook/scripts/exclude_binary_file.sh"
+
+        files=$(exclude_binary_file {all_files})
+
+        if [ $? -eq 2 ]; then
+          exit 1
+        fi
+
+        if [ "$files" = '' ]; then
+          exit 0
+        fi
+
+        echo "$files" |
+          xargs \
+            grep \
+            --perl-regexp \
+            --line-number \
+            --regexp='\r$'
+
+        # xagrs exits with status 123
+        # if any invocation of the command exited with status 1-125.
+        test $? -eq 123
+
+lint-fix:
+  commands:
+    replace-EOL-to-LF:
+      <<: *replace-EOL-to-LF
+      run: |
+        sh .lefthook/style/replace_end_of_line_to_line_feed/main.sh \
+          {all_files}
