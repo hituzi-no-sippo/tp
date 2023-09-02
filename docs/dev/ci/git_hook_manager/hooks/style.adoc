@@ -1,0 +1,145 @@
+= Git Hooks for Style
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.8.0
+:revdate: 2023-08-12T19:26:28+09:00
+:revremark: add hook to replace end of line to line feed
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Trim Trailing White Space
+
+`end of line____` (`_` is Space) => `end of line`
+
+Files with the extension `md` won't be trimmed.
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:lefthook_directory_path_for_style: .lefthook/style
+:hook_name: trim_trailing_white_space
+
+// tag::display_config_file[]
+
+:file_path_from_root: {lefthook_directory_path_for_style}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_config_file[]
+
+// tag::display_shell_file[]
+
+:file_path_from_root: {lefthook_directory_path_for_style}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_shell_file[]
+
+== Trim Trailing Blank Line
+
+// tag::blank_line_example[]
+
+.Before (`_` is Space, `>-` is Tab, `^M` is Carriage Return, `$` is last line)
+----
+apple
+
+banana
+
+
+cacao
+
+
+donuts
+
+
+^M
+______
+>->->-
+
+$
+----
+
+// end::blank_line_example[]
+
+.After
+----
+apple
+
+banana
+
+
+cacao
+
+
+donuts$
+----
+
+:hook_name: trim_trailing_blank_line
+include::./style.adoc[tag=display_config_file]
+include::./style.adoc[tag=display_shell_file]
+
+== Join Consecutive Blank Lines
+
+include::./style.adoc[tag=blank_line_example]
+
+.After
+----
+apple
+
+banana
+
+cacao
+
+donuts
+$
+----
+
+:hook_name: join_consecutive_blank_lines
+include::./style.adoc[tag=display_config_file]
+include::./style.adoc[tag=display_shell_file]
+
+== Insert final newline
+
+:hook_name: insert_final_newline
+include::./style.adoc[tag=display_config_file]
+include::./style.adoc[tag=display_shell_file]
+
+== Replace End of Line (EOL) to Line Feed (LF)
+
+:hook_name: replace_end_of_line_to_line_feed
+include::./style.adoc[tag=display_config_file]
+include::./style.adoc[tag=display_shell_file]
+
+== GitHub Actions
+
+[NOTE]
+====
+Some content in the following file may have been omitted.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,style"]
+----
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
