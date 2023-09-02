@@ -1,0 +1,10 @@
+---
+pre-commit:
+  commands:
+    prevent-large-commit:
+      run: |
+        sh .lefthook/git/prevent_large_commit/main.sh {staged_files}
+      fail_text: >
+        If you want to skip this hook,
+        set `LEFTHOOK_EXCLUDE=prevent-large-commit`.
+        For Example `LEFTHOOK_EXCLUDE=prevent-large-commit git commit`
