@@ -3,3 +3,4 @@ min_version: 1.4.9
 
 extends:
   - .lefthook/style/trim_trailing_white_space/config.yml
+  - .lefthook/style/trim_trailing_blank_line/config.yml
