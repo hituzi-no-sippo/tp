@@ -198,6 +198,11 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-executable-script-without-shebang
+
+      - name: Detect Non Executable Script with Shebang
+        run: |
+          lefthook run lint \
+            --commands detect-non-executable-script-with-shebang
   # end::shebang[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
