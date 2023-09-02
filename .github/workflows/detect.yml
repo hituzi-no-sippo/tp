@@ -1,0 +1,56 @@
+---
+name: Detect
+
+on:
+  - push
+  - pull_request
+
+permissions: {}
+
+jobs:
+  # tag::style[]
+  # `tag::<TAG_NAME>[]` and `end::<TAG_NAME>[]` used to write document.
+  # `<TAG_NAME>` used to tag attribute of include directive in AsciiDoc.
+  # https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v3.6.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Trailing White Space
+        run: |
+          lefthook run lint \
+            --commands detect-trailing-white-space
+
+      - name: Detect Trailing Blank Line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
+
+      - name: Detect Consecutive Blank Lines
+        run: |
+          lefthook run lint-fix \
+            --commands join-consecutive-blank-lines
+
+          git diff --exit-code --color=always
+
+      - name: Detect File without Final Newline
+        run: |
+          lefthook run lint-fix \
+            --commands insert-final-newline
+
+          git diff --exit-code --color=always
+
+      - name: Detect Carriage Return at End of Line
+        run: |
+          lefthook run lint \
+            --commands detect-cr-at-eol
+  # end::style[]
