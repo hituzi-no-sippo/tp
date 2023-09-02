@@ -1,0 +1,42 @@
+---
+pre-commit:
+  commands:
+    detect-file-path-conflict-in-not-case-sensitive: &detect
+      # Prettier will change to `&detect # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_not_case_sensitive/detect_conflict_in_not_case_sensitive.sh \
+          {staged_files}
+      # yamllint enable rule:line-length
+      tags:
+        - file
+
+pre-push:
+  commands:
+    detect-file-path-conflict-in-not-case-sensitive:
+      <<: *detect
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_not_case_sensitive/detect_conflict_in_not_case_sensitive.sh \
+          {push_files}
+      # yamllint enable rule:line-length
+
+pre-merge-commit:
+  commands:
+    detect-file-path-conflict-in-not-case-sensitive: *detect
+
+lint:
+  commands:
+    detect-file-path-conflict-in-not-case-sensitive: &detect-from-all-files
+      <<: *detect
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_file_path_conflict_in_not_case_sensitive/detect_conflict_in_not_case_sensitive.sh \
+          {all_files}
+      # yamllint enable rule:line-length
+
+lint-fix:
+  commands:
+    detect-file-path-conflict-in-not-case-sensitive: *detect-from-all-files
