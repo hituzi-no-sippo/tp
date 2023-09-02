@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-10-15T10:41:44+09:00
-:revremark: add configuration file
+:revnumber: v0.7.0
+:revdate: 2023-10-15T10:54:20+09:00
+:revremark: add description for `extends` key
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -16,6 +16,8 @@
 :file_path_from_root: .lefthook.yml
 :file_lang: YAML
 include::../../_partials/display_file_in_details_disclosure_element.adoc[]
+
+Use `extends` key to separate configuration file.
 
 .Supported formats
 * YAML
