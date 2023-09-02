@@ -1,9 +1,9 @@
 = Git Hook Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.9.0
-:revdate: 2023-08-01T18:32:53+09:00
-:revremark: include git hooks for style
+:revnumber: v0.10.0
+:revdate: 2023-08-02T18:28:52+09:00
+:revremark: include git hooks for git
 :toc:
 :toclevels: 3
 :copyright: Copyright (C) 2023 {author}
@@ -20,6 +20,10 @@ For example, JSON formatter hook are written in the JSON document.
 === Style
 
 include::./hooks/style.adoc[tag=main, leveloffset=+2]
+
+=== Git
+
+include::./hooks/git.adoc[tag=main, leveloffset=+2]
 
 == Configuration
 

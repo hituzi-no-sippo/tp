@@ -1,0 +1,91 @@
+= Git Hooks for Git
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.6.0
+:revdate: 2023-09-01T19:47:21+09:00
+:revremark: add git hook to prevent large commit
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Prevent Commit to main Branch
+
+* Even with this hook, you can merge into the main branch
+* This hook doesn't prevent pushing to main branch of remote
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_git: .lefthook/git
+:config_file_path: prevent_commit_to_main_branch.yml
+
+// tag::display_config_file[]
+
+:file_path_from_root: {hook_directory_path_for_git}/{config_file_path}
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_config_file[]
+
+:pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: no-commit-to-branch
+
+.References of pre-commit/pre-commit-hooks
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+== Detect Merge Conflict String
+
+.This Hook Works
+* merge
+* rebase
+
+This hook abort commit if a line in the file contains the following RegExp.
+
+.RegExp to search
+* `<<<<<<< HEAD`
+* `=======`
+* `>>>>>>> .*`
+
+:config_file_path: detect_merge_conflict_string.yml
+include::./git.adoc[tag=display_config_file]
+
+.References
+* link:{pre_commit_url}#check-merge-conflict[
+  check-merge-conflict - pre-commit-hooks^]
+
+== Prevent Large Commit
+
+:hook_name: prevent_large_commit
+
+:file_path_from_root: {hook_directory_path_for_git}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {hook_directory_path_for_git}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+.How to change max change count
+[NOTE]
+====
+If you want to change the max change count,
+please change the value of `MAX_CHANGE_COUNT` in the shell script.
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
