@@ -1,9 +1,9 @@
 = GitHub Actions
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-10-08T20:43:00+09:00
-:revremark: add repository setting on GitHub
+:revnumber: v0.5.0
+:revdate: 2023-11-05T20:05:57+09:00
+:revremark: add design rule that a single job runs only one task
 :copyright: Copyright (C) 2023 {author}
 
 == Setup
@@ -46,6 +46,77 @@ content of repository permission.
   Repository permissions for "Contents" - Permissions required for GitHub Apps^]
 
 // end::repository_setting_on_github[]
+
+== Design
+
+=== Job
+
+==== A single job runs only one task
+
+When multiple tasks into a single job (runner),
+it becomes difficult to understand which step depends on which a task.
+
+pass:[<!-- vale RedHat.Contractions = NO -->]
+// I do not know the word that can replace 'It's fine'.
+
+It's fine to change the number of tasks ran in a single job
+from one to multiple.
+The rule of runs only one task in a single job
+does not necessarily have to be followed.
+
+pass:[<!-- vale RedHat.Contractions = error -->]
+
+Separating multiple tasks by job takes more resources such as time than
+if run multiple tasks into a single job.
+For each job, the following process are performed, so it takes resources
+
+.Process per job
+* Provisions a new VM to runs the job
+* Clone the repository
+
+.References
+* link:{github_docs_url}/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#using-a-github-hosted-runner[
+  Using a GitHub-hosted runner - About GitHub-hosted runners^]
+
+.A single job runs only one task
+[source, YAML]
+----
+jobs:
+  format:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v4.1.1
+
+      - name: format
+        run: ...
+
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v4.1.1
+
+      - name: lint
+        run: ...
+----
+
+.A single job run multiple tasks
+[source, YAML]
+----
+jobs:
+  main:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone the repository
+        uses: actions/checkout@v4.1.1
+
+      - name: format
+        run: ...
+
+      - name: lint
+        run: ...
+----
 
 '''
 
