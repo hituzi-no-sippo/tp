@@ -1,0 +1,33 @@
+---
+pre-commit:
+  commands:
+    prevent-large-commit: &prevent
+      run: |
+        sh .lefthook/git/prevent_large_commit/main.sh \
+          150 \
+          {staged_files}
+      exclude: "\
+        ^.*\\.lock$\
+        |^package-lock\\.json$\
+        |^\\.aqua/aqua-checksums\\.json$"
+      fail_text: >
+        If you want to skip this hook,
+        set `LEFTHOOK_EXCLUDE=prevent-large-commit`.
+        For Example `LEFTHOOK_EXCLUDE=prevent-large-commit git commit`
+      tags:
+        - git
+
+pre-merge-commit:
+  commands:
+    prevent-large-commit:
+      <<: *prevent
+      run: |
+        changed_lines=$(
+          test "$(git branch --show-current)" = 'main' &&
+            echo '2500' ||
+            echo '1000'
+        )
+
+        sh .lefthook/git/prevent_large_commit/main.sh \
+          "$changed_lines" \
+          {staged_files}
