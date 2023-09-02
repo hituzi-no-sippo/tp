@@ -71,3 +71,37 @@ jobs:
           lefthook run lint \
             --commands detect-github-url-without-commit-sha
   # end::url[]
+  # tag::file[]
+  file:
+    name: File
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - uses: actions/checkout@v3.6.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect UTF-8 with BOM
+        run: |
+          lefthook run lint-fix \
+            --commands remove-bom-for-utf-8
+
+          git diff --exit-code --color=always
+
+      - name: Detect Hyphen in File Path
+        run: |
+          lefthook run lint \
+            --commands detect-hyphen-in-file-path
+
+      - name: Detect File Path Conflict in not Case Sensitive
+        run: |
+          lefthook run lint \
+            --commands detect-file-path-conflict-in-not-case-sensitive
+
+      - name: Detect File Over Limit Size
+        run: |
+          lefthook run lint \
+            --commands detect-file-over-limit-size
+  # end::file[]
