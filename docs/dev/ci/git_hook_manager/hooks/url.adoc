@@ -1,0 +1,81 @@
+= Git hooks for URL
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-08-23T21:10:00+09:00
+:revremark: add workflow file for GitHub Actions
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Detect GitHub URL without commit SHA
+
+:repository_url: \https://github.com/hituzi-no-sippo/template-repository
+:blob_url: {repository_url}/blob
+:correct_url: pass:normal[{blob_url}/**72c6b481ce4a2b44ffb20e5618c4cf02b256a9d9**/LICENSE]
+:wrong_url: pass:normal[{blob_url}/**main**/LICENSE]
+Correct::
+  * `pass:attributes[{correct_url}]`
+  * `pass:attributes[{correct_url}]#L1`
+  * `pass:attributes[{correct_url}]#L1-10`
+  * `{blob_url}/**72c6**/LICENSE`
+  * `{repository_url}/tree/v1.0.0`
+Wrong::
+  * `pass:attributes[{wrong_url}]`
+  * `pass:attributes[{wrong_url}]#L1`
+  * `pass:attributes[{wrong_url}]#L1-10`
+  * `{blob_url}/**release**/LICENSE`
+
+:lefthook_directory_path_for_url: .lefthook/url
+:hook_name: detect_github_url_without_commit_SHA
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+
+:file_path_from_root: {lefthook_directory_path_for_url}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+:file_path_from_root: {lefthook_directory_path_for_url}/{hook_name}/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#check-vcs-permalinks[
+  check-vcs-permalinks - pre-commit-hooks^]
+
+== GitHub Actions
+
+[NOTE]
+====
+The following file might omit some content.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,url"]
+----
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
