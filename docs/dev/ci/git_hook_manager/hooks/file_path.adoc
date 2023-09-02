@@ -1,0 +1,88 @@
+= Git hooks for file path
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.6.0
+:revdate: 2023-08-13T09:22:53+09:00
+:revremark: add git hook to detect file path conflict in case insensitive
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Detect hyphen (-) in file path
+
+[horizontal]
+Correct:: `file_name`
+Wrong:: `file-path`
+
+:display_file_path: ../../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_file_path: .lefthook/file_path
+:hook_name: detect_hyphen
+
+// tag::display_config_file[]
+
+:file_path_from_root: {hook_directory_path_for_file_path}/{hook_name}/config.yml
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_config_file[]
+
+:shell_file_name: detect_word_with_hyphen
+
+// tag::display_shell_file[]
+
+:file_path_from_root: {hook_directory_path_for_file_path}/{hook_name}/{shell_file_name}.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_shell_file[]
+
+== Detect file path conflict in not case sensitive
+
+:hook_name: detect_conflict_in_not_case_sensitive
+include::./file_path.adoc[tag=display_config_file]
+
+:shell_file_name: detect_conflict_in_not_case_sensitive
+include::./file_path.adoc[tag=display_shell_file]
+
+:pre_commit_hooks_repository: pre-commit/pre-commit-hooks
+:pre_commit_url: https://github.com/{pre_commit_hooks_repository}/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: fix-byte-order-marker
+
+.References of `{pre_commit_hooks_repository}` repository
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+== GitHub Actions
+
+[NOTE]
+====
+The following file might omit some content.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,file_path"]
+----
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
