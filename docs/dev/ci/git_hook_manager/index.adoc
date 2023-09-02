@@ -1,10 +1,11 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-09-06T17:20:16+09:00
-:revremark: add caution
+:revnumber: v0.13.0
+:revdate: 2023-08-26T18:29:10+09:00
+:revremark: include git hooks for shebang
 :toc:
+:toclevels: 3
 :copyright: Copyright (C) 2023 {author}
 
 :lefthook_url: https://github.com/evilmartians/lefthook
@@ -14,16 +15,41 @@ Use {lefthook_link}.
 The hooks for formatter and linter are in a other document.
 For example, JSON formatter hook is in the JSON document.
 
+== Hooks
+
+=== Style
+
+include::./hooks/style.adoc[tag=main, leveloffset=+2]
+
+=== Git
+
+include::./hooks/git.adoc[tag=main, leveloffset=+2]
+
+=== URL
+
+include::./hooks/url.adoc[tag=main, leveloffset=+2]
+
+=== File
+
+include::./hooks/file.adoc[tag=main, leveloffset=+2]
+
+=== Shebang
+
+include::./hooks/shebang.adoc[tag=main, leveloffset=+2]
+
 == Configuration
+
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook.yml
+:file_lang: YAML
+include::../../_partials/display_file_in_details_disclosure_element.adoc[]
+
+Use `extends` to separate config file.
 
 .Supported formats
 * YAML
 * JSON
 * TOML
-
-.Configuration file
-* `.lefthook.<yml|json|toml>`
-* `lefthook.<yml|json|toml>`
 
 === Local configuration
 
