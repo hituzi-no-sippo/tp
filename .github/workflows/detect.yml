@@ -163,3 +163,35 @@ jobs:
           lefthook run lint \
             --commands detect-file-over-limit-size
   # end::file[]
+  # tag::shebang[]
+  shebang:
+    name: Shebang
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install task runner
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Executable Script without Shebang
+        run: |
+          lefthook run lint \
+            --commands detect-executable-script-without-shebang
+  # end::shebang[]
