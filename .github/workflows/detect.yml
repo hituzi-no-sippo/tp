@@ -68,3 +68,21 @@ jobs:
           lefthook run lint \
             --commands detect-cr-at-eol
   # end::style[]
+  # tag::url[]
+  url:
+    name: URL
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      # yamllint disable-line rule:line-length
+      - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install Tool Version Manager
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect GitHub URL without Commit SHA
+        run: |
+          lefthook run lint \
+            --commands detect-github-url-without-commit-sha
+  # end::url[]
