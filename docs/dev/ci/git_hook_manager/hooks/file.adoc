@@ -1,9 +1,9 @@
 = Git Hooks for File
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-08-05T17:09:24+09:00
-:revremark: add git hook to detect using hyphen in file path
+:revnumber: v0.7.0
+:revdate: 2023-08-13T09:22:53+09:00
+:revremark: add git hook to detect file path conflict in case insensitive
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -40,9 +40,13 @@ include::{display_file_path}[]
 :pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
 :pre_commit_hook_name: fix-byte-order-marker
 
+// tag::pre_commit_hooks_link[]
+
 .References of pre-commit/pre-commit-hooks
 * link:{pre_commit_url}#{pre_commit_hook_name}[
   {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
 
 == Detect Using Hyphen (-) in File Path
 
@@ -55,6 +59,17 @@ include::./file.adoc[tag=display_config_file]
 
 :shell_file_name: detect_word_with_hyphen
 include::./file.adoc[tag=display_shell_file]
+
+== Detect File Path Conflict in Case Insensitive
+
+:hook_name: detect_file_path_conflict_in_case_insensitive
+include::./file.adoc[tag=display_config_file]
+
+:shell_file_name: detect_case_insensitive_conflict
+include::./file.adoc[tag=display_shell_file]
+
+:pre_commit_hook_name: check-case-conflict
+include::./file.adoc[tag=pre_commit_hooks_link]
 
 == GitHub Actions
 
