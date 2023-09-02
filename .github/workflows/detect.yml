@@ -41,4 +41,11 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-trailing-space
+
+      - name: Detect Trailing Blank Line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
   # end::style[]
