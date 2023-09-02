@@ -1,0 +1,33 @@
+---
+name: Install tools with aqua
+description: Install tools with aqua
+
+runs:
+  using: composite
+  # References
+  # https://aquaproj.github.io/docs/products/aqua-installer#-caching
+  steps:
+    # This action does not automatically create a new cache if the job fails.
+    # Job Results and Automatic Cache Creation
+    # Successfully: Automatically create a cache
+    # Failed:       Does not create cache
+    # https://github.com/actions/cache/tree/v3.3.1#using-a-combination-of-restore-and-save-actions
+    - name: Cache aqua
+      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
+      with:
+        path: ~/.local/share/aquaproj-aqua
+        # yamllint disable-line rule:line-length
+        key: v1-aqua-installer-${{runner.os}}-${{runner.arch}}-${{hashFiles('.aqua/**/*.yml')}}
+        restore-keys: |
+          v1-aqua-installer-${{runner.os}}-${{runner.arch}}-
+
+    - name: Install tools with aqua
+      # yamllint disable-line rule:line-length
+      uses: aquaproj/aqua-installer@36dc5833b04eb63f06e3bb818aa6b7a6e6db99a9 # v2.1.2
+      with:
+        aqua_version: v2.16.0
+        # Does not use `-l` or `--only-link` flags to cache all tools.
+        aqua_opts: ""
+      env:
+        AQUA_LOG_LEVEL: debug
+        AQUA_LOG_COLOR: always
