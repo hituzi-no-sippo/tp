@@ -2,8 +2,8 @@
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
 :revnumber: v0.8.0
-:revdate: 2023-08-12T19:26:15+09:00
-:revremark: add hook to insert final newline
+:revdate: 2023-08-12T19:26:28+09:00
+:revremark: add hook to replace end of line to line feed
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -104,6 +104,12 @@ include::./style.adoc[tag=display_shell_file]
 == Insert final newline
 
 :hook_name: insert_final_newline
+include::./style.adoc[tag=display_config_file]
+include::./style.adoc[tag=display_shell_file]
+
+== Replace End of Line (EOL) to Line Feed (LF)
+
+:hook_name: replace_end_of_line_to_line_feed
 include::./style.adoc[tag=display_config_file]
 include::./style.adoc[tag=display_shell_file]
 
