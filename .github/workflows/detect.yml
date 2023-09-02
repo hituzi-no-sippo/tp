@@ -194,6 +194,44 @@ jobs:
           lefthook run lint \
             --commands detect-file-path-conflict-in-not-case-sensitive
   # end::file_path[]
+  # tag::shebang[]
+  shebang:
+    name: Shebang
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            raw.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install task runner
+        uses: ./.github/actions/install_tools_with_aqua
+
+      - name: Detect executable script without shebang
+        run: |
+          lefthook run lint \
+            --commands detect-executable-script-without-shebang
+
+      - name: Detect non executable script with shebang
+        run: |
+          lefthook run lint \
+            --commands detect-non-executable-script-with-shebang
+  # end::shebang[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     if: ${{ always() }}
@@ -202,6 +240,7 @@ jobs:
       - url
       - file
       - file_path
+      - shebang
     runs-on: ubuntu-22.04
     steps:
       - name: Create timeline of this GitHub Actions workflow
