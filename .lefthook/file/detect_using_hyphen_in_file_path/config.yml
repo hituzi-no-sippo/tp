@@ -1,0 +1,42 @@
+---
+pre-commit:
+  commands:
+    detect-using-hyphen-in-file-path: &detect-using-hyphen
+      # Prettier will change to `&detect-using-hyphen # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_using_hyphen_in_file_path/detect_word_with_hyphen.sh \
+          {staged_files}
+      # yamllint enable rule:line-length
+      fail_text: |
+        Please change separator for file path to hyphen (-) to underscore (_).
+        For Example
+        Correct::   file_name.txt
+        Incorrect:: file-name.txt
+      exclude: ".aqua/aqua-checksums.json"
+
+pre-push:
+  commands:
+    detect-using-hyphen-in-file-path:
+      <<: *detect-using-hyphen
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_using_hyphen_in_file_path/detect_word_with_hyphen.sh \
+          {push_files}
+      # yamllint enable rule:line-length
+
+lint:
+  commands:
+    detect-using-hyphen-in-file-path: &detect-using-hyphen-from-all-files
+      <<: *detect-using-hyphen
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file/detect_using_hyphen_in_file_path/detect_word_with_hyphen.sh \
+          {all_files}
+      # yamllint enable rule:line-length
+
+lint-fix:
+  commands:
+    detect-using-hyphen-in-file-path: *detect-using-hyphen-from-all-files
