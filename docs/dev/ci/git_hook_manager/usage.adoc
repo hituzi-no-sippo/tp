@@ -1,0 +1,96 @@
+= Usage
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-09-06T15:54:49+09:00
+:revremark: add usage
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+.Install git hooks
+[source, console]
+----
+$ lefthook install
+----
+
+.Configuration File (`.lefthook.yml`)
+[source, YAML]
+----
+pre-commit:  # <1>
+  commands:
+    print: &print
+      run: printf 'Example'
+
+hello:  # <2>
+  commands:
+    print-hello:
+      run: printf 'Hello World'
+
+using-anchor-and-alias:  # <3>
+  commands:
+    example: *print
+----
+
+<1> {empty}
++
+.On pre-commit hook is triggered
+[source, console]
+----
+$ git commit
+Lefthook v1.4.8
+RUNNING HOOK: pre-commit
+
+  EXECUTE > print
+Example
+
+SUMMARY: (done in 0.01 seconds)
+✔️  print
+----
+
+<2> {empty}
++
+.Run tasks
+[source, console]
+----
+$ lefthook run hello
+Lefthook v1.4.8
+RUNNING HOOK: hello
+
+  EXECUTE > print-hello
+Hello World
+
+SUMMARY: (done in 0.00 seconds)
+✔️  print-hello
+----
+
+<3> {empty}
++
+.Run tasks using YAML anchors and aliases
+[source, console]
+----
+$ lefthook run using-anchor-and-alias
+Lefthook v1.4.8
+RUNNING HOOK: using-anchor-and-alias
+
+  EXECUTE > example
+Example
+
+SUMMARY: (done in 0.00 seconds)
+✔️  example
+----
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
