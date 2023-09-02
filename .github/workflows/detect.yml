@@ -32,6 +32,8 @@ jobs:
         uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
         with:
           disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
@@ -52,8 +54,14 @@ jobs:
         run: |
           lefthook run lint \
             --commands detect-trailing-space
+
+      - name: Detect trailing blank line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
   # end::style[]
-  # tag::timeline[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     if: ${{ always() }}
@@ -65,5 +73,4 @@ jobs:
         # yamllint disable-line rule:line-length
         uses: Kesin11/actions-timeline@baa62e018ca5504e2d617502ce1eacf9171e757a # v2.0.1
         with:
-          github-token: ${{ github.token }}
-  # end::timeline[]
+          github-token: ${{ secrets.GITHUB_TOKEN }}
