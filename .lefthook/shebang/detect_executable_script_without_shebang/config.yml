@@ -1,0 +1,33 @@
+---
+pre-commit:
+  commands:
+    detect-executable-script-without-shebang: &detect
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {staged_files}
+      tags:
+        - shebang
+
+pre-push:
+  commands:
+    detect-executable-script-without-shebang:
+      <<: *detect
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-executable-script-without-shebang: *detect
+
+lint:
+  commands:
+    detect-executable-script-without-shebang: &detect-from-all-files
+      <<: *detect
+      run: |
+        sh .lefthook/shebang/detect_executable_script_without_shebang/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-executable-script-without-shebang: *detect-from-all-files
