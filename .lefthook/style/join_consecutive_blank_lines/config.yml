@@ -1,0 +1,29 @@
+---
+pre-commit:
+  commands:
+    join-consecutive-blank-lines: &join
+      run: |
+        sh .lefthook/style/join_consecutive_blank_lines/main.sh \
+          {staged_files}
+      stage_fixed: true
+      exclude:
+        # There are example to explain how it works.
+        "docs/dev/ci/git_hook_manager/hooks/style.adoc"
+
+pre-push:
+  commands:
+    detect-consecutive-blank-lines:
+      <<: *join
+      run: |
+        sh .lefthook/style/join_consecutive_blank_lines/main.sh \
+          {push_files}
+
+        git diff --exit-code {push_files}
+
+lint-fix:
+  commands:
+    join-consecutive-blank-lines:
+      <<: *join
+      run: |
+        sh .lefthook/style/join_consecutive_blank_lines/main.sh \
+          {all_files}
