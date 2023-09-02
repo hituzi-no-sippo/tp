@@ -1,9 +1,9 @@
 = Tool Version Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2023-07-16T15:36:34+09:00
-:revremark: add support for Renovate
+:revnumber: v0.9.0
+:revdate: 2023-09-02T16:06:47+09:00
+:revremark: add git hook to update aqua checksums
 :copyright: Copyright (C) 2023 {author}
 
 :github_url: https://github.com
@@ -28,6 +28,18 @@ Use `import` to split config file.
   Keep configuration files in one directory^]
 * link:{aqua_guides_url}/split-config/[
   Split the list of packages^]
+
+== Git Hook
+
+=== Update Aqua Checksum
+
+:hook_directory_path_for_tool_version_manager: .lefthook/deps/tool_version_manager
+:hook_name: update_aqua_checksum
+
+:file_path_from_root: {hook_directory_path_for_tool_version_manager}/{hook_name}.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
 
 :workflow_directory: .github/workflows
 == GitHub Actions

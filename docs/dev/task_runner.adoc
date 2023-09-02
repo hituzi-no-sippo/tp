@@ -1,9 +1,9 @@
 = Task Runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-09-09T09:22:08+09:00
-:revremark: add Lefthook overview
+:revnumber: v0.5.0
+:revdate: 2023-09-09T09:28:51+09:00
+:revremark: add deps to task list
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -29,6 +29,9 @@ lint-fix::
   This task change and fix code.
   If a tool can't change code that won't change.
   For Example: `eslint --fix .`
+deps::
+  Update package.
+  For Example: `npm update`
 
 :!hardbreaks-option:
 
