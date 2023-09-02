@@ -60,7 +60,7 @@ include::./file.adoc[tag=display_config_file]
 :shell_file_name: detect_word_with_hyphen
 include::./file.adoc[tag=display_shell_file]
 
-== Detect File Path Conflict in Case Insensitive
+== Detect File Path Conflict in Not Case-Sensitive
 
 :hook_name: detect_file_path_conflict_in_case_insensitive
 include::./file.adoc[tag=display_config_file]
