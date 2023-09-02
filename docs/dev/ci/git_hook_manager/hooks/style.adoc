@@ -1,9 +1,9 @@
 = Git hooks for style
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2024-01-12T14:56:19+09:00
-:revremark: add workflow file for GitHub Actions
+:revnumber: v0.6.0
+:revdate: 2023-08-12T19:11:35+09:00
+:revremark: add hook to trim trailing blank line
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -20,10 +20,14 @@ Does not trim a file with `md` extension.
 :lefthook_directory_path_for_style: .lefthook/style
 :hook_name: trim_trailing_space
 
+// tag::display_config_file[]
+
 :file_path_from_root: {lefthook_directory_path_for_style}/{hook_name}/config.yml
 :block_title_name: Configuration file
 :file_lang: YAML
 include::{display_file_path}[]
+
+// end::display_config_file[]
 
 :script_file_path: trim.sh
 
@@ -37,6 +41,49 @@ include::{display_file_path}[]
 // end::display_shell_file[]
 
 :script_file_path: detect.sh
+include::./style.adoc[tag=display_shell_file]
+
+== Trim trailing blank line
+
+.Before (`_` is space, `>-` is tab, `^M` is carriage return, `$` is last line)
+----
+apple
+
+banana
+
+
+cacao
+
+______
+
+donuts
+
+
+^M
+______
+>->->-
+
+$
+----
+
+.After
+----
+apple
+
+banana
+
+
+cacao
+
+______
+
+donuts$
+----
+
+:hook_name: trim_trailing_blank_line
+include::./style.adoc[tag=display_config_file]
+
+:script_file_path: main.sh
 include::./style.adoc[tag=display_shell_file]
 
 == GitHub Actions
