@@ -1,0 +1,35 @@
+---
+pre-commit:
+  commands:
+    detect-github-URL-without-commit-SHA: &detect-github-URL
+      run: |
+        sh .lefthook/url/detect_github_url_without_commit_SHA/main.sh \
+          {staged_files}
+      # yamllint disable rule:line-length
+      fail_text: |
+        Please fix GitHub URL to the URL with commit SHA.
+        For Example
+        Correct::   https://github.com/hituzi-no-sippo/template-repository/blob/72c6b481ce4a2b44ffb20e5618c4cf02b256a9d9/LICENSE
+        Incorrect:: https://github.com/hituzi-no-sippo/template-repository/blob/main/LICENSE
+      exclude: ".lefthook/url/detect_github_url_without_commit_SHA/(config.yml|main.sh)"
+      # yamllint enable rule:line-length
+
+pre-push:
+  commands:
+    detect-github-URL-without-commit-SHA:
+      <<: *detect-github-URL
+      run: |
+        sh .lefthook/url/detect_github_url_without_commit_SHA/main.sh \
+          {push_files}
+
+lint:
+  commands:
+    detect-github-URL-without-commit-SHA: &detect-github-URL-from-all-files
+      <<: *detect-github-URL
+      run: |
+        sh .lefthook/url/detect_github_url_without_commit_SHA/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-github-URL-without-commit-SHA: *detect-github-URL-from-all-files
