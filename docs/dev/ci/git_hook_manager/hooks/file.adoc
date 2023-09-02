@@ -1,9 +1,9 @@
 = Git Hooks for File
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-08-13T09:22:53+09:00
-:revremark: add git hook to detect file path conflict in case insensitive
+:revnumber: v0.8.0
+:revdate: 2023-08-20T17:15:50+09:00
+:revremark: add git hook to detect file over limit size
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -69,6 +69,24 @@ include::./file.adoc[tag=display_config_file]
 include::./file.adoc[tag=display_shell_file]
 
 :pre_commit_hook_name: check-case-conflict
+include::./file.adoc[tag=pre_commit_hooks_link]
+
+== Detect File Over Limit Size
+
+:hook_name: detect_file_over_limit_size
+include::./file.adoc[tag=display_config_file]
+
+:shell_file_name: main
+include::./file.adoc[tag=display_shell_file]
+
+.How to change limit size
+[NOTE]
+====
+If you want to change the limit size,
+change the value of `MAX_LIMIT_BYTE_IEC` in the shell script.
+====
+
+:pre_commit_hook_name: check-added-large-files
 include::./file.adoc[tag=pre_commit_hooks_link]
 
 == GitHub Actions
