@@ -75,6 +75,11 @@ jobs:
             --commands insert-final-newline
 
           git diff --exit-code --color=always
+
+      - name: Detect Carriage Return at End of Line
+        run: |
+          lefthook run lint \
+            --commands detect-cr-at-eol
   # end::style[]
   create-timeline:
     name: Create timeline of this GitHub Actions workflow
