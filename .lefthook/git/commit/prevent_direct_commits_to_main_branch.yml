@@ -1,0 +1,14 @@
+---
+pre-commit:
+  commands:
+    prevent-direct-commits-to-main-branch:
+      only:
+        # If the default branch name of your repository is `master`,
+        # you change the ref name from `main` to `master`.
+        # https://github.com/evilmartians/lefthook/blob/ec7575aebfa4aaa92b897d1a4f63be7ab6585856/docs/configuration.md#only
+        # v1.6.0 Commit on 2024-01-22
+        - ref: main
+      run: exit 1
+      fail_text: Don't directly commit to the main branch
+      tags:
+        - git
