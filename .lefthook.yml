@@ -1,0 +1,19 @@
+---
+min_version: 1.5.2
+
+extends:
+  - .lefthook/style/trim_trailing_space/config.yml
+  - .lefthook/style/trim_trailing_blank_line/config.yml
+  - .lefthook/style/join_consecutive_blank_lines/config.yml
+  - .lefthook/style/insert_final_newline/config.yml
+  - .lefthook/style/replace_end_of_line_to_line_feed/config.yml
+  - .lefthook/git/prevent_commit_to_main_branch.yml
+  - .lefthook/git/detect_merge_conflict_string.yml
+  - .lefthook/git/prevent_large_commit/config.yml
+  - .lefthook/url/detect_github_url_without_commit_SHA/config.yml
+  - .lefthook/file/remove_byte_order_marker_for_utf_8/config.yml
+  - .lefthook/file/detect_hyphen_in_file_path/config.yml
+  - .lefthook/file/detect_file_path_conflict_in_not_case_sensitive/config.yml
+  - .lefthook/file/detect_file_over_limit_size/config.yml
+  - .lefthook/shebang/detect_executable_script_without_shebang/config.yml
+  - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
