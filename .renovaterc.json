@@ -5,6 +5,7 @@
     "group:recommended",
     "workarounds:all",
     "local>hituzi-no-sippo/template-repository//.renovate/aqua",
+    "local>hituzi-no-sippo/template-repository//.renovate/lefthook",
     "local>hituzi-no-sippo/template-repository//.renovate/github_actions",
     "local>hituzi-no-sippo/template-repository//.renovate/renovate"
   ],
