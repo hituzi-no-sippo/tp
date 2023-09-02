@@ -1,0 +1,19 @@
+---
+pre-commit:
+  commands:
+    update-aqua-checksum: &update-checksum
+      run: |
+        aqua update-checksum --prune
+      glob: .aqua/{aqua.yml,aqua-checksums.json,imports/*.yml}
+
+pre-push:
+  commands:
+    check-aqua-checksum:
+      <<: *update-checksum
+      run: |
+          aqua update-checksum --prune &&
+            git diff --quiet .aqua/aqua-checksums.json
+
+deps:
+  commands:
+    update-aqua-checksum: *update-checksum
