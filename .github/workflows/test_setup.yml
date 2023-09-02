@@ -9,6 +9,8 @@ on:
       - .aqua/aqua.yml
       - .aqua/imports/*.yml
       - .aqua/aqua-checksums.json
+      - .lefthook.yml
+      - .lefthook/*.{yml,sh}
       - .github/workflows/test_setup.yml
 
 permissions: {}
