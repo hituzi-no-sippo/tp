@@ -1,0 +1,49 @@
+---
+pre-commit:
+  commands:
+    detect-merge-conflict-string:
+      only:
+        - merge
+        - rebase
+      run: |
+        git_dir=$(git rev-parse --git-dir)
+
+        if ! { [ -f "$git_dir/MERGE_MSG" ] &&
+          { [ -f "$git_dir/MERGE_HEAD" ] ||
+            [ -f "$git_dir/rebase-apply" ] ||
+            [ -d "$git_dir/rebase-merge" ]; }; }; then
+          exit 0
+        fi
+
+        root_dir="$(git rev-parse --show-toplevel)"
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/exclude_binary_file.sh
+        . "$root_dir/.lefthook/scripts/exclude_binary_file.sh"
+
+        files="$(exclude_binary_file {staged_files})"
+
+        if [ $? -eq 2 ]; then
+          exit 2
+        fi
+
+        if [ "$files" = '' ]; then
+          exit 0
+        fi
+
+        echo "$files" |
+          xargs \
+            grep \
+            --line-number \
+            --line-regexp \
+            --regexp='<<<<<<< HEAD' \
+            --regexp='=======' \
+            --regexp='>>>>>>> .*'
+
+        # xagrs exits with status 123
+        # if any invocation of the command exited with status 1-125.
+        test $? -eq 123
+      fail_text: Please remove git conflict string
+      tags:
+        - git
