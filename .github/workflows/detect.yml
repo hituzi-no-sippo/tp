@@ -91,4 +91,9 @@ jobs:
             --commands remove-bom-for-utf-8
 
           git diff --exit-code --color=always
+
+      - name: Detect Using Hyphen in File Path
+        run: |
+          lefthook run lint \
+            --commands detect-using-hyphen-in-file-path
   # end::file[]
