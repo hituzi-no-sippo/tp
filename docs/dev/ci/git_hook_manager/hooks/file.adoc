@@ -1,0 +1,121 @@
+= Git Hooks for File
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.8.0
+:revdate: 2023-08-20T17:15:50+09:00
+:revremark: add git hook to detect file over limit size
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Remove Byte Order Maker (BOM) for UTF-8
+
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+:hook_directory_path_for_file: .lefthook/file
+:hook_name: remove_byte_order_marker_for_utf_8
+
+// tag::display_config_file[]
+
+:file_path_from_root: {hook_directory_path_for_file}/{hook_name}/config.yml
+:block_title_name: Configuration File
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_config_file[]
+
+:shell_file_name: main
+
+// tag::display_shell_file[]
+
+:file_path_from_root: {hook_directory_path_for_file}/{hook_name}/{shell_file_name}.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_shell_file[]
+
+:pre_commit_url: https://github.com/pre-commit/pre-commit-hooks/tree/1790c6b40aa27ce48236525540a5150493cf8fef
+:pre_commit_hook_name: fix-byte-order-marker
+
+// tag::pre_commit_hooks_link[]
+
+.References of pre-commit/pre-commit-hooks
+* link:{pre_commit_url}#{pre_commit_hook_name}[
+  {pre_commit_hook_name} - pre-commit-hooks^]
+
+// end::pre_commit_hooks_link[]
+
+== Detect Using Hyphen (-) in File Path
+
+[horizontal]
+Correct:: `file_name`
+Incorrect:: `file-path`
+
+:hook_name: detect_using_hyphen_in_file_path
+include::./file.adoc[tag=display_config_file]
+
+:shell_file_name: detect_word_with_hyphen
+include::./file.adoc[tag=display_shell_file]
+
+== Detect File Path Conflict in Case Insensitive
+
+:hook_name: detect_file_path_conflict_in_case_insensitive
+include::./file.adoc[tag=display_config_file]
+
+:shell_file_name: detect_case_insensitive_conflict
+include::./file.adoc[tag=display_shell_file]
+
+:pre_commit_hook_name: check-case-conflict
+include::./file.adoc[tag=pre_commit_hooks_link]
+
+== Detect File Over Limit Size
+
+:hook_name: detect_file_over_limit_size
+include::./file.adoc[tag=display_config_file]
+
+:shell_file_name: main
+include::./file.adoc[tag=display_shell_file]
+
+.How to change limit size
+[NOTE]
+====
+If you want to change the limit size,
+change the value of `MAX_LIMIT_BYTE_IEC` in the shell script.
+====
+
+:pre_commit_hook_name: check-added-large-files
+include::./file.adoc[tag=pre_commit_hooks_link]
+
+== GitHub Actions
+
+[NOTE]
+====
+Some content in the following file may have been omitted.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow File
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../../../.github/workflows/detect.yml[tags="!*,file"]
+----
+====
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+This document is licensed under link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Preservation of copyright and license notices isn't required.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
