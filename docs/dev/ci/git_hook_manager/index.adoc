@@ -1,9 +1,9 @@
 = Git Hook Manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-08-05T08:36:20+09:00
-:revremark: include git hooks for file
+:revnumber: v0.11.0
+:revdate: 2023-08-26T18:29:10+09:00
+:revremark: include git hooks for shebang
 :toc:
 :toclevels: 3
 :copyright: Copyright (C) 2023 {author}
@@ -32,6 +32,10 @@ include::./hooks/url.adoc[tag=main, leveloffset=+2]
 === File
 
 include::./hooks/file.adoc[tag=main, leveloffset=+2]
+
+=== Shebang
+
+include::./hooks/shebang.adoc[tag=main, leveloffset=+2]
 
 == Configuration
 
