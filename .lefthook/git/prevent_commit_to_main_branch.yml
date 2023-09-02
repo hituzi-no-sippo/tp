@@ -1,0 +1,11 @@
+---
+pre-commit:
+  commands:
+    prevent-commit-to-main-branch:
+      only:
+        # Change ref from `main` to `default`,
+        # if default branch name is `default`.
+        # https://github.com/evilmartians/lefthook/blob/v1.4.8/docs/configuration.md#only
+        - ref: main
+      run: exit 1
+      fail_text: Don't commit to main branch
