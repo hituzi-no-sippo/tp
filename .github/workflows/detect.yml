@@ -1,0 +1,202 @@
+---
+name: Detect
+
+on:
+  push:
+    branches-ignore:
+      - renovate/*
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  # tag::style[]
+  # `tag::<TAG_NAME>[]` and `end::<TAG_NAME>[]` used to write document.
+  # `<TAG_NAME>` used to tag attribute of include directive in AsciiDoc.
+  # https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions
+  style:
+    name: Style
+    runs-on: ubuntu-latest
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install task runner
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Trailing Space
+        run: |
+          lefthook run lint \
+            --commands detect-trailing-space
+
+      - name: Detect Trailing Blank Line
+        run: |
+          lefthook run lint-fix \
+            --commands trim-trailing-blank-line
+
+          git diff --exit-code --color=always
+
+      - name: Detect Consecutive Blank Lines
+        run: |
+          lefthook run lint-fix \
+            --commands join-consecutive-blank-lines
+
+          git diff --exit-code --color=always
+
+      - name: Detect File without Final Newline
+        run: |
+          lefthook run lint-fix \
+            --commands insert-final-newline
+
+          git diff --exit-code --color=always
+
+      - name: Detect Carriage Return at End of Line
+        run: |
+          lefthook run lint \
+            --commands detect-cr-at-eol
+  # end::style[]
+  # tag::url[]
+  url:
+    name: URL
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install task runner
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect GitHub URL without Commit SHA
+        run: |
+          lefthook run lint \
+            --commands detect-github-url-without-commit-sha
+  # end::url[]
+  # tag::file[]
+  file:
+    name: File
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          # Because to run `lefthook run lint-fix`.
+          disable-file-monitoring: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install task runner
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect UTF-8 with BOM
+        run: |
+          lefthook run lint-fix \
+            --commands remove-bom-for-utf-8
+
+          git diff --exit-code --color=always
+
+      - name: Detect Hyphen in File Path
+        run: |
+          lefthook run lint \
+            --commands detect-hyphen-in-file-path
+
+      - name: Detect File Path Conflict in not Case Sensitive
+        run: |
+          lefthook run lint \
+            --commands detect-file-path-conflict-in-not-case-sensitive
+
+      - name: Detect File Over Limit Size
+        run: |
+          lefthook run lint \
+            --commands detect-file-over-limit-size
+  # end::file[]
+  # tag::shebang[]
+  shebang:
+    name: Shebang
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Install task runner
+        uses: ./.github/actions/setup_tool_version_manager
+
+      - name: Detect Executable Script without Shebang
+        run: |
+          lefthook run lint \
+            --commands detect-executable-script-without-shebang
+
+      - name: Detect Non Executable Script with Shebang
+        run: |
+          lefthook run lint \
+            --commands detect-non-executable-script-with-shebang
+  # end::shebang[]
