@@ -1,6 +1,7 @@
 pre-commit
 pre-merge-commit
 pre-push
+commit-msg
 lint
 lint-fix
 convert-asciidoc-to-html-with-css
