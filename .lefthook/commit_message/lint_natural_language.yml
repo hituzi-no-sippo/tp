@@ -1,0 +1,17 @@
+---
+commit-msg:
+  commands:
+    lint-natural-language-of-commit-message:
+      # Prettier will change to `&lint # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh "$(git rev-parse --show-toplevel)/.lefthook/commit_message/scripts/extract_to_first_comment_line_from_commit_message_file.sh" {1} |
+          vale --ext=.md
+      # yamllint enable rule:line-length
+      tags:
+        - commit-message
+        - natural-language
+        - spellings
+        - vale
