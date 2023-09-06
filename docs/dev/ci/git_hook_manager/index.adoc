@@ -1,9 +1,10 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-09-02T07:55:02+09:00
-:revremark: add configuration
+:revnumber: v0.7.0
+:revdate: 2023-09-06T17:20:16+09:00
+:revremark: add caution
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 :lefthook_url: https://github.com/evilmartians/lefthook
@@ -20,6 +21,10 @@ include::./usage.adoc[tag=main, leveloffset=+1]
 == Configuration
 
 include::./configuration.adoc[tag=main, leveloffset=+1]
+
+== CAUTION
+
+include::./caution.adoc[tag=main, leveloffset=+1]
 
 '''
 
