@@ -1,9 +1,9 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-09-02T07:55:02+09:00
-:revremark: add local configuration
+:revnumber: v0.6.0
+:revdate: 2023-09-06T17:18:27+09:00
+:revremark: add usage
 :copyright: Copyright (C) 2023 {author}
 
 :lefthook_url: https://github.com/evilmartians/lefthook
@@ -33,6 +33,10 @@ The local configuration will overwrite configuration file (`.lefthook.yml`).
 .References
 * link:{lefthook_url}/blob/{lefthook_version}/docs/usage.md#local-config[
   Local config - Lefthook Usage^]
+
+== Usage
+
+include::./usage.adoc[tag=main, leveloffset=+1]
 
 '''
 
