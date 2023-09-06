@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-09-03T07:50:45+09:00
-:revremark: add Git hook to lint commit message
+:revnumber: v0.11.0
+:revdate: 2023-11-11T14:06:10+09:00
+:revremark: add utilities script for commit message
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -147,9 +147,17 @@ include::./vale.adoc[tag=display_git_hook_config]
 :script_file_path: extract_to_first_comment_line_from_commit_message_file.sh
 :file_path_from_root: {scripts_directory}/{script_file_path}
 
+// tag::display_script_file[]
+
 :block_title_name: {script_file_path}
 :file_lang: sh
 include::{display_file_path}[]
+
+// end::display_script_file[]
+
+:script_file_path: utils.sh
+:file_path_from_root: {scripts_directory}/{script_file_path}
+include::./vale.adoc[tag=display_script_file]
 
 == GitHub Actions
 
