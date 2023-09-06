@@ -1,9 +1,27 @@
+= CAUTIONS
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-09-06T15:57:17+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-09-06T16:55:44+09:00
+:revremark: add caution that symlink isn't supported
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+
+// tag::main[]
+
+== Symlink isn't supported
+
+We plan to support symlink once the following Pull Request is merged.
+
+.Pull Request
+link:{lefthook_url}/pull/538[feat: add skip symlinks option to commands^]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
