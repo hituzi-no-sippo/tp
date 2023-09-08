@@ -1,9 +1,73 @@
+= Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-09-09T08:51:33+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-09-09T09:22:08+09:00
+:revremark: add Lefthook overview
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:lefthook_url: https://github.com/evilmartians/lefthook
+:lefthook_link: link:{lefthook_url}[Lefthook^]
+Use {lefthook_link}.
+
+Run `lefthook run lint` command to run `lint` task.
+
+== Task list
+
+:hardbreaks-option:
+
+lint::
+  Lint such as code and document.
+  This task does not change and fix code.
+  For Example: `eslint .`
+lint-fix::
+  Lint such as code and document.
+  This task change and fix code.
+  If a tool cannot change code that will not change.
+  For Example: `eslint --fix .`
+
+:!hardbreaks-option:
+
+.`lint` task does not include a command with sed
+[CAUTION]
+====
+This is because to command with `sed` will change code and document.
+`lint-fix` task includes a command with `sed`.
+
+.List of command with `sed`
+* Trim trailing blank line
+* Join consecutive blank lines
+* Insert final newline
+* Replace End of Line (EOL) to Line Feed (LF)
+* Remove BOM for UTF-8
+====
+
+.How to list task name
+[NOTE]
+====
+[source, console]
+----
+$ lefthook install --aggressive
+SYNCING
+SERVED HOOKS: commit-msg, pre-commit, pre-merge-commit, pre-push, lint-fix, lint, deps
+----
+====
+
+== Configuration
+
+include::./ci/git_hook_manager/index.adoc[tag=config]
+
+== Usage
+
+include::./ci/git_hook_manager/index.adoc[tag=usage]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
