@@ -1,9 +1,22 @@
+= Task Runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-09-09T08:45:39+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-09-09T08:46:50+09:00
+:revremark: add lefthook as task runner
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:lefthook_link: link:https://github.com/evilmartians/lefthook[Lefthook^]
+[horizontal]
+Runner:: {lefthook_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
