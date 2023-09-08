@@ -1,9 +1,9 @@
 = Tool list
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-15T18:17:36+09:00
-:revremark: add CI
+:revnumber: v0.7.0
+:revdate: 2023-10-06T05:52:56+09:00
+:revremark: add task runner
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -16,6 +16,10 @@ See `docs/dev` for more details.
 == CI
 
 include::./ci.adoc[tag=main, leveloffset=+1]
+
+== Task Runner
+
+include::./task_runner.adoc[tag=main, leveloffset=+1]
 
 == Security
 
