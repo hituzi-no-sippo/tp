@@ -1,33 +1,18 @@
-= Tool list
+= Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-10-06T05:52:56+09:00
-:revremark: add task runner
-:toc:
+:revnumber: v0.4.0
+:revdate: 2023-09-09T08:46:50+09:00
+:revremark: add lefthook as task runner
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
-See `docs/dev` for more details.
-
-== CI
-
-include::./ci.adoc[tag=main, leveloffset=+1]
-
-== Task Runner
-
-include::./task_runner.adoc[tag=main, leveloffset=+1]
-
-== Security
-
-include::./security.adoc[tag=main, leveloffset=+1]
-
-== Dependencies
-
-include::./deps.adoc[tag=main, leveloffset=+1]
+:lefthook_link: link:https://github.com/evilmartians/lefthook[Lefthook^]
+[horizontal]
+Runner:: {lefthook_link}
 
 // end::main[]
 
