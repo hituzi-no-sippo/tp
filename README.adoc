@@ -1,9 +1,9 @@
 = Template repository
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-12T19:46:21+09:00
-:revremark: add tool list
+:revnumber: v0.7.0
+:revdate: 2023-09-09T08:55:00+09:00
+:revremark: add task runner
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -21,6 +21,10 @@ include::{dev_docs_dir_path}/supported_platforms.adoc[tag=main, leveloffset=+1]
 == Setup
 
 include::{dev_docs_dir_path}/setup.adoc[tag=main, leveloffset=+1]
+
+== Task Runner
+
+include::{dev_docs_dir_path}/task_runner.adoc[tag=main, leveloffset=+1]
 
 '''
 
