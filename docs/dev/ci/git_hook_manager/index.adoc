@@ -1,9 +1,9 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.13.0
-:revdate: 2023-08-26T18:29:10+09:00
-:revremark: include git hooks for shebang
+:revnumber: v0.14.0
+:revdate: 2023-09-09T09:16:57+09:00
+:revremark: add tags for include directive
 :toc:
 :toclevels: 3
 :copyright: Copyright (C) 2023 {author}
@@ -39,6 +39,8 @@ include::./hooks/shebang.adoc[tag=main, leveloffset=+2]
 
 == Configuration
 
+// tag::config[]
+
 :block_title_name: Configuration file
 :file_path_from_root: .lefthook.yml
 :file_lang: YAML
@@ -61,9 +63,15 @@ The local configuration will overwrite configuration file (`.lefthook.yml`).
 * link:{lefthook_url}/blob/{lefthook_version}/docs/usage.md#local-config[
   Local config - Lefthook Usage^]
 
+// end::config[]
+
 == Usage
 
+// tag::usage[]
+
 include::./usage.adoc[tag=main, leveloffset=+1]
+
+// end::usage[]
 
 == CAUTION
 
