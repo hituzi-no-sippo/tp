@@ -36,3 +36,6 @@ SHA
 REST
 multiple
 many
+hook
+failed
+reject
