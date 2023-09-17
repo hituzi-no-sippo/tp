@@ -6,3 +6,13 @@ npm
 Dockerfile
 Asciidoctor
 Declaratively
+gomod
+sed
+deps
+Bundler
+Gemfile
+Dependabot
+Lefthook
+[Aa]utomerge?(ing)?
+[Rr]eenable
+unmanaged
