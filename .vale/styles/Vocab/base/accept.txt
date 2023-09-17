@@ -21,3 +21,8 @@ BOM
 RegExp
 RuboCop
 StepSecurity
+CAUTION
+caution
+[Cc]onfiguration
+GitHub Actions?
+Natural Language
