@@ -1,11 +1,13 @@
 = Natural Language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-15T19:44:07+09:00
-:revremark: add linter
+:revnumber: v0.5.0
+:revdate: 2023-10-30T21:25:54+09:00
+:revremark: add GitHub url
 :toc:
 :copyright: Copyright (C) 2023 {author}
+
+:github_url: https://github.com
 
 == Lint
 
