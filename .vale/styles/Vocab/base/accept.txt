@@ -15,3 +15,6 @@ Dependabot
 Lefthook
 [Aa]utomerge?(ing)?
 [Rr]eenable
+MIT
+TOML
+BOM
