@@ -32,3 +32,4 @@ CI
 Git
 GitHub
 AsciiDoc
+SHA
