@@ -19,3 +19,6 @@ unmanaged
 MIT
 TOML
 BOM
+RegExp
+RuboCop
+StepSecurity
