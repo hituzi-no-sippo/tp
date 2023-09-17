@@ -1,2 +1,8 @@
 hituzi
 sippo
+config
+rebase
+npm
+Dockerfile
+Asciidoctor
+Declaratively
