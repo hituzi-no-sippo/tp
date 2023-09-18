@@ -42,3 +42,4 @@ reject
 Therefore
 only
 yamllint
+American
