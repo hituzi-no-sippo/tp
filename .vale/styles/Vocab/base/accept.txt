@@ -41,3 +41,4 @@ Therefore
 only
 yamllint
 American
+validate
