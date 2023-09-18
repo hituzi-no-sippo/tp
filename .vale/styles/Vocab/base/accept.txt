@@ -39,3 +39,4 @@ failed
 reject
 Therefore
 only
+yamllint
