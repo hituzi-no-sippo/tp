@@ -45,3 +45,4 @@ yamllint
 watchexec
 devserver
 American
+validate
