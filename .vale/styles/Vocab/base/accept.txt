@@ -45,3 +45,4 @@ yamllint
 devserver
 American
 validate
+HEAD
