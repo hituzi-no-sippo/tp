@@ -45,3 +45,5 @@ yamllint
 American
 validate
 HEAD
+UTF
+JSON
