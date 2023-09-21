@@ -17,7 +17,8 @@ pre-commit:
         Wrong::   file-name.txt
       exclude: "\
         aqua/aqua-checksums.json|\
-        package-lock.json"
+        package-lock.json|\
+        .ruby-version"
       tags:
         - file
 
