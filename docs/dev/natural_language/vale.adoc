@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.12.0
-:revdate: 2023-11-11T09:07:43+09:00
-:revremark: add a GitHub Actions workflow to lint commit messages
+:revnumber: v0.13.0
+:revdate: 2023-11-11T09:10:25+09:00
+:revremark: add a Git hook to lint file path
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -157,6 +157,17 @@ include::{display_file_path}[]
 
 :script_file_path: utils.sh
 :file_path_from_root: {scripts_directory}/{script_file_path}
+include::./vale.adoc[tag=display_script_file]
+
+=== Lint file path
+
+:hook_type: file_path
+:hook_name: lint_natural_language
+:config_file_path_from_hook_directory: {hook_name}/config.yml
+include::./vale.adoc[tag=display_git_hook_config]
+
+:script_file_path: replace_underscore_and_hyphen_to_space.sh
+:file_path_from_root: .lefthook/{hook_type}/{hook_name}/{script_file_path}
 include::./vale.adoc[tag=display_script_file]
 
 == GitHub Actions
