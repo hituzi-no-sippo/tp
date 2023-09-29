@@ -13,5 +13,6 @@
   "automergeType": "pr",
   "platformAutomerge": true,
   "rangeStrategy": "auto",
-  "semanticCommits": "enabled"
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build"
 }
