@@ -14,7 +14,8 @@
       ],
       "addLabels": [
         "renovate-config"
-      ]
+      ],
+      "semanticCommitScope": "renovate"
     }
   ]
 }
