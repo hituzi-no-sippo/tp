@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.11.0
-:revdate: 2023-10-21T08:16:41+09:00
-:revremark: add description of `semanticCommits`
+:revnumber: v0.12.0
+:revdate: 2023-10-21T08:23:55+09:00
+:revremark: add description of `semanticCommitType`
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -91,6 +91,8 @@ See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
 .Commit message
 * link:{config_options_url}/#semanticcommits[
   Enable Semantic Commit prefixes^]
+* link:{config_options_url}/#semanticcommitscope[
+  Commit scope is `build`^]
 
 // end::main[]
 
