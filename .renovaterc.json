@@ -30,7 +30,8 @@
       ],
       "addLabels": [
         "github-actions"
-      ]
+      ],
+      "semanticCommitScope": "github-actions"
     }
   ]
 }
