@@ -7,6 +7,14 @@
       "minor": {
         "automerge": true
       }
+    },
+    {
+      "matchPackagePatterns": [
+        "renovate.+config"
+      ],
+      "addLabels": [
+        "renovate-config"
+      ]
     }
   ]
 }
