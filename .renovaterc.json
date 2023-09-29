@@ -22,5 +22,15 @@
   ],
   "semanticCommits": "enabled",
   "semanticCommitType": "build",
-  "configMigration": true
+  "configMigration": true,
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ]
+    }
+  ]
 }
