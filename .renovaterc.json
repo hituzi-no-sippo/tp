@@ -21,5 +21,6 @@
     "automated issue"
   ],
   "semanticCommits": "enabled",
+  "semanticCommitType": "build",
   "configMigration": true
 }
