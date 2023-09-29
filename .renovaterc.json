@@ -27,5 +27,6 @@
   "automergeSchedule": "at any time",
   "prConcurrentLimit": 10,
   "prHourlyLimit": 2,
-  "semanticCommits": "enabled"
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build"
 }
