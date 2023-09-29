@@ -41,7 +41,10 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "renovate-config"
+      ]
     }
   ]
 }
