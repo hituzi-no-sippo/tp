@@ -30,7 +30,8 @@
       ],
       "addLabels": [
         "github-actions"
-      ]
+      ],
+      "semanticCommitScope": "github-actions"
     },
     {
       "matchFileNames": [
@@ -39,7 +40,8 @@
       ],
       "addLabels": [
         "github-actions"
-      ]
+      ],
+      "semanticCommitScope": "github-actions"
     }
   ]
 }
