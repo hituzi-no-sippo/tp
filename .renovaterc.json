@@ -83,6 +83,14 @@
         "automerge": true
       },
       "semanticCommitScope": "aqua"
+    },
+    {
+      "matchFileNames": [
+        ".renovaterc.json"
+      ],
+      "addLabels": [
+        "renovate-config"
+      ]
     }
   ]
 }
