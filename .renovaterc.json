@@ -29,5 +29,20 @@
     "renovate",
     "dependencies",
     "automated"
+  ],
+  "packageRules": [
+    {
+      "matchFileNames": [
+        ".renovaterc.json",
+        ".renovate/*.json"
+      ],
+      "addLabels": [
+        "renovate-config"
+      ],
+      "minor": {
+        "automerge": true
+      },
+      "semanticCommitScope": "renovate"
+    }
   ]
 }
