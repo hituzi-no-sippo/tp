@@ -18,6 +18,14 @@
       "semanticCommitScope": "aqua"
     },
     {
+      "matchFileNames": [
+        ".aqua/imports/github.yml"
+      ],
+      "addLabels": [
+        "github"
+      ]
+    },
+    {
       "matchPackagePatterns": [
         "aquaproj/aqua"
       ],
