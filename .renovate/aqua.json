@@ -27,6 +27,15 @@
       "semanticCommitScope": "github"
     },
     {
+      "matchFileNames": [
+        ".aqua/imports/git_hook.yml"
+      ],
+      "addLabels": [
+        "git-hook"
+      ],
+      "semanticCommitScope": "git-hook"
+    },
+    {
       "matchPackagePatterns": [
         "aquaproj/aqua"
       ],
