@@ -76,6 +76,14 @@
       "semanticCommitScope": "git-hook"
     },
     {
+      "matchFileNames": [
+        ".aqua/imports/natural_language.yml"
+      ],
+      "addLabels": [
+        "natural-language"
+      ]
+    },
+    {
       "matchPackageNames": [
         "aquaproj/aqua-installer"
       ],
