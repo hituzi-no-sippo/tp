@@ -1,12 +1,15 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:40:13+09:00
-:revremark: display configuration file
+:revnumber: v0.10.0
+:revdate: 2023-10-21T08:08:47+09:00
+:revremark: add description of `prHourlyLimit`
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
+
+:renovate_doc_url: https://docs.renovatebot.com
+:config_options_url: {renovate_doc_url}/configuration-options
 
 // tag::main[]
 
@@ -15,6 +18,75 @@
 :file_path_from_root: .renovaterc.json
 :file_lang: JSON
 include::{display_file_path}[]
+
+.Automerge
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: disable
+Minor(`1.0.0` => `1.1.0`):: disable
+Patch(`1.0.0` => `1.0.1`):: Enable
+
+.Day required before a new release is considered stable (`minimumReleaseAge`)
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: 2 weeks
+Minor(`1.0.0` => `1.1.0`):: 1 week
+Patch(`1.0.0` => `1.0.1`):: 3 days
+
+.`automerge` and `minimumReleaseAge` change the timing of PR creation
+[NOTE]
+====
+.`automerge`
+false::
+  Renovate does not create a PR immediately. +
+  Renovate creates a PR,
+  when the time specified by `minimumReleaseAge` has passed
+  after the version is released.
+true::
+  Renovate create a PR immediately, but does not automerge immediately. +
+  Renovate merges a PR,
+  when the time specified by `minimumReleaseAge` has passed
+  after the version is released.
+
+.References
+* link:{config_options_url}/#suppress-branchpr-creation-for-x-days[
+  Suppress branch/PR creation for X days - Configuration Options^]
+* link:{config_options_url}/#await-x-time-duration-before-automerging[
+  Await X time duration before Automerging - Configuration Options^]
+====
+
+.Schedule
+[horizontal]
+Create a branch (`schedule`)::
+  link:{config_options_url}/#schedule[
+  `at any time`^]
+Automerge (`automergeschedule`)::
+  link:{config_options_url}/#automergeschedule[
+  `at any time`^]
+
+.Limit
+[horizontal]
+Max number of concurrent opened PRs(`prConcurrentLimit`)::
+  link:{config_options_url}/#prconcurrentlimit[
+  `10`^]
+Max number of concurrent branches(`branchConcurrentLimit`)::
+  link:{config_options_url}/#branchconcurrentlimit[
+  `10` (inherits value from `prConcurrentLimit`)^]
+Max number of PRs created per hour (`prHourlyLimit`)::
+  link:{config_options_url}/#prhourlylimit[
+  `2`^]
+
+.If you feel that Renovate is too noisy
+[NOTE]
+====
+.Change the values of the following options
+* schedule
+** `schedule`
+** `automergeschedule`
+* Limit
+** `prConcurrentLimit`
+** `branchConcurrentLimit`
+
+See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
+====
 
 // end::main[]
 
