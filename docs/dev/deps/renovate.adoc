@@ -1,9 +1,9 @@
 = Renovate
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-07-13T13:40:13+09:00
-:revremark: add configuration file for Renovate
+:revnumber: v0.7.0
+:revdate: 2023-09-30T14:06:30+09:00
+:revremark: add description of automerge
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -58,6 +58,12 @@ See link:{supported_managers_url}[Supported Managers^] for more details.
 :file_path_from_root: .renovaterc.json
 :file_lang: JSON
 include::{display_file_path}[]
+
+.Automerge (Default)
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: disable
+Minor(`1.0.0` => `1.1.0`):: disable
+Patch(`1.0.0` => `1.0.1`):: Enable
 
 .Schedule
 [horizontal]

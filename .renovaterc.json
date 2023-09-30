@@ -5,5 +5,11 @@
     "group:recommended",
     "workarounds:all"
   ],
-  "configMigration": true
+  "configMigration": true,
+  "patch": {
+    "automerge": true
+  },
+  "automergeStrategy": "merge-commit",
+  "automergeType": "pr",
+  "platformAutomerge": true
 }
