@@ -1,0 +1,31 @@
+{
+  "extends": [
+    ":ignoreModulesAndTests",
+    "group:monorepos",
+    "group:recommended",
+    "workarounds:all"
+  ],
+  "configMigration": true,
+  "patch": {
+    "automerge": true
+  },
+  "automergeStrategy": "merge-commit",
+  "automergeType": "pr",
+  "platformAutomerge": true,
+  "rangeStrategy": "auto",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ],
+  "labels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ]
+}
