@@ -3,7 +3,8 @@
     ":ignoreModulesAndTests",
     "group:monorepos",
     "group:recommended",
-    "workarounds:all"
+    "workarounds:all",
+    "local>hituzi-no-sippo/template-repository//.renovate/github_actions"
   ],
   "configMigration": true,
   "automergeStrategy": "merge-commit",
