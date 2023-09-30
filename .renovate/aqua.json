@@ -81,7 +81,8 @@
       ],
       "addLabels": [
         "natural-language"
-      ]
+      ],
+      "semanticCommitScope": "natural-language"
     },
     {
       "matchPackageNames": [
