@@ -72,7 +72,8 @@
       ],
       "addLabels": [
         "git-hook"
-      ]
+      ],
+      "semanticCommitScope": "git-hook"
     },
     {
       "matchPackageNames": [
