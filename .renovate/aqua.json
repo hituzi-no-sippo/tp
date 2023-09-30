@@ -62,7 +62,8 @@
       ],
       "addLabels": [
         "github"
-      ]
+      ],
+      "semanticCommitScope": "github"
     }
   ],
   "customManagers": [
