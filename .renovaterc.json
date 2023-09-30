@@ -11,5 +11,6 @@
   },
   "automergeStrategy": "merge-commit",
   "automergeType": "pr",
-  "platformAutomerge": true
+  "platformAutomerge": true,
+  "rangeStrategy": "auto"
 }
