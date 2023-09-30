@@ -36,5 +36,10 @@
     "renovate",
     "dependencies",
     "automated"
+  ],
+  "labels": [
+    "renovate",
+    "dependencies",
+    "automated"
   ]
 }
