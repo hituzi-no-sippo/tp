@@ -12,5 +12,6 @@
   "automergeStrategy": "merge-commit",
   "automergeType": "pr",
   "platformAutomerge": true,
-  "rangeStrategy": "auto"
+  "rangeStrategy": "auto",
+  "semanticCommits": "enabled"
 }
