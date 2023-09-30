@@ -4,6 +4,7 @@ pre-push
 commit-msg
 lint
 lint-fix
+lint-commit-message
 convert-asciidoc-to-html-with-css
 remove-html-converted-from-asciidoc
 test-dev-env
