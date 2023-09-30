@@ -55,6 +55,14 @@
         "aqua-registry"
       ],
       "semanticCommitScope": "aqua-registry"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/imports/github.yml"
+      ],
+      "addLabels": [
+        "github"
+      ]
     }
   ],
   "customManagers": [
