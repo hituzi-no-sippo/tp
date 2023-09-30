@@ -14,5 +14,13 @@
   "platformAutomerge": true,
   "rangeStrategy": "auto",
   "semanticCommits": "enabled",
-  "semanticCommitType": "build"
+  "semanticCommitType": "build",
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ]
 }
