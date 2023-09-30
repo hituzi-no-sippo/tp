@@ -41,7 +41,11 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "renovate-config"
+      ],
+      "semanticCommitScope": "renovate"
     }
   ]
 }
