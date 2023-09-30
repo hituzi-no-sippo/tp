@@ -1,0 +1,23 @@
+{
+  "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "addLabels": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "github-actions"
+    },
+    {
+      "matchFileNames": [
+        ".github/workflows/*.yml",
+        ".github/actions/**/*.yml"
+      ],
+      "addLabels": [
+        "github-actions"
+      ],
+      "semanticCommitScope": "github-actions"
+    }
+  ]
+}
