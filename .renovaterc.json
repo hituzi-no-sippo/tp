@@ -4,5 +4,6 @@
     "group:monorepos",
     "group:recommended",
     "workarounds:all"
-  ]
+  ],
+  "configMigration": true
 }
