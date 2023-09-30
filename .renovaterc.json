@@ -64,7 +64,8 @@
       ],
       "addLabels": [
         "github"
-      ]
+      ],
+      "semanticCommitScope": "github"
     },
     {
       "matchPackagePatterns": [
