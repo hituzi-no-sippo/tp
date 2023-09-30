@@ -1,9 +1,24 @@
+= Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-10-20T07:05:33+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-13T13:40:13+09:00
+:revremark: display configuration file
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration file
+:file_path_from_root: .renovaterc.json
+:file_lang: JSON
+include::{display_file_path}[]
+
+// end::main[]
+
+// end::body[]
 
 '''
 

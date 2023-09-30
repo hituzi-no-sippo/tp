@@ -1,9 +1,9 @@
 = Renovate
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-08-18T16:51:21+09:00
-:revremark: add setup for automated dependency updates
+:revnumber: v0.6.0
+:revdate: 2023-07-13T13:40:13+09:00
+:revremark: add configuration
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -50,6 +50,10 @@ Renovate^] is automatic dependency updater.
   cargo^]
 
 See link:{supported_managers_url}[Supported Managers^] for more details.
+
+== Configuration
+
+include::./configuration.adoc[tag=main, leveloffset=+1]
 
 == Setup
 
