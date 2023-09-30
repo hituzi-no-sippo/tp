@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.12.0
-:revdate: 2023-10-21T08:23:55+09:00
-:revremark: add description of `semanticCommitType`
+:revnumber: v0.13.0
+:revdate: 2023-10-21T08:38:05+09:00
+:revremark: add description of Dependency Dashboard
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -93,6 +93,12 @@ See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
   Enable Semantic Commit prefixes^]
 * link:{config_options_url}/#semanticcommitscope[
   Commit scope is `build`^]
+
+.Dependency dashboard
+* link:{config_options_url}/#dependencyDashboard[
+  Create a "Dependency Dashboard" issue^]
+* link:{config_options_url}/#dependencydashboardautoclose[
+  Close "Dependency Dashboard" issue if there are no more updates^]
 
 // end::main[]
 
