@@ -22,6 +22,8 @@ pre-commit: &test
         .aqua/imports/*.yml,\
         .aqua/aqua-checksums.json,\
         .ruby-version,\
+        Gemfile,\
+        Gemfile.lock,\
         .lefthook.yml,\
         .lefthook/*.yml\
         }"
