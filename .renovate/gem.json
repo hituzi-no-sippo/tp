@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "rubygems"
+      ],
+      "addLabels": [
+        "gem"
+      ]
+    }
+  ]
+}
