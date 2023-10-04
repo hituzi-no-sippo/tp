@@ -9,6 +9,9 @@ on:
       - .aqua/aqua.yml
       - .aqua/imports/*.yml
       - .aqua/aqua-checksums.json
+      - Gemfile
+      - Gemfile.lock
+      - .ruby-version
       - .lefthook.yml
       - .lefthook/*.{yml,sh}
       - .github/workflows/test_setup.yml
@@ -38,10 +41,12 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             github.com:443
+            index.rubygems.org:443
             objects.githubusercontent.com:443
             rekor.sigstore.dev:443
             tuf-repo-cdn.sigstore.dev:443
             raw.githubusercontent.com:443
+            rubygems.org:443
 
       - name: Checkout
         # yamllint disable-line rule:line-length
@@ -51,6 +56,29 @@ jobs:
         run: |
           bash scripts/install_aqua.sh
           echo "~/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
+
+      - name: Install Ruby and Bundler
+        # yamllint disable-line rule:line-length
+        uses: ruby/setup-ruby@5cfe23c062c0aac352e765b1b7cc12ea5255ccc4 # v1.156.0
+        with:
+          # https://github.com/ruby/setup-ruby/blob/5cfe23c062c0aac352e765b1b7cc12ea5255ccc4/action.yml#L8-L9
+          # v1.156.0 Commit on 2023-10-12.
+          # Decide the version for Ruby from `.ruby-version` file.
+          ruby-version: .ruby-version
+          # https://github.com/ruby/setup-ruby/blob/5cfe23c062c0aac352e765b1b7cc12ea5255ccc4/action.yml#L17-L21
+          # v1.156.0 Commit on 2023-10-12.
+          # - Gemfile.lock
+          #   the version of the BUNDLED WITH section
+          #   from the Gemfile.lock if it exists.
+          #   If the file or section does not exist then the same as 'default'.
+          # - default
+          #   if the Ruby ships with Bundler 2.2+ as a default gem,
+          #   that version is used, otherwise the same as 'latest'.
+          bundler: Gemfile.lock
+          # https://github.com/ruby/setup-ruby/blob/5cfe23c062c0aac352e765b1b7cc12ea5255ccc4/action.yml#L25
+          # v1.156.0 Commit on 2023-10-12.
+          # Does not install gems with `bundle install`.
+          bundler-cache: false
 
       - name: Run setup
         run: bash scripts/setup.sh
