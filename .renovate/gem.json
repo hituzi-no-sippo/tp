@@ -15,7 +15,8 @@
       ],
       "addLabels": [
         "bundler"
-      ]
+      ],
+      "semanticCommitScope": "bundler"
     }
   ],
   "customManagers": [
