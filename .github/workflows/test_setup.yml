@@ -11,6 +11,7 @@ on:
       - .aqua/aqua-checksums.json
       - package.json
       - package-lock.json
+      - .ruby-version
       - .lefthook.yml
       - .lefthook/**/*.yml
       - .github/workflows/test_setup.yml
