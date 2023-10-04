@@ -1,0 +1,13 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "ruby-version"
+      ],
+      "addLabels": [
+        "ruby-version"
+      ],
+      "semanticCommitScope": "ruby-version"
+    }
+  ]
+}
