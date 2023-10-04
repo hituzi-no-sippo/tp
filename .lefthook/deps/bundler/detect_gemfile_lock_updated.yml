@@ -1,0 +1,22 @@
+---
+pre-commit: &detect
+  commands:
+    detect-gemfile-lock-updated:
+      run: |
+        bundle install --quiet
+
+        git diff --exit-code --quiet Gemfile* .ruby-version
+      glob: "{Gemfile,Gemfile.lock,.ruby-version}"
+      fail_text: |
+        `Gemfile` or `Gemfile.lock`, `.ruby-version`
+        were modified with `bundle install`
+      tags:
+        - deps
+        - gem
+        - network
+
+pre-push: *detect
+
+pre-merge-commit: *detect
+
+deps: *detect
