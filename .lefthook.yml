@@ -19,6 +19,7 @@ extends:
   - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
   - .lefthook/deps/tool_version_manager/update_aqua_checksum.yml
   - .lefthook/deps/npm/detect_package_lock_json_updated.yml
+  - .lefthook/deps/gem/detect_gemfile_lock_updated.yml
   - .lefthook/deps/renovate/validate.yml
   - .lefthook/deps/renovate/dry_run.yml
   - .lefthook/setup/test.yml
