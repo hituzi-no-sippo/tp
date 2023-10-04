@@ -1,0 +1,42 @@
+---
+name: Update Gemfile.lock
+
+on:
+  push:
+    paths:
+      - Gemfile
+      - Gemfile.lock
+      - .ruby-version
+    branches-ignore:
+      - renovate/*
+      - "!renovate/bundler-[0-9]+.*"
+      - "!renovate/ruby-[0-9]+.*"
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  update-gemfile-lock:
+    name: Update Gemfile.lock
+    # yamllint disable-line rule:line-length
+    uses: hituzi-no-sippo/update-gemfile-lock-workflow/.github/workflows/update_gemfile_lock.yml@cdf78dedf25b664e5799499f644e38f94ef8f0da
+    with:
+      commit_message: "build(gem): update `Gemfile.lock`"
+      timeout_minutes: 5
+    secrets:
+      # The GitHub App of `secrets.APP_ID` and `secrets.APP_PRIVATE_KEY`
+      # requires content `Read and write` permission.
+      # This is because this workflow create commit to update aqua checksum.
+      # References
+      # https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      # https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      # https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+      github_app_id: ${{ secrets.APP_ID }}
+      github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
