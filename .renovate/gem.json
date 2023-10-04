@@ -8,6 +8,14 @@
         "gem"
       ],
       "semanticCommitScope": "gem"
+    },
+    {
+      "matchPackageNames": [
+        "bundler"
+      ],
+      "addLabels": [
+        "bundler"
+      ]
     }
   ],
   "customManagers": [
