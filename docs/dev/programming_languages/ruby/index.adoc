@@ -1,0 +1,25 @@
+= Ruby
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-11-07T13:08:25+09:00
+:revremark: add Ruby version
+:copyright: Copyright (C) 2023 {author}
+
+.Version
+Ruby:: See `.ruby-version`
+
+:block_title_name: .ruby-version
+:file_lang: TXT
+:file_path_from_root: ./.ruby-version
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
