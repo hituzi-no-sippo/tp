@@ -1,0 +1,13 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "rubygems"
+      ],
+      "addLabels": [
+        "gem"
+      ],
+      "semanticCommitScope": "gem"
+    }
+  ]
+}
