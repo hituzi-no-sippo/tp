@@ -14,7 +14,8 @@ pre-commit:
       # yamllint enable rule:line-length
       exclude: "\
         ^\\.aqua/aqua-checksums\\.json$|\
-        package-lock\\.json$\
+        package-lock\\.json$|\
+        \\.ruby-version$\
         "
       tags:
         - file-paths
