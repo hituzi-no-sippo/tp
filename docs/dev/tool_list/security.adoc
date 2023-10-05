@@ -1,25 +1,19 @@
-= Tool list
+= Security
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-10-07T12:58:26+09:00
-:revremark: add security
-:toc:
+:revnumber: v0.4.0
+:revdate: 2023-10-06T06:19:01+09:00
+:revremark: add harden runner as vulnerability management
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
 
-See `docs/dev` for more details.
+== GitHub Actions
 
-== Security
-
-include::./security.adoc[tag=main, leveloffset=+1]
-
-== Dependencies
-
-include::./deps.adoc[tag=main, leveloffset=+1]
+:harden_runner_link: https://github.com/step-security/harden-runner[Harden-Runner^]
+Runtime Security:: {harden_runner_link}
 
 // end::main[]
 
