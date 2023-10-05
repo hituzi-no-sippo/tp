@@ -1,9 +1,23 @@
+= Security
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-10-06T05:57:43+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-10-06T06:19:01+09:00
+:revremark: add harden runner as vulnerability management
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== GitHub Actions
+
+:harden_runner_link: https://github.com/step-security/harden-runner[Harden-Runner^]
+Runtime Security:: {harden_runner_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
