@@ -1,0 +1,107 @@
+= GitHub Actions
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-10-07T12:21:30+09:00
+:revremark: add overview for Harden-Runner
+:copyright: Copyright (C) 2023 {author}
+
+:github_url: https://github.com
+
+== Runtime security
+
+:step_security_org: {github_url}/step-security
+:harden_runner_url: {step_security_org}/harden-runner
+:harden_runner_link: link:{harden_runner_url}[Harden-Runner^]
+Use {harden_runner_link}.
+
+:step_security_domain: stepsecurity.io
+:step_security_docs_url: https://docs.{step_security_domain}
+:harden_runner_how_to_url: {step_security_docs_url}/harden-runner/how-tos
+:block_egress_traffic_url: {harden_runner_how_to_url}/block-egress-traffic
+.Features
+* link:{harden_runner_url}#-filter-egress-traffic-to-allowed-endpoints[
+  Block egress traffic^] +
+  link:{block_egress_traffic_url}#access-recommended-block-policy[
+  Harden-Runner generate block policies of egress traffic^].
+  The block policy generated use the result of capturing network traffics
+  in CI/CD.
+* link:{harden_runner_url}#-detect-tampering-of-source-code-during-build[
+  Detect file tampering^]
+* link:{harden_runner_url}#-run-your-job-without-sudo-access[
+  Disable `sudo`^]
+
+:github_actions_goat_url: {step_security_org}/github-actions-goat
+:block_unauthorized_endpoints_actions_suffix_url: actions/runs/6292616475
+:step_security_app_url: https://app.{step_security_domain}
+:github_actions_goat_repository: step-security/github-actions-goat
+:github_actions_goat_blob_url: {github_actions_goat_url}/blob/e4e2fc28715a15d8c47dab69b740dca20cfad0ae
+:github_actions_goat_solution_docs_url: {github_actions_goat_blob_url}/docs/Solutions
+.Example
+Block unauthorized endpoints::
+  * link:{github_actions_goat_url}/{block_unauthorized_endpoints_actions_suffix_url}[
+    GitHub Actions Result^]
+  * {step_security_app_url}/github/{github_actions_goat_repository}/{block_unauthorized_endpoints_actions_suffix_url}[
+    Analysis Result^]
+  * link:{github_actions_goat_solution_docs_url}/RestrictOutboundTraffic.md[
+    Document^]
+
+:detect_file_tampering_actions_suffix_url: actions/runs/6426821700
+Detect file tampering::
+  * link:{github_actions_goat_url}/{detect_file_tampering_actions_suffix_url}[
+    GitHub Actions Result^]
+  * {step_security_app_url}/github/{github_actions_goat_repository}/{detect_file_tampering_actions_suffix_url}[
+    Analysis Result^]
+  * link:{github_actions_goat_solution_docs_url}/MonitorSourceCode.md[
+    Document^]
+
+=== Security Alert
+
+// tag::security_alert_notification[]
+
+.Notify security alerts when the following cases
+* Block endpoints
+* Source code is overwritten
+
+.Notification with
+* E-mail
+* Slack
+
+// end::security_alert_notification[]
+
+.Need to install the GitHub App for notify security alerts
+[CAUTION]
+====
+Install link:{github_url}/apps/stepsecurity-actions-security[
+StepSecurity Actions Security GitHub App^].
+====
+
+.References
+* link:{harden_runner_url}#-get-security-alerts[
+  Get security alerts - README^]
+
+=== Usage
+
+Read the link:{step_security_docs_url}[
+official documents^] to know how to use it.
+
+.How to
+* link:{harden_runner_how_to_url}/enable-runtime-security[
+  Enable Runtime Security^]
+* link:{block_egress_traffic_url}[
+  Block Egress Traffic^]
+* link:{harden_runner_how_to_url}/detect-source-code-overwrite[
+  Detect Source Code Overwrite^]
+* link:{harden_runner_how_to_url}/disable-sudo[
+  Disable Sudo^]
+* link:{harden_runner_how_to_url}/email-slack-notifications[
+  Email / Slack Notifications^]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
