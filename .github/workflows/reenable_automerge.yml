@@ -40,6 +40,15 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+
       - name: Generate token
         id: generate_token
         # yamllint disable-line rule:line-length
