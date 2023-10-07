@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T07:24:02+09:00
-:revremark: add setup
+:revnumber: v0.5.0
+:revdate: 2023-07-13T07:28:19+09:00
+:revremark: add how to install aqua
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -18,11 +18,26 @@
 :repository_name: template-repository
 :repository: {owner_name}/{repository_name}
 :repository_url: {github_url}/{repository}
+:aqua_url: https://aquaproj.github.io
+:script_directory_from_root: ./scripts
+:download_aqua_shell_path_from_root: {script_directory_from_root}/download_aqua.sh
 . Create repository with this template
 * `gh repo create <REPOSITORY_NAME> --public --template {repository}`
 * link:{repository_url}/generate[Use this template^]
 . Clone repository +
   `gh repo clone <REPOSITORY_NAME> && cd <REPOSITORY_NAME>`
+. link:{aqua_url}/docs/tutorial/#install-aqua[
+  Install aqua that is tool version manager^] with shell script
+  .. Download aqua +
+    `bash {download_aqua_shell_path_from_root}`
+  .. Add aqua to the environment variable `PATH` +
+    `export PATH="${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"`
+
+:block_title_name: Download aqua shell script
+:file_lang: bash
+:file_path_from_root: {download_aqua_shell_path_from_root}
+:display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
 
 // end::main[]
 
