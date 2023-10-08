@@ -2,6 +2,16 @@
   "extends": [
     "github>aquaproj/aqua-renovate-config#1.11.0"
   ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": [
+        "aquaproj/aqua"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    }
+  ],
   "customManagers": [
     {
       "datasourceTemplate": "github-releases",
