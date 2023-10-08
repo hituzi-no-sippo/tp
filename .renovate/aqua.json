@@ -1,7 +1,8 @@
 {
   "extends": [
     "github>aquaproj/aqua-renovate-config#1.11.0",
-    "github>aquaproj/aqua-renovate-config:file#1.11.0(^\\.aqua/imports/.*\\.yml$)"
+    "github>aquaproj/aqua-renovate-config:file#1.11.0(^\\.aqua/imports/.*\\.yml$)",
+    "github>aquaproj/aqua-renovate-config:installer-script#1.11.0(^scripts/download_aqua\\.sh$)"
   ],
   "packageRules": [
     {
