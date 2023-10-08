@@ -1,9 +1,9 @@
 = Tool version manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-08-18T16:32:36+09:00
-:revremark: add GitHub Action to update aqua checksum
+:revnumber: v0.8.0
+:revdate: 2023-10-20T19:47:31+09:00
+:revremark: add Renovate configuration
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -41,6 +41,17 @@ include::{display_file_path}[]
 .References
 * link:{aqua_docs_url}/products/update-checksum-workflow[
   update-checksum-workflow^]
+
+== Renovate
+
+:block_title_name: Configuration file
+:file_path_from_root: .renovate/aqua.json
+:file_lang: JSON
+include::{display_file_path}[]
+
+:github_url: https://github.com
+:aqua_renovate_config_link: link:{github_url}/aquaproj/aqua-renovate-config[aqua-renovate-config^]
+Use {aqua_renovate_config_link} to support aqua on Renovate.
 
 '''
 
