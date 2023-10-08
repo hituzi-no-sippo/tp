@@ -39,7 +39,8 @@
       ],
       "addLabels": [
         "aqua-registry"
-      ]
+      ],
+      "semanticCommitScope": "aqua-registry"
     }
   ],
   "customManagers": [
