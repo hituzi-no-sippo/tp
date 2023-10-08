@@ -12,7 +12,8 @@
       },
       "addLabels": [
         "aqua"
-      ]
+      ],
+      "semanticCommitScope": "aqua"
     }
   ],
   "customManagers": [
