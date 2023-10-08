@@ -23,7 +23,10 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "aqua"
+      ]
     },
     {
       "matchPackageNames": [
