@@ -72,7 +72,8 @@
       ],
       "addLabels": [
         "aqua-installer"
-      ]
+      ],
+      "semanticCommitScope": "aqua-installer"
     }
   ],
   "customManagers": [
