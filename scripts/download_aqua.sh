@@ -30,10 +30,9 @@
 # - https://aquaproj.github.io/docs/products/aqua-renovate-config#installer-script-preset
 # - https://github.com/aquaproj/aqua-renovate-config/blob/eea13b7fe6f85887cc02044ecc0cabffe8a59dd0/installer-script.json#L13-L24
 #   v1.10.0 Commit on 2023-09-26
-#
 curl \
   --location \
   --silent \
   --fail \
   --show-error \
-  https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.2.0/aqua-installer | bash -s -- -v v2.17.4
+  https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.2.0/aqua-installer | bash -s -- -v v2.18.0
