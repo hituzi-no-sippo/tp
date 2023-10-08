@@ -26,7 +26,8 @@
       },
       "addLabels": [
         "aqua"
-      ]
+      ],
+      "semanticCommitScope": "aqua"
     },
     {
       "matchPackageNames": [
