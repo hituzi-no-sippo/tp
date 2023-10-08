@@ -32,7 +32,11 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "aqua"
+      ],
+      "semanticCommitScope": "aqua"
     },
     {
       "matchPackageNames": [
@@ -51,6 +55,15 @@
         "aqua-registry"
       ],
       "semanticCommitScope": "aqua-registry"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/imports/github.yml"
+      ],
+      "addLabels": [
+        "github"
+      ],
+      "semanticCommitScope": "github"
     }
   ],
   "customManagers": [
