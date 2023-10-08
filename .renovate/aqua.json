@@ -4,6 +4,14 @@
   ],
   "packageRules": [
     {
+      "matchPackagePatterns": [
+        "aquaproj/aqua"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    },
+    {
       "matchPackageNames": [
         "aquaproj/aqua-registry"
       ],
