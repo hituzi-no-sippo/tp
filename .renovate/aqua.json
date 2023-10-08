@@ -30,7 +30,8 @@
       ],
       "addLabels": [
         "aqua-version"
-      ]
+      ],
+      "semanticCommitScope": "aqua-version"
     }
   ],
   "customManagers": [
