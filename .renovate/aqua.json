@@ -17,6 +17,15 @@
       "semanticCommitScope": "aqua"
     },
     {
+      "matchFileNames": [
+        ".aqua/aqua.yml",
+        ".aqua/imports/*.yml"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    },
+    {
       "matchPackageNames": [
         "aquaproj/aqua"
       ],
