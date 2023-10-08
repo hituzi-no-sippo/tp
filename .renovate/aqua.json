@@ -65,6 +65,15 @@
         "github"
       ],
       "semanticCommitScope": "github"
+    },
+    {
+      "matchPackageNames": [
+        "aquaproj/aqua-installer"
+      ],
+      "addLabels": [
+        "aqua-installer"
+      ],
+      "semanticCommitScope": "aqua-installer"
     }
   ],
   "customManagers": [
