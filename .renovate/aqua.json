@@ -9,7 +9,29 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "aqua"
+      ],
+      "semanticCommitScope": "aqua"
+    },
+    {
+      "matchPackageNames": [
+        "aquaproj/aqua"
+      ],
+      "addLabels": [
+        "aqua-version"
+      ],
+      "semanticCommitScope": "aqua-version"
+    },
+    {
+      "matchPackageNames": [
+        "aquaproj/aqua-registry"
+      ],
+      "addLabels": [
+        "aqua-registry"
+      ],
+      "semanticCommitScope": "aqua-registry"
     }
   ],
   "customManagers": [
