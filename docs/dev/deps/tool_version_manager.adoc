@@ -1,9 +1,9 @@
 = Tool version manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.9.0
-:revdate: 2023-10-20T19:58:00+09:00
-:revremark: add schedule for aqua registry on Renovate
+:revnumber: v0.10.0
+:revdate: 2023-07-16T15:36:34+09:00
+:revremark: add automerge of Renovate
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -52,6 +52,12 @@ include::{display_file_path}[]
 :github_url: https://github.com
 :aqua_renovate_config_link: link:{github_url}/aquaproj/aqua-renovate-config[aqua-renovate-config^]
 Use {aqua_renovate_config_link} to support aqua on Renovate.
+
+.Automerge (Default)
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: disable
+Minor(`1.0.0` => `1.1.0`):: Enable
+Patch(`1.0.0` => `1.0.1`):: Enable
 
 :aqua_registry_link: link:{github_url}/aquaproj/aqua-registry[aqua-registry^]
 .schedule
