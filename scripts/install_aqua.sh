@@ -36,4 +36,4 @@ curl \
   --silent \
   --fail \
   --show-error \
-  https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.2/aqua-installer | bash -s -- -v v2.12.2
+  https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.2/aqua-installer | bash -s -- -v v2.13.0

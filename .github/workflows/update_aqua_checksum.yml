@@ -42,7 +42,7 @@ jobs:
     permissions:
       contents: read
     with:
-      aqua_version: v2.12.2
+      aqua_version: v2.13.0
       prune: true
     secrets:
       # yamllint disable rule:line-length
