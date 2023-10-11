@@ -1,0 +1,58 @@
+---
+name: Test setup
+
+on:
+  push:
+    paths:
+      - scripts/setup.sh
+      - scripts/install_aqua.sh
+      - .aqua/aqua.yml
+      - .aqua/imports/*.yml
+      - .aqua/aqua-checksums.json
+      - .github/workflows/test_setup.yml
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+            raw.githubusercontent.com:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+
+      - name: Download aqua
+        run: bash scripts/download_aqua.sh
+
+      - name: Add aqua to the environment variable `PATH`
+        run: |
+          # References
+          # https://aquaproj.github.io/docs/tutorial/#install-aqua
+          echo "$HOME/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
+
+      - name: Run setup
+        run: bash scripts/setup.sh
