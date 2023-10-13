@@ -1,0 +1,26 @@
+---
+name: Run task runner
+description: Run task runner (Lettfook).
+
+inputs:
+  task_name:
+    required: true
+    description: Task name.
+  task_runner_args:
+    required: false
+    description: The arguments for Lefthook.
+
+runs:
+  using: composite
+  steps:
+    - name: Install task runner
+      uses: ./.github/actions/install_tools_with_aqua
+
+    - name: Run task runner
+      run: |
+        lefthook run \
+          "$TASK_NAME" "$TASK_RUNNER_ARGS"
+      env:
+        TASK_NAME: ${{ inputs.task_name }}
+        TASK_RUNNER_ARGS: ${{ inputs.task_runner_args }}
+      shell: bash
