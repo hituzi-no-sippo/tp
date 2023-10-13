@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-10-15T10:54:20+09:00
-:revremark: add description for `extends` key
+:revnumber: v0.8.0
+:revdate: 2023-10-15T11:10:58+09:00
+:revremark: how to skip commands by tag
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -34,6 +34,67 @@ The local configuration will overwrite configuration file (`.lefthook.yml`).
 .References
 * link:{lefthook_url}/blob/{commit_SHA}/docs/usage.md#local-config[
   Local config - Lefthook Usage^]
+
+=== Skip commands by tag
+
+You can skip commands by tags to used `exclude_tags` key.
+
+.Skip commands tagged `time-consuming` and `network`
+====
+.`.lefthook-local.yml`
+[source, YAML]
+----
+pre-commit:
+  exclude_tags:
+    - time-consuming
+    - network
+----
+
+.Run `git commit`
+[source, console]
+----
+$ git commit
+╭──────────────────────────────────────╮
+│ 🥊 lefthook v1.5.2  hook: pre-commit │
+╰──────────────────────────────────────╯
+┃  detect-executable-script-without-shebang ❯
+
+// Omit for unrelated commands.
+
+│  test-setup (skip) tags
+// Omit for unrelated commands.
+summary: (done in 0.20 seconds)
+----
+
+.Run `lefthook run`
+[source, console]
+----
+$ lefthook run pre-commit --commands test-setup
+╭──────────────────────────────────────╮
+│ 🥊 lefthook v1.5.2  hook: pre-commit │
+╰──────────────────────────────────────╯
+│  test-setup (skip) tags
+
+  ────────────────────────────────────
+summary: (skip) empty
+----
+
+.This is not `pre-commit` and will not be skipped
+[source, console]
+----
+$ lefthook run test-dev-env --commands test-setup
+╭────────────────────────────────────────╮
+│ 🥊 lefthook v1.5.2  hook: test-dev-env │
+╰────────────────────────────────────────╯
+┃  test-setup ❯
+
+===> Installing aqua v2.9.0 for bootstrapping...
+// Omit for unrelated commands.
+
+summary: (done in 15.98 seconds)
+✔️  test-setup
+----
+====
 
 // end::main[]
 
