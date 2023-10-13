@@ -1,0 +1,48 @@
+---
+pre-commit: &test
+  commands:
+    test-task-name:
+      run: |
+        message="$(lefthook install --aggressive)"
+        has_success="$?"
+
+        if [ "$has_success" != 0 ] || [ "$message" = '' ]; then
+          echo "Failed Lefthook"
+
+          exit 1
+        fi
+
+        cd "$(git rev-parse --show-toplevel)" || return 1
+
+        tempdir="$(mktemp --directory --tmpdir=./ --suffix=test_task_name)"
+
+        trap 'rm --recursive --force $tempdir' EXIT
+
+        echo "$message" |
+          grep --basic-regexp --only-matching --regexp='(.*)' |
+          tr --delete '(),' |
+          tr ' ' "\n" |
+          sort --ignore-case --dictionary-order > "$tempdir/result"
+
+        sort --ignore-case --dictionary-order \
+          < .lefthook/task_runner/lefthook/test_task_name/expected.txt \
+          > "$tempdir/expected"
+
+        diff --color=always \
+          "$tempdir/result" \
+          "$tempdir/expected"
+      glob: "\
+        {\
+        .lefthook.yml,\
+        .lefthook/*.yml,\
+        .lefthook/task_runner/lefthook/test_task_name/expected.txt\
+        }"
+      tags:
+        - task-runner
+        - test
+
+pre-push: *test
+
+pre-merge-commit: *test
+
+test-dev-env: *test
