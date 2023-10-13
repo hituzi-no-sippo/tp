@@ -1,9 +1,9 @@
 = Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-09-09T09:22:08+09:00
-:revremark: add Lefthook overview
+:revnumber: v0.5.0
+:revdate: 2023-10-14T16:38:50+09:00
+:revremark: add Git hook to test task name
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -46,6 +46,13 @@ This is because to command with `sed` will change code and document.
 * Remove BOM for UTF-8
 ====
 
+:hardbreaks-option:
+
+test-dev-env::
+  test such as setup, task runner.
+
+:!hardbreaks-option:
+
 .How to list task name
 [NOTE]
 ====
@@ -64,6 +71,16 @@ include::./ci/git_hook_manager/usage.adoc[tag=main, leveloffset=+1]
 == Configuration
 
 include::./ci/git_hook_manager/configuration.adoc[tag=main, leveloffset=+1]
+
+:display_file_path: ../_partials/display_file_in_details_disclosure_element.adoc
+== Git Hook
+
+=== Test task name
+
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook/task_runner/lefthook/test_task_name/config.yml
+:file_lang: YAML
+include::{display_file_path}[]
 
 // end::main[]
 
