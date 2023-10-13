@@ -1,0 +1,37 @@
+---
+pre-commit: &test
+  commands:
+    test-setup:
+      run: |
+        cd "$(git rev-parse --show-toplevel)" || exit 1
+
+        tempdir="$(mktemp --directory --tmpdir=./ --suffix=test_setup)"
+
+        export AQUA_ROOT_DIR="$tempdir"
+
+        trap 'rm --recursive --force $AQUA_ROOT_DIR' EXIT
+
+        bash scripts/download_aqua.sh &&
+          export PATH="$AQUA_ROOT_DIR/bin:$PATH" &&
+          bash scripts/setup.sh
+      glob: "\
+        {\
+        scripts/setup.sh,\
+        scripts/install_aqua.sh,\
+        .aqua/aqua.yml,\
+        .aqua/imports/*.yml,\
+        .aqua/aqua-checksums.json,\
+        .lefthook.yml,\
+        .lefthook/*.yml\
+        }"
+      tags:
+        - setup
+        - test
+        - network
+        - time-consuming
+
+pre-push: *test
+
+pre-merge-commit: *test
+
+test-dev-env: *test
