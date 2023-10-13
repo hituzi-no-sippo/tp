@@ -1,0 +1,6 @@
+pre-commit
+pre-merge-commit
+pre-push
+lint
+lint-fix
+test-dev-env
