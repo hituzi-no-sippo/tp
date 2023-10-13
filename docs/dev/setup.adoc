@@ -1,9 +1,9 @@
 = Setup
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-08-18T16:53:05+09:00
-:revremark: add repository setting on GitHub for Renovate
+:revnumber: v0.11.0
+:revdate: 2023-10-14T16:28:37+09:00
+:revremark: add Git hook to test
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -86,6 +86,15 @@ include::./security/github_actions.adoc[tag=security_alert_notification, levelof
 include::./deps/renovate/index.adoc[tag=repository_setting_on_github, leveloffset=+1]
 
 :display_file_path: ./_partials/display_file_in_details_disclosure_element.adoc
+== Git Hook
+
+=== Test
+
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook/setup/test.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
 :workflow_directory: .github/workflows
 == GitHub Actions
 
