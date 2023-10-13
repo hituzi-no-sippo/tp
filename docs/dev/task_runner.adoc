@@ -1,9 +1,9 @@
 = Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-10-14T16:38:50+09:00
-:revremark: add Git hook to test task name
+:revnumber: v0.6.0
+:revdate: 2023-10-14T16:40:28+09:00
+:revremark: add GitHub Actions workflow to test task name
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -79,6 +79,16 @@ include::./ci/git_hook_manager/configuration.adoc[tag=main, leveloffset=+1]
 
 :block_title_name: Configuration file
 :file_path_from_root: .lefthook/task_runner/lefthook/test_task_name/config.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+:workflow_directory: .github/workflows
+== GitHub Actions
+
+=== Test task name
+
+:block_title_name: Workflow
+:file_path_from_root: {workflow_directory}/test_task_name.yml
 :file_lang: YAML
 include::{display_file_path}[]
 
