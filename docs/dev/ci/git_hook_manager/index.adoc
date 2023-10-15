@@ -1,9 +1,9 @@
 = Git hook manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-09-06T17:18:27+09:00
-:revremark: add usage
+:revnumber: v0.6.0
+:revdate: 2023-09-02T07:55:02+09:00
+:revremark: add configuration
 :copyright: Copyright (C) 2023 {author}
 
 :lefthook_url: https://github.com/evilmartians/lefthook
@@ -16,6 +16,10 @@ For example, JSON formatter hook is in the JSON document.
 == Usage
 
 include::./usage.adoc[tag=main, leveloffset=+1]
+
+== Configuration
+
+include::./configuration.adoc[tag=main, leveloffset=+1]
 
 '''
 
