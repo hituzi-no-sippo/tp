@@ -1,9 +1,27 @@
+= Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-10-15T10:30:14+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-10-15T10:51:19+09:00
+:revremark: Add supported formats and configuration file path
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+.Supported formats
+* YAML
+* JSON
+* TOML
+
+.Configuration file
+* `.lefthook.<yml|json|toml>`
+* `lefthook.<yml|json|toml>`
+
+// end::main[]
+
+// end::body[]
 
 '''
 
