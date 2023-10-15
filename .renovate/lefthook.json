@@ -1,0 +1,16 @@
+{
+  "customManagers": [
+    {
+      "customType": "regex",
+      "depNameTemplate": "evilmartians/lefthook",
+      "datasourceTemplate": "github-releases",
+      "depTypeTemplate": "development",
+      "fileMatch": [
+        "^\\.?lefthook\\.yml$"
+      ],
+      "matchStrings": [
+        "min_version: (?<currentValue>[\\d\\.]+)\\n"
+      ]
+    }
+  ]
+}
