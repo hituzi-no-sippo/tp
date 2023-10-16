@@ -8,8 +8,9 @@
         "^.?lefthook.yml$"
       ],
       "matchStrings": [
-        "(?<currentValue>1\\.5\\.1)\\n"
-      ]
+        "min_version: (?<currentValue>[\\d\\.]+)"
+      ],
+      "autoReplaceStringTemplate": "min_version: {{{newValue}}}"
     }
   ]
 }
