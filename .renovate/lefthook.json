@@ -12,5 +12,15 @@
       ],
       "extractVersionTemplate": "^v(?<version>[\\d\\.]+)$"
     }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "evilmartians/lefthook"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    }
   ]
 }
