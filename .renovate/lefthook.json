@@ -20,7 +20,11 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "git-hook",
+        "task-runner"
+      ]
     }
   ]
 }
