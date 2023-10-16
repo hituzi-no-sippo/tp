@@ -10,7 +10,7 @@
       "matchStrings": [
         "min_version: (?<currentValue>[\\d\\.]+)"
       ],
-      "autoReplaceStringTemplate": "min_version: {{{newValue}}}"
+      "extractVersionTemplate": "^v(?<version>[\\d\\.]+)$"
     }
   ]
 }
