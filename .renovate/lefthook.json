@@ -24,7 +24,8 @@
       "addLabels": [
         "git-hook",
         "task-runner"
-      ]
+      ],
+      "semanticCommitScope": "git-hook"
     }
   ]
 }
