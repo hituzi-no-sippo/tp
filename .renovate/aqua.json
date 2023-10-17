@@ -1,6 +1,7 @@
 {
   "extends": [
-    "github>aquaproj/aqua-renovate-config#1.11.0"
+    "github>aquaproj/aqua-renovate-config#1.11.0",
+    "github>aquaproj/aqua-renovate-config:file#1.11.0(^\\.aqua/imports/.*\\.yml$)"
   ],
   "packageRules": [
     {
@@ -14,6 +15,15 @@
         "aqua"
       ],
       "semanticCommitScope": "aqua"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/aqua.yml",
+        ".aqua/imports/*.yml"
+      ],
+      "minor": {
+        "automerge": true
+      }
     },
     {
       "matchPackageNames": [
