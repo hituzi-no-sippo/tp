@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-10-21T08:08:47+09:00
-:revremark: add description of `prHourlyLimit`
+:revnumber: v0.13.0
+:revdate: 2023-10-21T08:38:05+09:00
+:revremark: add description of Dependency Dashboard
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -87,6 +87,18 @@ Max number of PRs created per hour (`prHourlyLimit`)::
 
 See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
 ====
+
+.Commit message
+* link:{config_options_url}/#semanticcommits[
+  Enable Semantic Commit prefixes^]
+* link:{config_options_url}/#semanticcommitscope[
+  Commit scope is `build`^]
+
+.Dependency dashboard
+* link:{config_options_url}/#dependencyDashboard[
+  Create a "Dependency Dashboard" issue^]
+* link:{config_options_url}/#dependencydashboardautoclose[
+  Close "Dependency Dashboard" issue if there are no more updates^]
 
 // end::main[]
 
