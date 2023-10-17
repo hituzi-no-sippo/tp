@@ -8,6 +8,30 @@
         "gem"
       ],
       "semanticCommitScope": "gem"
+    },
+    {
+      "matchPackageNames": [
+        "bundler"
+      ],
+      "addLabels": [
+        "bundler"
+      ],
+      "semanticCommitScope": "bundler"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "packageNameTemplate": "bundler",
+      "depNameTemplate": "bundler",
+      "datasourceTemplate": "rubygems",
+      "depTypeTemplate": "development",
+      "fileMatch": [
+        "^Gemfile\\.lock$"
+      ],
+      "matchStrings": [
+        "BUNDLED WITH\\n\\s+(?<currentValue>[\\w+\\.\\-]*)"
+      ]
     }
   ]
 }
