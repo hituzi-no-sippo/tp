@@ -4,6 +4,7 @@
     "group:monorepos",
     "group:recommended",
     "workarounds:all",
+    "local>hituzi-no-sippo/template-repository//.renovate/aqua",
     "local>hituzi-no-sippo/template-repository//.renovate/github_actions"
   ],
   "configMigration": true,
