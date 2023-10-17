@@ -26,5 +26,20 @@
   "schedule": "at any time",
   "automergeSchedule": "at any time",
   "prConcurrentLimit": 10,
-  "prHourlyLimit": 2
+  "prHourlyLimit": 2,
+  "semanticCommits": "enabled",
+  "semanticCommitType": "build",
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardLabels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ],
+  "labels": [
+    "renovate",
+    "dependencies",
+    "automated"
+  ]
 }
