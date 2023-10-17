@@ -1,6 +1,7 @@
 {
   "extends": [
-    "github>aquaproj/aqua-renovate-config#1.11.0"
+    "github>aquaproj/aqua-renovate-config#1.11.0",
+    "github>aquaproj/aqua-renovate-config:file#1.11.0(^\\.aqua/imports/.*\\.yml$)"
   ],
   "packageRules": [
     {
@@ -23,6 +24,15 @@
         "before 4am on Monday"
       ],
       "minimumReleaseAge": "at any time"
+    },
+    {
+      "matchFileNames": [
+        ".aqua/aqua.yml",
+        ".aqua/imports/*.yml"
+      ],
+      "minor": {
+        "automerge": true
+      }
     },
     {
       "matchPackageNames": [
