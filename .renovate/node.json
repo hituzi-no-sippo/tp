@@ -6,7 +6,8 @@
       ],
       "addLabels": [
         "node-version"
-      ]
+      ],
+      "semanticCommitScope": "node-version"
     }
   ]
 }
