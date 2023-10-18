@@ -1,0 +1,15 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchDepNames": [
+        "npm"
+      ],
+      "addLabels": [
+        "npm-version"
+      ]
+    }
+  ]
+}
