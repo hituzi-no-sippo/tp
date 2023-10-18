@@ -1,0 +1,13 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "node-version"
+      ],
+      "addLabels": [
+        "node-version"
+      ],
+      "semanticCommitScope": "node-version"
+    }
+  ]
+}
