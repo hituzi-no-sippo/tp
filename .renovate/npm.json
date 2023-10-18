@@ -1,0 +1,16 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchDepNames": [
+        "npm"
+      ],
+      "addLabels": [
+        "npm-version"
+      ],
+      "semanticCommitScope": "npm-version"
+    }
+  ]
+}
