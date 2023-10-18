@@ -13,7 +13,8 @@ pre-commit:
         Wrong::   foo-bar.txt
       # yamllint enable rule:line-length
       exclude: "\
-        ^\\.aqua/aqua-checksums\\.json$\
+        ^\\.aqua/aqua-checksums\\.json$|\
+        package-lock\\.json$\
         "
       tags:
         - file-paths
