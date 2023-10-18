@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "nodejs/node"
+      ],
+      "addLabels": [
+        "node-version"
+      ]
+    }
+  ]
+}
