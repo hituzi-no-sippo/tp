@@ -1,0 +1,13 @@
+{
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "nodejs/node"
+      ],
+      "addLabels": [
+        "node-version"
+      ],
+      "semanticCommitScope": "node-version"
+    }
+  ]
+}
