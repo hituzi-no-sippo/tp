@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "addLabels": [
+        "npm-version"
+      ]
+    }
+  ]
+}
