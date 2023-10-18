@@ -9,7 +9,8 @@
       ],
       "addLabels": [
         "npm-version"
-      ]
+      ],
+      "semanticCommitScope": "npm-version"
     }
   ]
 }
