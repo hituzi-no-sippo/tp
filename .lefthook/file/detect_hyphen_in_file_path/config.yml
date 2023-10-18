@@ -15,7 +15,9 @@ pre-commit:
         For Example
         Correct:: file_name.txt
         Wrong::   file-name.txt
-      exclude: ".aqua/aqua-checksums.json"
+      exclude: "\
+        aqua/aqua-checksums.json|\
+        package-lock.json"
       tags:
         - file
 
