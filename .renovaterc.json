@@ -7,6 +7,7 @@
     "local>hituzi-no-sippo/tp//.renovate/aqua",
     "local>hituzi-no-sippo/tp//.renovate/lefthook",
     "local>hituzi-no-sippo/tp//.renovate/node",
+    "local>hituzi-no-sippo/tp//.renovate/npm",
     "local>hituzi-no-sippo/tp//.renovate/ruby",
     "local>hituzi-no-sippo/tp//.renovate/gem",
     "local>hituzi-no-sippo/tp//.renovate/github_actions"
