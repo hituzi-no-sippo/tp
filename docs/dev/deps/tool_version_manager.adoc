@@ -1,9 +1,9 @@
 = Tool version manager
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2023-10-20T19:47:31+09:00
-:revremark: add Renovate configuration
+:revnumber: v0.9.0
+:revdate: 2023-10-20T19:58:00+09:00
+:revremark: add schedule for aqua registry on Renovate
 :copyright: Copyright (C) 2023 {author}
 
 :aqua_url: https://aquaproj.github.io
@@ -52,6 +52,15 @@ include::{display_file_path}[]
 :github_url: https://github.com
 :aqua_renovate_config_link: link:{github_url}/aquaproj/aqua-renovate-config[aqua-renovate-config^]
 Use {aqua_renovate_config_link} to support aqua on Renovate.
+
+:aqua_registry_link: link:{github_url}/aquaproj/aqua-registry[aqua-registry^]
+.schedule
+{aqua_registry_link}::
+  `before 4am on Monday` +
+   There is no need to update every day, as there are updates for unused tools.
+   If `schedule` is `at any time`, it is noisy.
+   Renovate will create branch for update the version of aqua registry
+   almost every day.
 
 '''
 
