@@ -9,13 +9,17 @@
   "automergeStrategy": "merge-commit",
   "automergeType": "pr",
   "platformAutomerge": true,
+  "internalChecksFilter": "strict",
+  "minimumReleaseAge": "1 week",
   "major": {
-    "automerge": false
+    "automerge": false,
+    "minimumReleaseAge": "2 weeks"
   },
   "minor": {
     "automerge": false
   },
   "patch": {
-    "automerge": true
+    "automerge": true,
+    "minimumReleaseAge": "3 days"
   }
 }
