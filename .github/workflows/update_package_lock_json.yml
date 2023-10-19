@@ -1,0 +1,40 @@
+---
+name: Update `package-lock.json`
+
+on:
+  push:
+    paths:
+      - package.json
+      - package-lock.json
+      - .github/workflows/update_package_lock_json.yml
+    branches-ignore:
+      - renovate/*
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  main:
+    name: Update `package-lock.json`
+    # yamllint disable-line rule:line-length
+    uses: hituzi-no-sippo/update-package-lock-json-workflow/.github/workflows/update_package_lock_json.yml@3b851970ef57e422ea8aa3becae3d8b53f4b3a22
+    with:
+      commit_message: "build(npm): update `package-lock.json`"
+      timeout_minutes: 5
+    secrets:
+      # The GitHub App of `secrets.APP_ID` and `secrets.APP_PRIVATE_KEY`
+      # requires content `Read and write` permission.
+      # This is because this workflow create commit to update aqua checksum.
+      # References
+      # https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      # https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      # https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+      github_app_id: ${{ secrets.APP_ID }}
+      github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
