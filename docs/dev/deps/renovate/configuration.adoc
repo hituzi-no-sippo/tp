@@ -1,9 +1,9 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-13T13:40:13+09:00
-:revremark: display configuration file
+:revnumber: v0.5.0
+:revdate: 2023-09-30T14:06:30+09:00
+:revremark: add description of automerge
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -15,6 +15,12 @@
 :file_path_from_root: .renovaterc.json
 :file_lang: JSON
 include::{display_file_path}[]
+
+.Automerge
+[horizontal]
+Major(`1.0.0` => `2.0.0`):: disable
+Minor(`1.0.0` => `1.1.0`):: disable
+Patch(`1.0.0` => `1.0.1`):: Enable
 
 // end::main[]
 
