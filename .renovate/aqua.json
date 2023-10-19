@@ -1,5 +1,15 @@
 {
   "extends": [
     "github>aquaproj/aqua-renovate-config#1.11.0"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "aquaproj/aqua-registry"
+      ],
+      "schedule": [
+        "before 4am on Monday"
+      ]
+    }
   ]
 }
