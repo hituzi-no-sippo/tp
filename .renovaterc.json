@@ -24,5 +24,6 @@
   },
   "rangeStrategy": "auto",
   "schedule": "at any time",
-  "automergeSchedule": "at any time"
+  "automergeSchedule": "at any time",
+  "prConcurrentLimit": 10
 }
