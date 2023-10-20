@@ -22,5 +22,6 @@
     "automerge": true,
     "minimumReleaseAge": "3 days"
   },
-  "rangeStrategy": "auto"
+  "rangeStrategy": "auto",
+  "schedule": "at any time"
 }
