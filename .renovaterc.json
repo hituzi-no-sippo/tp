@@ -23,5 +23,6 @@
     "minimumReleaseAge": "3 days"
   },
   "rangeStrategy": "auto",
-  "schedule": "at any time"
+  "schedule": "at any time",
+  "automergeSchedule": "at any time"
 }
