@@ -26,7 +26,8 @@
       ],
       "addLabels": [
         "renovate-version"
-      ]
+      ],
+      "semanticCommitScope": "renovate-version"
     }
   ]
 }
