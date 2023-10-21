@@ -16,6 +16,17 @@
         "renovate-config"
       ],
       "semanticCommitScope": "renovate"
+    },
+    {
+      "matchDatasources": [
+        "npm"
+      ],
+      "matchPackageNames": [
+        "renovate"
+      ],
+      "addLabels": [
+        "renovate-version"
+      ]
     }
   ]
 }
