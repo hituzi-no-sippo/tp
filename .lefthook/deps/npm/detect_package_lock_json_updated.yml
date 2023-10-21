@@ -1,0 +1,22 @@
+---
+pre-commit: &detect
+  commands:
+    detect-package-lock-json-updated:
+      run: |
+        npm install
+
+        git diff --exit-code --quiet package.json package-lock.json
+      glob: "{package.json,package-lock.json}"
+      fail_text: |
+        `package.json` or `package-lock.json`
+        were modified with `bundle install`
+      tags:
+        - deps
+        - npm
+        - network
+
+pre-push: *detect
+
+pre-merge-commit: *detect
+
+deps: *detect
