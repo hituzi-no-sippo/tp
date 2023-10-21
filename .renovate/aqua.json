@@ -9,7 +9,8 @@
       ],
       "schedule": [
         "before 4am on Monday"
-      ]
+      ],
+      "minimumReleaseAge": "at any time"
     }
   ]
 }
