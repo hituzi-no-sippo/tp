@@ -1,9 +1,9 @@
 = npm
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-11-07T07:25:49+09:00
-:revremark: add Git hook to detect `package-lock.json` updated
+:revnumber: v0.6.0
+:revdate: 2023-11-07T07:26:32+09:00
+:revremark: add GitHub Actions workflow to update `package-lock.json`
 :copyright: Copyright (C) 2023 {author}
 
 .Version
@@ -22,6 +22,15 @@ include::{display_file_path}[]
 
 :block_title_name: Configuration file
 :file_path_from_root: {deps_hook_directory_path}/npm/detect_package_lock_json_updated.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Update `package-lock.json`
+
+:block_title_name: Workflow
+:file_path_from_root: .github/workflows/update_package_lock_json.yml
 :file_lang: YAML
 include::{display_file_path}[]
 
