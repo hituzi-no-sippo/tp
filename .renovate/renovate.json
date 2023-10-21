@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePrefixes": [
+        "renovate"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    }
+  ]
+}
