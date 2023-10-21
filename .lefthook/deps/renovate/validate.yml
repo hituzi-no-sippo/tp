@@ -1,0 +1,31 @@
+---
+pre-commit: &validate
+  commands:
+    validate-renovate-configuration:
+      run: |
+        npm exec --package=renovate -- \
+          renovate-config-validator \
+          --strict \
+          .renovaterc.json \
+          .renovate/*.json
+      glob: "\
+        {\
+        .renovaterc.json,\
+        .renovate/*.json,\
+        package-lock.json\
+        }"
+      tags:
+        - deps
+        - renovate
+        - network
+        - time-consuming
+
+pre-push: *validate
+
+pre-merge-commit: *validate
+
+lint: *validate
+
+lint-fix: *validate
+
+deps: *validate
