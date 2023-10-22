@@ -147,6 +147,63 @@ jobs:
       #
       ##################################################
       #
+      # Does not create one workflow for each file extension.
+      #
+      # The reason is,
+      # which the more workflows, the more costs of the following:
+      # 1. Maintenance
+      #    This is Primary reason.
+      #
+      #    If you create workflows for each file extension,
+      #    you would set `on.push.<paths|paths-ignore>` to each workflow.
+      #    This `<paths|paths-ignore>` has a maintenance cost.
+      #    Incorrect `<paths|paths-ignore>` results in some files,
+      #    which are not done lint.
+      #
+      #    Because this workflow does not set `<paths|paths-ignore>`,
+      #    no matter which file you change, this workflow lint all git managed files.
+      #
+      #    hituzi no sippo (maintainer) wants to lint only changed files.
+      #    When changes files to lint, uses Lefthook.
+      #    Does not use GitHub Actions workflow.
+      #    However, as noted in the previous note,
+      #    Lefthook v1.5.5 cannot changes files to lint.
+      #    `--files` option of Lefthook CLI v1.5.5
+      #    does not overwrite `{all_files}` file template.
+      #
+      # 2. Execution Time
+      #    The more workflows, the more jobs.
+      #    A job increases execution time
+      #    because jobs do the following process:
+      #
+      #    - Provisions a new VM
+      #      https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#using-a-github-hosted-runner
+      #    - Checkout a repository
+      #    - Setting `step-security/harden-runner`
+      #
+      #    hituzi no sippo surmises which, is in many cases,
+      #    if the extensions of changed files is of more than one type,
+      #    execution time of this workflow is shortest
+      #    than the workflows separated by file extension.
+      #    The reason for this surmises is,
+      #    which hituzi no sippo thinks that
+      #    execution time is `(ET3 * NW) > ETCNR`.
+      #    - `ET3`
+      #      Execution time for above 3 process,
+      #      such as 'provisions a new VM'.
+      #    - `NW`
+      #      Number of GitHub Actions Workflows.
+      #    - `ETCNR`
+      #      Execution time for commands not related to the changed file.
+      #      For example is command to lint Ruby files
+      #      if you change JavaScript files.
+      #
+      # As written in the beginning, does not separate this workflow.
+      # This is because the advantages of separating workflow
+      # are smaller than the disadvantages (maintenance and time costs).
+      #
+      ##################################################
+      #
       # Does not use `lint-fix` task of Lefthook.
       #
       # If you would like to fix codes,
@@ -233,6 +290,18 @@ jobs:
         uses: ./.github/actions/run_task_runner
         with:
           task_name: lint
+        env:
+          # This workflow skips following commands:
+          # - A command takes a long time or uses network processing
+          # - You only need to run the command
+          #   if specific files have been modified
+          #   Examples of the files are `package.json` or `.renovaterc.json`.
+          #   If you want to look the specific files,
+          #   look at the configuration file of the command to be skipped.
+          #   The configuration files are under `<GIT_ROOT>/.leftook` directory.
+          # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook_exclude
+          LEFTHOOK_EXCLUDE: |
+            validate-renovate-configuration
 
       # Runs the detect commands which, is not in `lint` task of Lefthook.
       # `lint` task of Lefthook does not contain this commands to be run.
