@@ -1,0 +1,21 @@
+---
+name: Install Node packages
+description: Install Node packages with npm
+
+runs:
+  using: composite
+  steps:
+    - name: Install Node
+      # yamllint disable-line rule:line-length
+      uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
+      with:
+        check-latest: false
+        # Decide node version fron `engines.node` in `package.json`
+        # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#node-version-file
+        # v3.8.1 Commit on 2023-09-15
+        node-version-file: package.json
+        cache: npm
+
+    - name: Install Node packages with npm
+      run: npm ci
+      shell: bash
