@@ -9,6 +9,8 @@ on:
       - .aqua/aqua.yml
       - .aqua/imports/*.yml
       - .aqua/aqua-checksums.json
+      - package.json
+      - package-lock.json
       - .lefthook.yml
       - .lefthook/**/*.yml
       - .github/workflows/test_setup.yml
@@ -41,14 +43,18 @@ jobs:
         uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
         with:
           disable-sudo: true
+          # Because to run `npm install` on `bash scripts/setup.sh`.
+          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
             github.com:443
+            nodejs.org:443
             objects.githubusercontent.com:443
             rekor.sigstore.dev:443
             tuf-repo-cdn.sigstore.dev:443
             raw.githubusercontent.com:443
+            registry.npmjs.org:443
 
       - name: Checkout
         # yamllint disable-line rule:line-length
@@ -62,6 +68,17 @@ jobs:
           # References
           # https://aquaproj.github.io/docs/tutorial/#install-aqua
           echo "$HOME/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
+
+      - name: Install Node
+        # yamllint disable-line rule:line-length
+        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
+        with:
+          check-latest: false
+          # Decide node version fron `engines.node` in `package.json`
+          # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#node-version-file
+          # v3.8.1 Commit on 2023-09-15
+          node-version-file: package.json
+          cache: ""
 
       - name: Run setup
         run: bash scripts/setup.sh
