@@ -1,0 +1,56 @@
+---
+dry-run-renovate:
+  commands:
+    dry-run-renovate-form-local-configuration:
+      run: |
+        cd "$(git rev-parse --show-toplevel)" || return 1
+
+        # Requires to set GitHub token to
+        # the environment variable `RENOVATE_TOKEN`
+        # https://github.com/renovatebot/renovate/blob/98dccfffbc7aa7020fff0bcdac8bb291c9cf16d5/lib/modules/platform/github/readme.md#authentication
+        # v37.23.0 Commit on 2023-10-17
+        # `RENOVATE_CONFIG_FILE`: The file path of Renovate configuration
+        # https://docs.renovatebot.com/getting-started/running/#global-config
+        # `--force-cli=true`: CLI options override existing settings.
+        # https://docs.renovatebot.com/self-hosted-configuration/#dryrun
+        # `--dry-run=full`: Prevent creation branches and PRs.
+        # https://docs.renovatebot.com/self-hosted-configuration/#dryrun
+        # `--require-config=ignored`: Does not read configuration file
+        #                             from the remote repository.
+        # https://docs.renovatebot.com/self-hosted-configuration/#dryrun
+        # References
+        # - https://zenn.dev/cybozu_ept/articles/compare-renovate-dry-run
+        # CAUTION
+        # - Read presets from the remote repository instead of the local file.
+        #   In the case of
+        #   `local>hituzi-no-sippo/template-repository//.renovate/aqua`,
+        #   read `<GIT_ROOT>/.renovate/aqua.json`
+        #   from the remote repository instead of local.
+        # - Cannot detect autoreplace failure, such as the following log.
+        #   Renovate job log
+        #   > DEBUG: Could not extract .lefthook.yml (manager=regex)
+        #            after autoreplace.
+        #   >        Did the autoreplace make the file unparseable?
+        #            (branch="renovate/evilmartians-lefthook-1.x")
+        #   > WARN:  Error updating branch: update failure
+        #            (branch="renovate/evilmartians-lefthook-1.x")
+        #   The cause of the failure was unset `extractVersionTemplate`.
+        LOG_LEVEL=debug \
+        RENOVATE_CONFIG_FILE=.renovaterc.json \
+        npm exec --package=renovate -- \
+          renovate \
+          --force-cli=true \
+          --dry-run=full \
+          --require-config=ignored \
+          hituzi-no-sippo/template-repository
+      glob: "\
+        {\
+        .renovaterc.json,\
+        .renovate/*.json,\
+        package-lock.json\
+        }"
+      tags:
+        - deps
+        - renovate
+        - network
+        - time-consuming
