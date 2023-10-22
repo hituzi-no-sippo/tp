@@ -23,6 +23,17 @@ install_tools_with_version_manager() {
 
   info 'Successful lazy install. Download a tool when that is executed.'
 }
+install_node_packages_with_npm() {
+  info 'Will install Node packages with npm.'
+
+  if ! npm install; then
+    err 'Failed Node packages install with npm.'
+
+    return 1
+  fi
+
+  info 'Successful install Node packages.'
+}
 setup_git_hook() {
   info "Setup Git hooks"
 
@@ -40,6 +51,7 @@ main() {
 
   funcs=(
     'install_tools_with_version_manager'
+    'install_node_packages_with_npm'
     'setup_git_hook'
   )
 
