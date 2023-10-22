@@ -9,7 +9,8 @@
       },
       "addLabels": [
         "rubocop-version"
-      ]
+      ],
+      "semanticCommitScope": "rubocop-version"
     },
     {
       "matchPackagePrefixes": [
