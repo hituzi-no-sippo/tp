@@ -1,19 +1,17 @@
 ---
-name: Test setup
+name: Validate Renovate configuration
 
 on:
   push:
     paths:
-      - scripts/setup.sh
-      - scripts/install_aqua.sh
-      - .aqua/aqua.yml
-      - .aqua/imports/*.yml
-      - .aqua/aqua-checksums.json
-      - package.json
+      - .renovaterc.json
+      - .renovate/*.json
       - package-lock.json
-      - .lefthook.yml
-      - .lefthook/**/*.yml
-      - .github/workflows/test_setup.yml
+      - .lefthook/deps/renovate/validate.yml
+      - .aqua/imports/git_hook.yml
+      - .github/workflows/validate_renovate_configuration.yml
+      - .github/actions/install_tools_with_aqua/action.yml
+      - .github/actions/install_node_packages/action.yml
 
 permissions: {}
 
@@ -26,8 +24,8 @@ defaults:
     shell: bash
 
 jobs:
-  test:
-    name: test
+  validate:
+    name: Validate
     runs-on: ubuntu-22.04
     permissions: {}
     timeout-minutes: 5
@@ -43,8 +41,6 @@ jobs:
         uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
         with:
           disable-sudo: true
-          # Because to run `npm install` on `bash scripts/setup.sh`.
-          disable-file-monitoring: true
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
@@ -60,25 +56,13 @@ jobs:
         # yamllint disable-line rule:line-length
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Download aqua
-        run: bash scripts/download_aqua.sh
+      - name: Install task runner
+        uses: ./.github/actions/install_tools_with_aqua
 
-      - name: Add aqua to the environment variable `PATH`
+      - name: Install Node packages
+        uses: ./.github/actions/install_node_packages
+
+      - name: Validate Renovate configuration
         run: |
-          # References
-          # https://aquaproj.github.io/docs/tutorial/#install-aqua
-          echo "$HOME/.local/share/aquaproj-aqua/bin" >> "$GITHUB_PATH"
-
-      - name: Install Node
-        # yamllint disable-line rule:line-length
-        uses: actions/setup-node@5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d # v3.8.1
-        with:
-          check-latest: false
-          # Decide node version fron `engines.node` in `package.json`
-          # https://github.com/actions/setup-node/blob/5e21ff4d9bc1a8cf6de233a3057d20ec6b3fb69d/docs/advanced-usage.md#node-version-file
-          # v3.8.1 Commit on 2023-09-15
-          node-version-file: package.json
-          cache: ""
-
-      - name: Run setup
-        run: bash scripts/setup.sh
+          lefthook run deps \
+            --commands validate-renovate-config
