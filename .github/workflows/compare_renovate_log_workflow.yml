@@ -1,0 +1,24 @@
+---
+name: Compare Renovate logs
+
+on:
+  push:
+    paths:
+      - .renovaterc.json
+      - package-lock.json
+      - .github/workflows/compare_renovate_log_workflow.yml
+    branches-ignore:
+      - main
+
+  # yamllint disable-line rule:empty-values
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  main:
+    name: Compare Renovate logs
+    # yamllint disable-line rule:line-length
+    uses: korosuke613/compare-renovate-logs-workflow/.github/workflows/compare-renovate-logs.yaml@c236208736541562de91ee92cd31e65301875628 # v1.0.2
+    with:
+      renovate-config-file: .renovaterc.json
