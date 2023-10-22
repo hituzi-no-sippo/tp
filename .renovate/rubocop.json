@@ -6,7 +6,10 @@
       ],
       "minor": {
         "automerge": true
-      }
+      },
+      "addLabels": [
+        "rubocop-version"
+      ]
     },
     {
       "matchPackagePrefixes": [
