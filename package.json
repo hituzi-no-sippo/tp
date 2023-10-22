@@ -1,4 +1,7 @@
 {
+  "devDependencies": {
+    "renovate": "37.35.0"
+  },
   "engines": {
     "node": "20.9.0",
     "npm": "10.2.1"
