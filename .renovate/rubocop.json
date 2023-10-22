@@ -1,0 +1,12 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePrefixes": [
+        "rubocop"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    }
+  ]
+}
