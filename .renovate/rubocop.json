@@ -1,0 +1,22 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePrefixes": [
+        "rubocop"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    },
+    {
+      "matchPackagePrefixes": [
+        "rubocop"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "RuboCop (non-major)"
+    }
+  ]
+}
