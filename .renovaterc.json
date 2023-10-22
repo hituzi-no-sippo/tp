@@ -10,6 +10,7 @@
     "local>hituzi-no-sippo/template-repository//.renovate/npm",
     "local>hituzi-no-sippo/template-repository//.renovate/ruby",
     "local>hituzi-no-sippo/template-repository//.renovate/gem",
+    "local>hituzi-no-sippo/template-repository//.renovate/rubocop",
     "local>hituzi-no-sippo/template-repository//.renovate/github_actions",
     "local>hituzi-no-sippo/template-repository//.renovate/renovate"
   ],
