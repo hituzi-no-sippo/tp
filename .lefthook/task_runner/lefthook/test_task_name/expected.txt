@@ -5,3 +5,4 @@ lint
 lint-fix
 test-dev-env
 deps
+dry-run-renovate
