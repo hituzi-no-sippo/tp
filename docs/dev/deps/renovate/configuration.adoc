@@ -1,9 +1,10 @@
 = Configuration
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.13.0
-:revdate: 2023-10-21T08:38:05+09:00
-:revremark: add description of Dependency Dashboard
+:revnumber: v0.14.0
+:revdate: 2023-10-22T16:40:25+09:00
+:revremark: add dry run
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -99,6 +100,25 @@ See link:{renovate_doc_url}/noise-reduction/[Noisy Reduction^]
   Create a "Dependency Dashboard" issue^]
 * link:{config_options_url}/#dependencydashboardautoclose[
   Close "Dependency Dashboard" issue if there are no more updates^]
+
+=== Test Renovate Configuration
+
+.Dry run Renovate
+[source, bash]
+----
+# Set GitHub token to the environment variable `RENOVATE_TOKEN`.
+export RENOVATE_TOKEN="$(gh auth token)"
+lefthook run dry-run-renovate
+----
+
+:block_title_name: Configuration file
+:file_path_from_root: .lefthook/deps/renovate/dry_run.yml
+:file_lang: YAML
+include::{display_file_path}[]
+
+.References
+* link:https://zenn.dev/cybozu_ept/articles/compare-renovate-dry-run[
+  Renovate config の変更が想定通りか確認する 〜真の dry-run を求めて〜^]
 
 // end::main[]
 
