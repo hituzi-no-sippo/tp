@@ -1,0 +1,168 @@
+---
+name: Lint fix Ruby files with RuboCop
+description: |
+  This composite action format or lint Ruby files with RuboCop.
+  If RuboCop modifies files, commit modified files.
+  This action runs RuboCop via task runner (Lefthook).
+  This action is fail if task runner result is non-zero.
+
+  - Tagret repository
+    The repository running this action
+  - Tagret branch
+    The branch running this action
+
+  Requires a GitHub token.
+
+  The GitHub token used depends on whether `inputs.github_token` is inputted.
+
+  - Input `inputs.github_token`
+    Use `inputs.github_token`.
+
+    ```YAML
+    - uses: ./.github/actions/lint_fix_ruby_files_with_rubocop/action
+      with:
+        task_runner_command: fix-docs
+        commit_message: "docs: fix docs"
+        github_token: <GITHUB_TOKEN>
+    ```
+
+  - Does not input `inputs.github_token`
+    Generate a GitHub token with GitHub app.
+    Use `inputs.github_app_id` and `inputs.github_app_private_key`.
+
+    ```YAML
+    - uses: ./.github/actions/lint_fix_files_with_task_runner
+      with:
+        task_runner_command: fix-docs
+        commit_message: "docs: fix docs"
+        github_app_id: <GITHUB_APP_ID>
+        github_app_private_key: <GITHUB_APP_PRIVATE_KEY>
+    ```
+
+  GitHub token generated with GitHub app triggers GitHub Actions workflow.
+  `secrets.GITHUB_TOKEN` does not trigger GitHub Actions workflow.
+  https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
+  > When you use the repository's `GITHUB_TOKEN` to perform tasks,
+  > events triggered by the `GITHUB_TOKEN`,
+  > with the exception of `workflow_dispatch` and `repository_dispatch`,
+  > will not create a new workflow run.
+
+inputs:
+  format:
+    required: true
+    description: |
+      The action to run is either format or lint.
+  github_token:
+    required: false
+    description: |
+      GitHub token is used on commit.
+
+      If use `secrets.GITHUB_TOKEN`, add `write` access of contents.
+      This is because to commit need to `write` access of contents.
+
+      ```YAML
+      jobs:
+        commit:
+          name: commit
+          permissions:
+            contents: write
+      ```
+
+      - https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
+      - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+      - https://docs.github.com/en/rest/overview/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents
+  github_app_id:
+    required: false
+    description: |
+      GitHub app ID to generate GitHub token.
+      Generated GitHub token is used on commit.
+
+      The GitHub app of `secrets.github_app_id` and
+      `secrets.github_app_private_key`
+      requires `Read and write` access of contents.
+      This is because this workflow create commit.
+
+      References
+      - https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      - https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      - https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+  github_app_private_key:
+    required: false
+    description: |
+      GitHub app private key to generate GitHub token.
+      Generated GitHub token is used on commit.
+
+runs:
+  using: composite
+  steps:
+    - name: Decide sub command of task runner
+      id: decide_sub_command
+      run: |
+        sub_command=$("$FORMAT" && echo 'format' || echo 'lint')
+
+        echo "sub_command=$sub_command" >> "$GITHUB_OUTPUT"
+      env:
+        FORMAT: ${{ inputs.format }}
+      shell: bash
+
+    # Job Results and Automatic Cache Creation
+    # Successfully: Automatically create a cache
+    # Failed:       Does not create a cache
+    # https://github.com/actions/cache/tree/704facf57e6136b1bc63b828d79edcd491f0ee84#using-a-combination-of-restore-and-save-actions
+    # v3.3.2 Commit on 2023-09-08
+    - name: Cache RuboCop
+      uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
+      with:
+        path: ~/.cache/rubocop_cache
+        # RuBoCop Cache Validity
+        # https://docs.rubocop.org/rubocop/usage/caching.html#cache-validity
+        # > Later runs will be able to retrieve this information and
+        # > present the stored information instead of inspecting
+        # > the file again.
+        # > This will be done if the cache for the file is still valid,
+        # > which it is if there are no changes in:
+        # > - the contents of the inspected file
+        # > - RuboCop configuration for the file
+        # > - the options given to rubocop, with some exceptions that
+        # >   have no bearing on which offenses are reported
+        # > - the Ruby version used to invoke rubocop
+        # > - version of the rubocop program
+        # >   (or to be precise, anything in the source code
+        # >    of the invoked rubocop program)
+        # - RuboCop configuration for the file
+        #   - .rubocop.yml
+        #   - .rubocop_todo.yml
+        # - the options given to rubocop, with some exceptions that
+        #   have no bearing on which offenses are reported
+        #   - ${{ steps.decide_sub_command.outputs.sub_command }}
+        #     Decide CLI option to filter COPS (`--only`, `--except`)
+        #     by ${{ steps.decide_sub_command.outputs.sub_command }}
+        # - the Ruby version used to invoke rubocop
+        #   - .ruby-version
+        # - version of the rubocop program
+        #   - Gemfile.lock
+        # yamllint disable-line rule:line-length
+        key: ${{ env.CACHE_PREFIX }}${{ hashFiles('.rubocop.yml', '.rubocop_todo.yml', '.ruby-version', 'Gemfile.lock') }}
+        restore-keys: ${{ env.CACHE_PREFIX }}
+      env:
+        CACHE_PREFIX: |
+          rubocop-cache-${{ steps.decide_sub_command.outputs.sub_command }}-
+        # Changes used RuboCop cache
+        # https://docs.rubocop.org/rubocop/usage/caching.html#cache-path
+        # yamllint disable-line rule:line-length
+        RUBOCOP_CACHE_ROOT: ~/.cache/rubocop_cache_{{ steps.decide_sub_command.outputs.sub_command }}
+
+    - name: Lint fix Ruby files with Rubocop
+      uses: ./.github/actions/lint_fix_files_with_task_runner
+      with:
+        task_runner_command: |
+          ${{ steps.decide_sub_command.outputs.sub_command }}-ruby
+        commit_message: "\
+          ${{\
+          inputs.format &&\
+          'style(ruby): fix format Ruby files with RuboCop' ||\
+          'refactor(ruby): refactor Ruby files with RuboCop'\
+          }}"
+        github_token: ${{ inputs.github_token }}
+        github_app_id: ${{ inputs.github_app_id }}
+        github_app_private_key: ${{ inputs.github_app_private_key }}
