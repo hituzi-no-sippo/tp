@@ -1,0 +1,103 @@
+---
+name: Lint fix Ruby with RuboCop
+
+on:
+  push:
+    paths:
+      # https://github.com/rubocop/rubocop/blob/9141fe50b7c3a884852f5e49688a3f5dd3d2f7e0/config/default.yml#L11-L64
+      # v1.57.1 Commit on 2023-10-13
+      - "**.rb"
+      - "**.arb"
+      - "**.axlsx"
+      - "**.builder"
+      - "**.fcgi"
+      - "**.gemfile"
+      - "**.gemspec"
+      - "**.god"
+      - "**.jb"
+      - "**.jbuilder"
+      - "**.mspec"
+      - "**.opal"
+      - "**.pluginspec"
+      - "**.podspec"
+      - "**.rabl"
+      - "**.rake"
+      - "**.rbuild"
+      - "**.rbw"
+      - "**.rbx"
+      - "**.ru"
+      - "**.ruby"
+      - "**.schema"
+      - "**.spec"
+      - "**.thor"
+      - "**.watchr"
+      - "**irbrc"
+      - "**pryrc"
+      - "**.simplecov"
+      - "**buildfile"
+      - "**Appraisals"
+      - "**Berksfile"
+      - "**Brewfile"
+      - "**Buildfile"
+      - "**Capfile"
+      - "**Cheffile"
+      - "**Dangerfile"
+      - "**Deliverfile"
+      - "**Fastfile"
+      - "**Fastfile"
+      - "**Gemfile"
+      - "**Guardfile"
+      - "**Jarfile"
+      - "**Mavenfile"
+      - "**Podfile"
+      - "**Puppetfile"
+      - "**Rakefile"
+      - "**rakefile"
+      - "**Schemafile"
+      - "**Snapfile"
+      - "**Steepfile"
+      - "**Thorfile"
+      - "**Vagabondfile"
+      - "**Vagrantfile"
+      - .github/workflows/lint_fix_ruby_with_rubocop.yml
+      - .github/workflows/workflow_to_lint_fix_ruby_with_rubocop.yml
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  format:
+    permissions: {}
+    uses: ./.github/workflows/workflow_to_lint_fix_ruby_with_rubocop.yml
+    with:
+      format: true
+    secrets:
+      # The GitHub App of `secrets.APP_ID` and `secrets.APP_PRIVATE_KEY`
+      # requires content `Read and write` permission.
+      # This is because this workflow create commit to update aqua checksum.
+      # References
+      # https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      # https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      # https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+      github_app_id: ${{ secrets.APP_ID }}
+      github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+  create_timeline:
+    name: Create timeline of this GitHub Actions workflow
+    if: ${{ always() }}
+    needs:
+      - format
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@baa62e018ca5504e2d617502ce1eacf9171e757a # v2.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
