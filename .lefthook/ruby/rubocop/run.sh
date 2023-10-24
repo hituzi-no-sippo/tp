@@ -15,6 +15,8 @@ display_usage() {
 decide_filter_cops_option() {
   if [ "$1" = 'format' ]; then
     printf 'only'
+  elif [ "$1" = 'lint' ]; then
+    printf 'except'
   else
     return 1
   fi
