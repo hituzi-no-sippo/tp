@@ -74,6 +74,15 @@ pre-commit:
         - style
         - format
 
+    lint-ruby: &fix-lint-from-stage-files
+      <<: *fix-format-from-stage-files
+      env: &fix-lint-env
+        SUB_COMMAND: "lint"
+        RUBOCOP_FIX_OPTION: "--autocorrect"
+      tags: &lint-tags
+        - ruby
+        - lint
+
 pre-push:
   commands:
     format-ruby: &format-from-push-files
@@ -87,11 +96,22 @@ pre-push:
         SUB_COMMAND: "format"
         RUBOCOP_FIX_OPTION: ""
 
+    lint-ruby:
+      <<: *format-from-push-files
+      env: &lint-env
+        SUB_COMMAND: "lint"
+        RUBOCOP_FIX_OPTION: ""
+      tags: *lint-tags
+
 pre-merge-commit:
   commands:
     format-ruby:
       <<: *fix-format-from-stage-files
       env: *format-env
+
+    lint-ruby:
+      <<: *fix-lint-from-stage-files
+      env: *lint-env
 
 lint:
   commands:
@@ -103,8 +123,17 @@ lint:
            "$RUBOCOP_FIX_OPTION" \
           {all_files}
 
+    lint-ruby: &lint-from-all-files
+      <<: *format-from-all-files
+      env: *lint-env
+      tags: *lint-tags
+
 lint-fix:
   commands:
     format-ruby:
       <<: *format-from-all-files
       env: *fix-format-env
+
+    lint-ruby:
+      <<: *lint-from-all-files
+      env: *fix-lint-env
