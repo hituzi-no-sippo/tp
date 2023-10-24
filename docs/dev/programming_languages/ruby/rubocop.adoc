@@ -1,9 +1,9 @@
 = RuboCop
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-11-07T16:01:57+09:00
-:revremark: add Git hook to format and lint Ruby files
+:revnumber: v0.7.0
+:revdate: 2023-11-07T16:04:21+09:00
+:revremark: add GitHub Actions workflow to lint fix Ruby
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -25,6 +25,25 @@ Format and lint files such as Ruby and Gemfile.
 :display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
 include::{display_file_path}[]
 
+== GitHub Actions
+
+=== Lint fix Ruby with RuboCop
+
+.If this job fix files
+* Commits fixed files
+* The job is failed
+
+:block_title_name: Workflow
+:workflow_file_path: lint_fix_ruby_with_rubocop.yml
+
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
+include::{display_file_path}[]
+
+:block_title_name: Composite action to lint fix Ruby files with RuboCop
+:file_path_from_root: .github/actions/lint_fix_ruby_files_with_rubocop/action.yml
+:file_lang: YAML
+include::{display_file_path}[]
 
 // end::main[]
 
