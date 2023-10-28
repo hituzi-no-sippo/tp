@@ -75,7 +75,7 @@ defaults:
 
 jobs:
   lint_fix:
-    name: Lint fix Ruby files with RuboCop
+    name: Lint fix Ruby with RuboCop
     runs-on: ubuntu-22.04
     permissions: {}
     timeout-minutes: 5
@@ -120,6 +120,14 @@ jobs:
         uses: ./.github/actions/lint_fix_ruby_files_with_rubocop
         with:
           format: true
+          github_token: ${{ secrets.gh_token }}
+          github_app_id: ${{ secrets.github_app_id }}
+          github_app_private_key: ${{ secrets.github_app_private_key }}
+
+      - name: Lint fix with RuboCop
+        uses: ./.github/actions/lint_fix_ruby_files_with_rubocop
+        with:
+          format: false
           github_token: ${{ secrets.gh_token }}
           github_app_id: ${{ secrets.github_app_id }}
           github_app_private_key: ${{ secrets.github_app_private_key }}
