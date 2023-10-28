@@ -89,11 +89,32 @@ jobs:
       github_app_id: ${{ secrets.APP_ID }}
       github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
+  lint:
+    # If does not run this lint job after successful format job,
+    # the lint job may commit unformatted code.
+    needs:
+      - format
+    permissions: {}
+    uses: ./.github/workflows/workflow_to_lint_fix_ruby_with_rubocop.yml
+    with:
+      should_format: false
+    secrets:
+      # The GitHub App of `secrets.APP_ID` and `secrets.APP_PRIVATE_KEY`
+      # requires content `Read and write` permission.
+      # This is because this workflow create commit to update aqua checksum.
+      # References
+      # https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      # https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      # https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+      github_app_id: ${{ secrets.APP_ID }}
+      github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     if: ${{ always() }}
     needs:
       - format
+      - lint
     runs-on: ubuntu-22.04
     steps:
       - name: Create timeline of this GitHub Actions workflow
