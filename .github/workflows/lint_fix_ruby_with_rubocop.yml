@@ -89,11 +89,25 @@ jobs:
       github_app_id: ${{ secrets.APP_ID }}
       github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
+  lint:
+    # If does not run this lint job after successful format job,
+    # the lint job may commit unformatted code.
+    needs:
+      - format
+    permissions: {}
+    uses: ./.github/workflows/workflow_to_lint_fix_ruby_with_rubocop.yml
+    with:
+      should_format: false
+    secrets:
+      github_app_id: ${{ secrets.APP_ID }}
+      github_app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     if: ${{ always() }}
     needs:
       - format
+      - lint
     runs-on: ubuntu-22.04
     steps:
       - name: Create timeline of this GitHub Actions workflow
