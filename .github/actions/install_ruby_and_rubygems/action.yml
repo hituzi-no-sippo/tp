@@ -1,0 +1,25 @@
+---
+name: Install Ruby and RubyGems with Bundler
+description: Install Ruby and RubyGems with Bundler
+
+runs:
+  using: composite
+  steps:
+    - name: Install Ruby and RubyGems with Bundler
+      uses: ruby/setup-ruby@432702e864cadc1b56247e31aa341be5be3e129a # v1.168.0
+      with:
+        # This action read Ruby version to be used from `.ruby-version` file.
+        # https://github.com/ruby/setup-ruby/blob/432702e864cadc1b56247e31aa341be5be3e129a/action.yml#L8-L9
+        # v1.168.0 Commit on 2024-01-19
+        ruby-version: .ruby-version
+        # - Gemfile.lock
+        #   > the version of the BUNDLED WITH section
+        #   > from the Gemfile.lock if it exists.
+        #   > If the file or section does not exist then the same as 'default'.
+        # - default
+        #   > if the Ruby ships with Bundler 2.2+ as a default gem,
+        #   > that version is used, otherwise the same as 'latest'.
+        # https://github.com/ruby/setup-ruby/blob/432702e864cadc1b56247e31aa341be5be3e129a/action.yml#L18-L22
+        # v1.168.0 Commit on 2024-01-19
+        bundler: Gemfile.lock
+        bundler-cache: true
