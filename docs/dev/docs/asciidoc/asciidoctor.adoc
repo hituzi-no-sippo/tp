@@ -1,0 +1,65 @@
+= Asciidoctor
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.6.0
+:revdate: 2024-01-19T14:21:39+09:00
+:revremark: add a Git hook to lint AsciiDoc
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:asciidoctor_domain: asciidoctor.org
+:asciidoctor_link: https://{asciidoctor_domain}[Asciidoctor^]
+{asciidoctor_link} is text processor for parsing AsciiDoc.
+
+== Git hooks
+:hook_directory_path_for_asciidoc: .lefthook/asciidoc
+
+=== Lint
+
+Lint AsciiDoc.
+
+Return nonzero if exist a error or a warning in AsciiDoc.
+
+:file_path_from_root: {hook_directory_path_for_asciidoc}/lint/config.yml
+:block_title_name: Configuration file
+:file_lang: YAML
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
+
+:file_path_from_root: {hook_directory_path_for_asciidoc}/lint/main.sh
+:block_title_name: Shell
+:file_lang: sh
+include::{display_file_path}[]
+
+=== Utilities shell script
+
+:file_path_from_root: {hook_directory_path_for_asciidoc}/utils.sh
+:block_title_name: Script
+:file_lang: sh
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Lint AsciiDoc
+
+:block_title_name: Workflow
+:workflow_file_path: lint.yml
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
