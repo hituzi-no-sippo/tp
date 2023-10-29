@@ -1,0 +1,139 @@
+---
+pre-commit:
+  commands:
+    format-ruby: &fix-format-from-stage-files
+      run: |
+        sh .lefthook/ruby/rubocop/run.sh \
+           "$SUB_COMMAND" \
+           "$RUBOCOP_FIX_OPTION" \
+           {staged_files}
+      env: &fix-format-env
+        SUB_COMMAND: "format"
+        RUBOCOP_FIX_OPTION: "--autocorrect"
+      # https://github.com/rubocop/rubocop/blob/9141fe50b7c3a884852f5e49688a3f5dd3d2f7e0/config/default.yml#L11-L64
+      # v1.57.1 Commit on 2023-10-13
+      glob: "\
+        {\
+        *.rb,\
+        *.arb,\
+        *.axlsx,\
+        *.builder,\
+        *.fcgi,\
+        *.gemfile,\
+        *.gemspec,\
+        *.god,\
+        *.jb,\
+        *.jbuilder,\
+        *.mspec,\
+        *.opal,\
+        *.pluginspec,\
+        *.podspec,\
+        *.rabl,\
+        *.rake,\
+        *.rbuild,\
+        *.rbw,\
+        *.rbx,\
+        *.ru,\
+        *.ruby,\
+        *.schema,\
+        *.spec,\
+        *.thor,\
+        *.watchr,\
+        .irbrc,\
+        .pryrc,\
+        .simplecov,\
+        buildfile,\
+        Appraisals,\
+        Berksfile,\
+        Brewfile,\
+        Buildfile,\
+        Capfile,\
+        Cheffile,\
+        Dangerfile,\
+        Deliverfile,\
+        Fastfile,\
+        *Fastfile,\
+        Gemfile,\
+        Guardfile,\
+        Jarfile,\
+        Mavenfile,\
+        Podfile,\
+        Puppetfile,\
+        Rakefile,\
+        rakefile,\
+        Schemafile,\
+        Snapfile,\
+        Steepfile,\
+        Thorfile,\
+        Vagabondfile,\
+        Vagrantfile\
+        }"
+      stage_fixed: true
+      tags: &format-tags
+        - ruby
+        - style
+        - format
+
+    lint-ruby: &fix-lint-from-stage-files
+      <<: *fix-format-from-stage-files
+      env: &fix-lint-env
+        SUB_COMMAND: "lint"
+        RUBOCOP_FIX_OPTION: "--autocorrect"
+      tags: &lint-tags
+        - ruby
+        - lint
+
+pre-push:
+  commands:
+    format-ruby: &format-from-push-files
+      <<: *fix-format-from-stage-files
+      run: |
+        sh .lefthook/ruby/rubocop/run.sh \
+           "$SUB_COMMAND" \
+           "$RUBOCOP_FIX_OPTION" \
+           {push_files}
+      env: &format-env
+        SUB_COMMAND: "format"
+        RUBOCOP_FIX_OPTION: ""
+
+    lint-ruby:
+      <<: *format-from-push-files
+      env: &lint-env
+        SUB_COMMAND: "lint"
+        RUBOCOP_FIX_OPTION: ""
+      tags: *lint-tags
+
+pre-merge-commit:
+  commands:
+    format-ruby:
+      <<: *fix-format-from-stage-files
+      env: *format-env
+
+    lint-ruby:
+      <<: *fix-lint-from-stage-files
+      env: *lint-env
+
+lint:
+  commands:
+    format-ruby: &format-from-all-files
+      <<: *format-from-push-files
+      run: |
+        sh .lefthook/ruby/rubocop/run.sh \
+           "$SUB_COMMAND" \
+           "$RUBOCOP_FIX_OPTION" \
+          {all_files}
+
+    lint-ruby: &lint-from-all-files
+      <<: *format-from-all-files
+      env: *lint-env
+      tags: *lint-tags
+
+lint-fix:
+  commands:
+    format-ruby:
+      <<: *format-from-all-files
+      env: *fix-format-env
+
+    lint-ruby:
+      <<: *lint-from-all-files
+      env: *fix-lint-env
