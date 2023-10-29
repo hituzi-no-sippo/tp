@@ -1,0 +1,27 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePrefixes": [
+        "asciidoctor"
+      ],
+      "minor": {
+        "automerge": true
+      },
+      "addLabels": [
+        "asciidoc",
+        "asciidoctor-version"
+      ],
+      "semanticCommitScope": "asciidoctor-version"
+    },
+    {
+      "matchPackagePrefixes": [
+        "asciidoctor"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "Asciidoctor (non-major)"
+    }
+  ]
+}
