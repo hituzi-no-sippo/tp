@@ -6,6 +6,10 @@
 /lefthook-local.toml
 /.lefthook-local.toml
 
+# HTML for documents
+/README.html
+/docs/**/*.html
+
 ###----------------###
 ###  TopTal: node  ###
 ###----------------###
