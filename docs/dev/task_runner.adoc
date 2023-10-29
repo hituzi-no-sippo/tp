@@ -1,9 +1,9 @@
 = Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-09-09T09:28:51+09:00
-:revremark: add deps to task list
+:revnumber: v0.8.0
+:revdate: 2023-12-19T21:46:15+09:00
+:revremark: add task which convert AsciiDoc to HTML with CSS to task list
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -47,6 +47,9 @@ This is because to command with `sed` will change code and document.
 ====
 
 :hardbreaks-option:
+
+`convert-asciidoc-to-html-with-css`::
+  Convert AsciiDoc to HTML with CSS.
 
 `test-dev-env`::
   test such as setup, task runner.
