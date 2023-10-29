@@ -1,9 +1,9 @@
 = Asciidoctor
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-12-19T16:13:16+09:00
-:revremark: add Git hook to lint AsciiDoc
+:revnumber: v0.7.0
+:revdate: 2023-12-19T16:34:39+09:00
+:revremark: add a GitHub Actions worfklow to lint AsciiDoc
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -39,6 +39,16 @@ include::{display_file_path}[]
 :file_path_from_root: {hook_directory_path_for_asciidoc}/utils.sh
 :block_title_name: Script
 :file_lang: sh
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Lint AsciiDoc
+
+:block_title_name: Workflow
+:workflow_file_path: lint_asciidoc_with_asciidoctor.yml
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
 include::{display_file_path}[]
 
 // end::main[]
