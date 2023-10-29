@@ -1,0 +1,22 @@
+{
+  "packageRules": [
+    {
+      "matchPackagePrefixes": [
+        "asciidoctor"
+      ],
+      "minor": {
+        "automerge": true
+      }
+    },
+    {
+      "matchPackagePrefixes": [
+        "asciidoctor"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "groupName": "Asciidoctor (non-major)"
+    }
+  ]
+}
