@@ -3,6 +3,7 @@ pre-merge-commit
 pre-push
 lint
 lint-fix
+convert-asciidoc-to-html-with-css
 test-dev-env
 deps
 dry-run-renovate
