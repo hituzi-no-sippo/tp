@@ -1,0 +1,19 @@
+---
+convert-asciidoc-to-html:
+  commands:
+    convert-asciidoc-to-html:
+      run: |
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../../scripts/asciidoc.sh
+        . "$(git rev-parse --show-toplevel)/.lefthook/scripts/asciidoc.sh"
+
+        # Because to use `include` directive,
+        # set all AsciiDoc files to target files.
+        convert_asciidoc_to_html {all_files}
+      glob: "*.adoc"
+      exclude: "docs/_partials"
+      tags:
+        - asciidoc
+        - html

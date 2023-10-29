@@ -1,0 +1,46 @@
+---
+name: Lint AsciiDoc with Asciidoctor
+
+on:
+  push:
+    paths:
+      - "**.adoc"
+      - .github/workflows/lint_asciidoc_with_asciidoctor.yml
+      - .github/actions/install_ruby_gems/action.yml
+      - .github/actions/run_task_runner/action.yml
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  lint:
+    name: Lint AsciiDoc with Asciidoctor
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Create timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@fbbb6f71498dbdb3af862970133257532cd48054 # v1.0.0
+        with:
+          github-token: ${{ github.token }}
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Asciidoctor
+        uses: ./.github/actions/install_ruby_gems
+
+      - name: Lint AsciiDoc with task runner
+        uses: ./.github/actions/run_task_runner
+        with:
+          task_name: lint
+          task_runner_args: --commands=lint-asciidoc
