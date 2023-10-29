@@ -1,0 +1,30 @@
+= Documents
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-12-18T16:38:57+09:00
+:revremark: add Asciidoctor as AsciiDoc Processor
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== AsciiDoc
+
+:asciidoctor_link: link:https://asciidoctor.org[Asciidoctor^]
+[horizontal]
+Processor:: {asciidoctor_link}
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
