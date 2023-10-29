@@ -1,0 +1,133 @@
+---
+name: Lint fix Ruby with RuboCop
+
+on:
+  push:
+    paths:
+      # https://github.com/rubocop/rubocop/blob/9141fe50b7c3a884852f5e49688a3f5dd3d2f7e0/config/default.yml#L11-L64
+      # v1.57.1 Commit on 2023-10-13
+      - "**.rb"
+      - "**.arb"
+      - "**.axlsx"
+      - "**.builder"
+      - "**.fcgi"
+      - "**.gemfile"
+      - "**.gemspec"
+      - "**.god"
+      - "**.jb"
+      - "**.jbuilder"
+      - "**.mspec"
+      - "**.opal"
+      - "**.pluginspec"
+      - "**.podspec"
+      - "**.rabl"
+      - "**.rake"
+      - "**.rbuild"
+      - "**.rbw"
+      - "**.rbx"
+      - "**.ru"
+      - "**.ruby"
+      - "**.schema"
+      - "**.spec"
+      - "**.thor"
+      - "**.watchr"
+      - "**irbrc"
+      - "**pryrc"
+      - "**.simplecov"
+      - "**buildfile"
+      - "**Appraisals"
+      - "**Berksfile"
+      - "**Brewfile"
+      - "**Buildfile"
+      - "**Capfile"
+      - "**Cheffile"
+      - "**Dangerfile"
+      - "**Deliverfile"
+      - "**Fastfile"
+      - "**Fastfile"
+      - "**Gemfile"
+      - "**Guardfile"
+      - "**Jarfile"
+      - "**Mavenfile"
+      - "**Podfile"
+      - "**Puppetfile"
+      - "**Rakefile"
+      - "**rakefile"
+      - "**Schemafile"
+      - "**Snapfile"
+      - "**Steepfile"
+      - "**Thorfile"
+      - "**Vagabondfile"
+      - "**Vagrantfile"
+      - .github/workflows/lint_fix_ruby_with_rubocop.yml
+      - .github/actions/lint_fix_ruby_files_with_rubocop/action.yml
+      - .github/actions/lint_fix_files_with_task_runner/action.yml
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  lint_fix:
+    name: Lint fix Ruby with RuboCop
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Create a timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@baa62e018ca5504e2d617502ce1eacf9171e757a # v2.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          disable-sudo: true
+          # Because to run `rubocop --autocorrect`
+          # This workflow is allowed to modify files.
+          # Allows to modify files on this workflow.
+          # Harden Runner does not alert if this workflow modify files.
+          # This
+          # because this workflow modifies Ruby files with RuboCop.
+          disable-file-monitoring: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            index.rubygems.org:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+            raw.githubusercontent.com:443
+            rubygems.org:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Ruby gems
+        uses: ./.github/actions/install_ruby_gems
+
+      - name: Format fix with RuboCop
+        uses: ./.github/actions/lint_fix_ruby_files_with_rubocop
+        with:
+          format: true
+          github_token: ${{ secrets.gh_token }}
+          github_app_id: ${{ secrets.github_app_id }}
+          github_app_private_key: ${{ secrets.github_app_private_key }}
+
+      - name: Lint fix with RuboCop
+        uses: ./.github/actions/lint_fix_ruby_files_with_rubocop
+        with:
+          format: false
+          github_token: ${{ secrets.gh_token }}
+          github_app_id: ${{ secrets.github_app_id }}
+          github_app_private_key: ${{ secrets.github_app_private_key }}

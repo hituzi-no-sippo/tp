@@ -1,0 +1,132 @@
+---
+name: Lint fix files with task runner
+description: |
+  Lint & fix files with task runner (Lefthook).
+  Also will failed job if task runner fix files.
+  Commit if exists changed files.
+
+  - Tagret Repository
+    The repository running the action
+  - Tagret branch
+    The branch running the action
+
+  Requires a GitHub token.
+
+  The GitHub token used depends on whether `inputs.github_token` is inputted.
+
+  - Input `inputs.github_token`
+    Use `inputs.github_token`.
+
+    ```YAML
+    - uses: ./.github/actions/lint_fix_files_with_task_runner
+      with:
+        task_runner_command: fix-docs
+        commit_message: "docs: fix docs"
+        github_token: <GITHUB_TOKEN>
+    ```
+
+  - Does not input `inputs.github_token`
+    Generate a GitHub token with GitHub app.
+    Use `inputs.github_app_id` and `inputs.github_app_private_key`.
+
+    ```YAML
+    - uses: ./.github/actions/lint_fix_files_with_task_runner
+      with:
+        task_runner_command: fix-docs
+        commit_message: "docs: fix docs"
+        github_app_id: <GITHUB_APP_ID>
+        github_app_private_key: <GITHUB_APP_PRIVATE_KEY>
+    ```
+
+  GitHub token generated with GitHub app triggers GitHub Actions workflow.
+  `secrets.GITHUB_TOKEN` does not trigger GitHub Actions workflow.
+  https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow
+  > When you use the repository's `GITHUB_TOKEN` to perform tasks,
+  > events triggered by the `GITHUB_TOKEN`,
+  > with the exception of `workflow_dispatch` and `repository_dispatch`,
+  > will not create a new workflow run.
+
+inputs:
+  task_runner_command:
+    required: true
+    description: |
+      Command name for Task runner (Lefthook).
+  commit_message:
+    required: true
+    description: |
+      Message of commit.
+  github_token:
+    required: false
+    description: |
+      GitHub token is used on commit.
+
+      If use `secrets.GITHUB_TOKEN`, add `write` access of contents.
+      This is because to commit need to `write` access of contents.
+
+      ```YAML
+      jobs:
+        commit:
+          name: commit
+          permissions:
+            contents: write
+      ```
+
+      - https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
+      - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#permissions
+      - https://docs.github.com/en/rest/overview/permissions-required-for-github-apps?apiVersion=2022-11-28#repository-permissions-for-contents
+  github_app_id:
+    required: false
+    description: |
+      GitHub app ID to generate GitHub token.
+      Generated GitHub token is used on commit.
+
+      The GitHub app of `secrets.github_app_id` and
+      `secrets.github_app_private_key`
+      requires `Read and write` access of contents.
+      This is because this workflow create commit.
+
+      References
+      - https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/choosing-permissions-for-a-github-app
+      - https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/managing-private-keys-for-github-apps#generating-private-keys
+      - https://docs.github.com/en/rest/overview/permissions-required-for-github-apps#repository-permissions-for-contents
+  github_app_private_key:
+    required: false
+    description: |
+      GitHub app private key to generate GitHub token.
+      Generated GitHub token is used on commit.
+
+runs:
+  using: composite
+  steps:
+    - name: Lint fix files with task runner
+      uses: ./.github/actions/run_task_runner
+      with:
+        task_name: lint-fix
+        task_runner_args: --commands=${{ inputs.task_runner_command }}
+
+    - name: Exists changed files?
+      if: ${{ always() }}
+      id: exists_changed_files
+      run: |
+        if git diff --exit-code --quiet; then
+          echo '::notice ::Task runner did not fix files.'
+
+          exit 0
+        fi
+
+        echo '::warning ::Task runner fixed files.'
+
+        echo 'exists=true' >> "$GITHUB_OUTPUT"
+
+        exit 1
+      shell: bash
+
+    - name: Commit changed files
+      # yamllint disable-line rule:line-length
+      uses: hituzi-no-sippo/commit-changed-files-with-ghcp-action@1b988555abcc0b8591a9b489ed074bf5ac67eaa6
+      if: ${{ always() && steps.exists_changed_files.outputs.exists }}
+      with:
+        commit_message: ${{ inputs.commit_message }}
+        github_token: ${{ inputs.github_token }}
+        github_app_id: ${{ inputs.github_app_id }}
+        github_app_private_key: ${{ inputs.github_app_private_key }}
