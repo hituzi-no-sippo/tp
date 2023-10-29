@@ -10,7 +10,8 @@
       "addLabels": [
         "asciidoc",
         "asciidoctor-version"
-      ]
+      ],
+      "semanticCommitScope": "asciidoctor-version"
     },
     {
       "matchPackagePrefixes": [
