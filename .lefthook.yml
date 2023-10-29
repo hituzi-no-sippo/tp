@@ -17,6 +17,7 @@ extends:
   - .lefthook/file_paths/detect_conflicts_in_not_case_sensitive/config.yml
   - .lefthook/shebang/detect_executable_script_without_shebang/config.yml
   - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
+  - .lefthook/ruby/rubocop/config.yml
   - .lefthook/deps/tool_version_manager/update_aqua_checksum.yml
   - .lefthook/deps/npm/detect_package_lock_json_updated.yml
   - .lefthook/deps/bundler/detect_gemfile_lock_updated.yml
