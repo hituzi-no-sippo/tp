@@ -1,0 +1,24 @@
+= AsciiDoc
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-12-19T13:09:00+09:00
+:revremark: add Asciidoctor
+:copyright: Copyright (C) 2023 {author}
+
+== Overview
+
+include::./overview.adoc[tag=main, leveloffset+=1]
+
+== Asciidoctor
+
+include::./asciidoctor.adoc[tag=main, leveloffset+=1]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
