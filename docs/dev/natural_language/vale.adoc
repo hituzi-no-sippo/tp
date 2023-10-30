@@ -1,0 +1,45 @@
+= Vale
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-07-15T19:44:07+09:00
+:revremark: add overview
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:vale_url: https://vale.sh
+
+// tag::main[]
+
+:vale_topic_docs_url: {vale_url}/docs/topics
+
+Use link:{vale_url}[Vale^].
+
+.Supported formats
+* HTML
+* Markdown
+* AsciiDoc
+* Org
+* Source Code Comments
+** C
+** JavaScript
+** Python
+** Go
+** CSS
+
+For more supported file types,
+read link:{vale_topic_docs_url}/scoping[Vale Scoping^].
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
