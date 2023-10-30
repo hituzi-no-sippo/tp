@@ -39,3 +39,6 @@ failed
 reject
 Therefore
 only
+yamllint
+American
+validate
