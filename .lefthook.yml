@@ -26,5 +26,6 @@ extends:
   - .lefthook/deps/bundler/detect_gemfile_lock_updated.yml
   - .lefthook/deps/renovate/validate.yml
   - .lefthook/deps/renovate/dry_run.yml
+  - .lefthook/commit_message/lint_natural_language.yml
   - .lefthook/setup/test.yml
   - .lefthook/task_runner/lefthook/test_task_name/config.yml
