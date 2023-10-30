@@ -6,6 +6,11 @@
 /lefthook-local.toml
 /.lefthook-local.toml
 
+# For Vale
+# https://vale.sh/docs/topics/packages/#packages-and-vcs
+/.vale/styles/*
+!/.vale/styles/Vocab/
+
 ###----------------###
 ###  TopTal: node  ###
 ###----------------###
