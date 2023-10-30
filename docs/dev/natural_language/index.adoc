@@ -1,9 +1,16 @@
+= Natural Language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-07-15T19:02:34+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-07-15T19:44:07+09:00
+:revremark: add linter
+:toc:
 :copyright: Copyright (C) 2023 {author}
+
+== Lint
+
+:vale_url: https://vale.sh
+include::./vale.adoc[tag=main, leveloffset=+1]
 
 '''
 
