@@ -1,9 +1,9 @@
 = Tool list
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.9.0
-:revdate: 2023-12-18T16:38:50+09:00
-:revremark: add documents
+:revnumber: v0.10.0
+:revdate: 2023-07-17T08:30:41+09:00
+:revremark: add Natural Language
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -32,6 +32,10 @@ include::./security.adoc[tag=main, leveloffset=+1]
 == Docs
 
 include::./docs.adoc[tag=main, leveloffset=+1]
+
+== Natural Language
+
+include::./natural_language.adoc[tag=main, leveloffset=+1]
 
 == Dependencies
 
