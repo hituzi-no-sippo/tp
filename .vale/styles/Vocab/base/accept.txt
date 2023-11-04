@@ -41,3 +41,8 @@ failed
 reject
 Therefore
 only
+yamllint
+watchexec
+devserver
+American
+validate

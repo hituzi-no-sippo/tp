@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2023-11-11T08:59:50+09:00
-:revremark: add GitHub Actions workflow to lint docs
+:revnumber: v0.12.0
+:revdate: 2023-11-11T09:07:43+09:00
+:revremark: add a GitHub Actions workflow to lint commit messages
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -125,10 +125,39 @@ BasedOnStyles = Vale
 :hook_type: natural_language
 :config_file_path_from_hook_directory: lint.yml
 
+// tag::display_git_hook_config[]
+
 :file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
 :block_title_name: Configuration file
 :file_lang: YAML
 include::{display_file_path}[]
+
+// end::display_git_hook_config[]
+
+=== Lint commit message
+
+:hook_type: commit_message
+:config_file_path_from_hook_directory: lint_natural_language.yml
+include::./vale.adoc[tag=display_git_hook_config]
+
+:script_file_path: utils.sh
+:file_path_from_root: .lefthook/{hook_type}/{script_file_path}
+
+:scripts_directory: .lefthook/{hook_type}/scripts
+:script_file_path: extract_to_first_comment_line_from_commit_message_file.sh
+:file_path_from_root: {scripts_directory}/{script_file_path}
+
+// tag::display_script_file[]
+
+:block_title_name: {script_file_path}
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_script_file[]
+
+:script_file_path: utils.sh
+:file_path_from_root: {scripts_directory}/{script_file_path}
+include::./vale.adoc[tag=display_script_file]
 
 == GitHub Actions
 
@@ -140,6 +169,26 @@ include::{display_file_path}[]
 :file_path_from_root: .github/workflows/{workflow_file_path}
 :file_lang: YAML
 include::{display_file_path}[]
+
+=== Lint commit messages
+
+:workflow_file_path: lint_commit_messages.yml
+
+[NOTE]
+====
+The following file might omit some content.
+This is because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../.github/workflows/{workflow_file_path}[tags="!*,natural_language"]
+----
+====
 
 // end::main[]
 
