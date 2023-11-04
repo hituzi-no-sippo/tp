@@ -41,3 +41,7 @@ failed
 reject
 Therefore
 only
+yamllint
+devserver
+American
+validate
