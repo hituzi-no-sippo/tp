@@ -1,0 +1,40 @@
+---
+pre-commit:
+  commands:
+    lint-natural-language-of-docs: &lint
+      # Add `bundle exec` to make can run Asciidoctor.
+      # Require Asciidoctor to lint AsciiDoc on Vale.
+      # References
+      # - https://vale.sh/docs/topics/scoping/#asciidoc
+      run: |
+        bundle exec vale \
+          {staged_files}
+      glob: "{README.*,docs/*}"
+      tags:
+        - docs
+        - natural-language
+        - vale
+
+pre-push:
+  commands:
+    lint-natural-language-of-docs:
+      <<: *lint
+      run: |
+        bundle exec vale \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    lint-natural-language-of-docs: *lint
+
+lint:
+  commands:
+    lint-natural-language-of-docs: &lint-from-all-files
+      <<: *lint
+      run: |
+        bundle exec vale \
+          {all_files}
+
+lint-fix:
+  commands:
+    lint-natural-language-of-docs: *lint-from-all-files
