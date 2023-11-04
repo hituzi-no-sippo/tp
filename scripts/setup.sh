@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# @(#) v0.3.0 2023-10-05T05:49:45+09:00
+# @(#) v0.4.0 2023-09-02T17:48:15+09:00
 # @(#) Copyright (C) 2023 hituzi-no-sippo
 # @(#) LICENSE: MIT-0 (https://choosealicense.com/licenses/mit-0/)
 
@@ -45,6 +45,21 @@ install_ruby_gems() {
 
   info 'Successful install Ruby gems.'
 }
+setup_natural_language() {
+  info 'Setup Natural Language tools.'
+
+  _setup_linter() {
+    vale sync
+  }
+
+  if ! _setup_linter; then
+    err 'Failed Natural Language tools setup.'
+
+    return 1
+  fi
+
+  info 'Successful install Natural Language tools.'
+}
 setup_git_hook() {
   info "Setup Git hooks"
 
@@ -64,6 +79,7 @@ main() {
     'install_tools_with_version_manager'
     'install_node_packages_with_npm'
     'install_ruby_gems'
+    'setup_natural_language'
     'setup_git_hook'
   )
 

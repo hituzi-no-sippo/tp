@@ -1,20 +1,28 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-07-15T19:44:07+09:00
-:revremark: add overview
+:revnumber: v0.8.0
+:revdate: 2023-11-11T08:59:50+09:00
+:revremark: add GitHub Actions workflow to lint docs
+:toc:
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 :vale_url: https://vale.sh
+:github_url: https://github.com
 
 // tag::main[]
 
 :vale_topic_docs_url: {vale_url}/docs/topics
 
 Use link:{vale_url}[Vale^].
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration file
+:file_path_from_root: .vale.ini
+:file_lang: INI
+include::{display_file_path}[]
 
 .Supported formats
 * HTML
@@ -30,6 +38,108 @@ Use link:{vale_url}[Vale^].
 
 For more supported file types,
 read link:{vale_topic_docs_url}/scoping[Vale Scoping^].
+
+== Vocabularies
+
+link:{vale_topic_docs_url}/vocab/[
+Vale can define preferred and avoid vocabulary terms^].
+
+You define terms into the following files:
+
+:base_directory: .vale/styles/Vocab/base
+:preferred_file_path: accept.txt
+:avoid_file_path: reject.txt
+.Term files
+[horizontal]
+Preferred (`Vale.Terms`):: `{base_directory}/{preferred_file_path}`
+Avoid (`Vale.Avoid`):: `{base_directory}/{avoid_file_path}`
+
+.File format
+* Take one entry per line
+* Case sensitive
+* Can uses RegExp
+
+.References
+* {vale_topic_docs_url}/vocab[
+  Vocabularies^]
+* {vale_topic_docs_url}/styles/#spelling[
+  spelling - Styles^]
+* link:{github_url}/errata-ai/vale/blob/v2.29.0/internal/spell/data/en_US-web.dic[
+  en_US-web.dic - GitHub Repository^]
+
+=== `Vale.Terms`
+
+.{preferred_file_path}
+* Add entered terms to every exception list in all styles +
+  Therefore, you entry word to can resolve error and warning and suggestion.
+* Add entered terms to substitution rule (`Vale.Terms`) +
+  If the capitalization of the entered term differs from the lower case,
+  Vale generate an error.
+
+:block_title_name: {preferred_file_path}
+:file_path_from_root: {base_directory}/{preferred_file_path}
+:file_lang: TXT
+include::{display_file_path}[]
+
+==== Example
+
+[source, console]
+----
+$ echo 'github actions' | vale --ext=.txt
+
+stdin.txt
+1:1  error  Did you really mean 'github'?   Vale.Spelling
+1:1  error  Use 'GitHub Actions' instead    Vale.Terms
+            of 'github actions'.
+
+✖ 2 errors, 0 warnings and 0 suggestions in stdin.
+----
+
+.`{base_directory}/{preferred_file_path}`
+[source, TXT]
+----
+GitHub Actions
+----
+
+.`vale.ini`
+[source, INI]
+----
+StylesPath = .vale/styles
+
+Vocab = base
+
+[stdin.txt]
+BasedOnStyles = Vale
+----
+
+=== `Vale.Avoid`
+
+.{avoid_file_path}
+* Add entered terms to existence rule (`Vale.Avoid`) +
+  If the entered term is in document, Vale generate an error.
+
+== Git hook
+
+=== Lint docs
+
+:hook_type: natural_language
+:config_file_path_from_hook_directory: lint.yml
+
+:file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Lint docs
+
+:workflow_file_path: lint_natural_language_of_docs.yml
+
+:block_title_name: Workflow
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
+include::{display_file_path}[]
 
 // end::main[]
 
