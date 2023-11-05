@@ -52,13 +52,13 @@ lint-commit-message:
     lint-natural-language-of-commit-message:
       <<: *lint
       run: |
-        git_dir="$(git rev-parse --show-toplevel)"
+        root_dir="$(git rev-parse --show-toplevel)"
 
         # References
         # - https://www.shellcheck.net/wiki/SC1091
         # - https://github.com/koalaman/shellcheck/wiki/directive#source
         # shellcheck source=SCRIPTDIR/../scripts/utils.sh
-        . "$git_dir/.lefthook/commit_message/scripts/utils.sh"
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
 
         read_all_commite_message |
           vale --ext=.md
