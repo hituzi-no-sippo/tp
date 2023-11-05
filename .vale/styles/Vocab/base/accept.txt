@@ -46,3 +46,6 @@ watchexec
 devserver
 American
 validate
+HEAD
+UTF
+JSON

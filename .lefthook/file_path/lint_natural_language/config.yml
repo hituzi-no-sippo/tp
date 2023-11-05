@@ -1,0 +1,51 @@
+---
+pre-commit:
+  commands:
+    lint-natural-language-of-file-path: &lint
+      # Prettier will change to `&lint # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      # If remove `\n` at tail of `{staged_files}\n`,
+      # Vale lint a document content instead of a file path
+      # when `{staged_files}` is one file.
+      run: |
+        sh .lefthook/file_path/lint_natural_language/replace_underscore_and_hyphen_to_space.sh \
+          "{staged_files}\n" |
+          vale --ext=.word
+      # yamllint enable rule:line-length
+      tags:
+        - file-path
+        - natural-language
+        - spellings
+        - vale
+
+pre-push:
+  commands:
+    lint-natural-language-of-file-path:
+      <<: *lint
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file_path/lint_natural_language/replace_underscore_and_hyphen_to_space.sh \
+          "{push_files}\n" |
+          vale --ext=.word
+      # yamllint enable rule:line-length
+
+pre-merge-commit:
+  commands:
+    lint-natural-language-of-file-path: *lint
+
+lint:
+  commands:
+    lint-natural-language-of-file-path: &lint-from-all-files
+      <<: *lint
+      # yamllint disable rule:line-length
+      run: |
+        sh .lefthook/file_path/lint_natural_language/replace_underscore_and_hyphen_to_space.sh \
+          "{all_files}\n" |
+          vale --ext=.word
+      # yamllint enable rule:line-length
+
+lint-fix:
+  commands:
+    lint-natural-language-of-file-path: *lint-from-all-files
