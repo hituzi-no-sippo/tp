@@ -1,0 +1,68 @@
+---
+name: Lint file path
+
+on:
+  - push
+
+permissions: {}
+
+defaults:
+  run:
+    # Add `-o pipefail` option to bash
+    # References
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#exit-codes-and-error-action-preference
+    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+    shell: bash
+
+jobs:
+  # tag::natural_language[]
+  # `tag::<TAG_NAME>[]` and `end::<TAG_NAME>[]` used to write document.
+  # `<TAG_NAME>` used to tag attribute of include directive in AsciiDoc.
+  # https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions
+  natural_language:
+    name: Natural Language
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+            raw.githubusercontent.com:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Natural Language linter
+        uses: ./.github/actions/install_tools_with_aqua
+
+      - name: Download and install external rules for linter
+        run: vale sync
+
+      - name: Lint
+        run: |
+          lefthook run lint \
+            --commands=lint-natural-language-of-file-path
+  # end::natural_language[]
+  create_timeline:
+    name: Create timeline of this GitHub Actions workflow
+    if: ${{ always() }}
+    needs:
+      - natural_language
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create timeline of this GitHub Actions workflow
+        # yamllint disable-line rule:line-length
+        uses: Kesin11/actions-timeline@baa62e018ca5504e2d617502ce1eacf9171e757a # v2.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
