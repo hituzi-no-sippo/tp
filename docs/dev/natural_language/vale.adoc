@@ -1,9 +1,9 @@
 = Vale
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.13.0
-:revdate: 2023-11-11T09:10:25+09:00
-:revremark: add a Git hook to lint file path
+:revnumber: v0.14.0
+:revdate: 2023-11-11T09:18:20+09:00
+:revremark: add a GitHub Actions workflow to lint file path
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -185,6 +185,8 @@ include::{display_file_path}[]
 
 :workflow_file_path: lint_commit_messages.yml
 
+// tag::display_workflow_by_tag[]
+
 [NOTE]
 ====
 The following file might omit some content.
@@ -200,6 +202,13 @@ tags attribute of include directive in AsciiDoc^] is used.
 include::../../../.github/workflows/{workflow_file_path}[tags="!*,natural_language"]
 ----
 ====
+
+// end::display_workflow_by_tag[]
+
+=== Lint file path
+
+:workflow_file_path: lint_file_path.yml
+include::./vale.adoc[tag=display_workflow_by_tag]
 
 // end::main[]
 
