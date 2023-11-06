@@ -1,9 +1,19 @@
+= npm
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-11-07T07:19:32+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-11-07T07:20:18+09:00
+:revremark: add version for npm
 :copyright: Copyright (C) 2023 {author}
+
+.Version
+npm:: See `engines.npm` field in `package.json`
+
+:block_title_name: package.json
+:file_lang: JSON
+:file_path_from_root: ./package.json
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
 
 '''
 
