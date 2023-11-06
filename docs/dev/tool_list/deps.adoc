@@ -1,14 +1,20 @@
 = Dependencies
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-07-17T04:57:51+09:00
-:revremark: add Renovate as automatic tool version updater
+:revnumber: v0.6.0
+:revdate: 2023-11-07T07:12:03+09:00
+:revremark: add npm as Node package manager
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
 
 // tag::main[]
+
+== Node.js
+
+:npm_link: link:https://www.npmjs.com[npm^]
+[horizontal]
+Package manage:: {npm_link}
 
 == Tool version manager
 
