@@ -1,9 +1,9 @@
 = Dependencies
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-11-07T07:12:03+09:00
-:revremark: add npm as Node package manager
+:revnumber: v0.7.0
+:revdate: 2023-11-07T16:25:22+09:00
+:revremark: add Bundler as gem package manager
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -15,6 +15,12 @@
 :npm_link: link:https://www.npmjs.com[npm^]
 [horizontal]
 Package manage:: {npm_link}
+
+== Gem
+
+:bundler_link: link:https://bundler.io[Bundler^]
+[horizontal]
+Manage:: {bundler_link}
 
 == Tool version manager
 
