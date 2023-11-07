@@ -1,9 +1,19 @@
+= Bundler
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-11-08T07:35:15+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-11-08T07:37:56+09:00
+:revremark: add Bundler version
 :copyright: Copyright (C) 2023 {author}
+
+.Version
+Bundler:: See `BUNDLED WITH` field in `Gemfile.lock`
+
+:block_title_name: Gemfile.lock
+:file_lang: TXT
+:file_path_from_root: ./Gemfile.lock
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
 
 '''
 
