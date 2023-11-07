@@ -1,0 +1,27 @@
+= RuboCop
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.4.0
+:revdate: 2023-11-07T13:33:15+09:00
+:revremark: add overview.
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:rubocop_link: link:https://rubocop.org[RuboCop^]
+{rubocop_link} is formatter and linter for Ruby.
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
