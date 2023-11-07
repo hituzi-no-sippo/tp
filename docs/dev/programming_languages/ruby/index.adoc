@@ -1,9 +1,19 @@
+= Ruby
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-11-07T13:03:59+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-11-07T13:08:25+09:00
+:revremark: add Ruby version
 :copyright: Copyright (C) 2023 {author}
+
+.Version
+Ruby:: See `.ruby-version`
+
+:block_title_name: .ruby-version
+:file_lang: TXT
+:file_path_from_root: ./.ruby-version
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
 
 '''
 
