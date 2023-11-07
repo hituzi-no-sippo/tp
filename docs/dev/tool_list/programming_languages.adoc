@@ -1,9 +1,24 @@
+= Programming languages
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-11-07T19:00:02+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-11-07T19:02:14+09:00
+:revremark: add RuboCop as linter and formatter
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== Ruby
+
+:rubocop_link: link:https://rubocop.org[RuboCop^]
+[horizontal]
+Format / Lint:: {rubocop_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
