@@ -1,0 +1,33 @@
+---
+pre-commit:
+  commands:
+    detect-file-path-conflicts-in-not-case-sensitive: &detect
+      run: |
+        sh .lefthook/file_paths/detect_conflicts_in_not_case_sensitive/main.sh \
+          {staged_files}
+      tags:
+        - file-path
+
+pre-push:
+  commands:
+    detect-file-path-conflicts-in-not-case-sensitive:
+      <<: *detect
+      run: |
+        sh .lefthook/file_paths/detect_conflicts_in_not_case_sensitive/main.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-file-path-conflicts-in-not-case-sensitive: *detect
+
+lint:
+  commands:
+    detect-file-path-conflicts-in-not-case-sensitive: &detect-from-all-files
+      <<: *detect
+      run: |
+        sh .lefthook/file_paths/detect_conflicts_in_not_case_sensitive/main.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-file-path-conflicts-in-not-case-sensitive: *detect-from-all-files
