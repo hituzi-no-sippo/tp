@@ -1,0 +1,41 @@
+---
+pre-commit:
+  commands:
+    detect-hyphen-in-file-path: &detect
+      run: |
+        sh .lefthook/file_path/detect_hyphen/detect_word_with_hyphen.sh \
+          {staged_files}
+      fail_text: |
+        Please change separator for file path to hyphen (-) to underscore (_).
+        For Example
+        Correct:: file_name.txt
+        Wrong::   file-name.txt
+      exclude: "\
+        ^\\.aqua/aqua-checksums\\.json$\
+        "
+      tags:
+        - file-path
+
+pre-push:
+  commands:
+    detect-hyphen-in-file-path:
+      <<: *detect
+      run: |
+        sh .lefthook/file_path/detect_hyphen/detect_word_with_hyphen.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-hyphen-in-file-path: *detect
+
+lint:
+  commands:
+    detect-hyphen-in-file-path: &detect-from-all-files
+      <<: *detect
+      run: |
+        sh .lefthook/file_path/detect_hyphen/detect_word_with_hyphen.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-hyphen-in-file-path: *detect-from-all-files
