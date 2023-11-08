@@ -1,0 +1,43 @@
+---
+pre-commit:
+  commands:
+    detect-hyphens-of-file-paths: &detect
+      run: |
+        sh .lefthook/file_paths/detect_hyphens/detect_words_with_hyphens.sh \
+          {staged_files}
+      # yamllint disable rule:line-length
+      fail_text: |
+        Please change separators of file paths to hyphens (-) to underscores (_).
+        For examples
+        Correct:: foo_bar.txt
+        Wrong::   foo-bar.txt
+      # yamllint enable rule:line-length
+      exclude: "\
+        ^\\.aqua/aqua-checksums\\.json$\
+        "
+      tags:
+        - file-paths
+
+pre-push:
+  commands:
+    detect-hyphens-of-file-paths:
+      <<: *detect
+      run: |
+        sh .lefthook/file_paths/detect_hyphens/detect_words_with_hyphens.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-hyphens-of-file-paths: *detect
+
+lint:
+  commands:
+    detect-hyphens-of-file-paths: &detect-from-all-files
+      <<: *detect
+      run: |
+        sh .lefthook/file_paths/detect_hyphens/detect_words_with_hyphens.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-hyphens-of-file-paths: *detect-from-all-files
