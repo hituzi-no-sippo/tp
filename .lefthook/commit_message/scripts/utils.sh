@@ -41,6 +41,69 @@ extract_commit_messages_from_HEAD_to_last_push_or_remote_HEAD() {
   extract_commit_messages "$hash..HEAD"
 }
 
+read_hash_of_ORIG_HEAD() {
+  # - ORIG_HEAD
+  #   > is created by commands that move your `HEAD` in a drastic way
+  #   > (`git am`, `git merge`, `git rebase`, `git reset`),
+  #   > to record the position of the `HEAD` before their operation,
+  #   > so that you can easily change the tip
+  #   > of the branch back to the state before you ran them.
+  #   https://git-scm.com/docs/gitrevisions#Documentation/gitrevisions.txt-codeORIGHEADcode
+  ORIG_HEAD_path="$(git rev-parse --git-dir)/ORIG_HEAD"
+
+  if ! [ -r "$ORIG_HEAD_path" ]; then
+    err "Can't read %s\n" "$ORIG_HEAD_path"
+
+    return 1
+  fi
+
+  cat "$ORIG_HEAD_path"
+}
+extract_merge_branch_from_GIT_REFLOG_ACTION() {
+  # Uses `expr` because `~=` operator is not available in `test` (`[ ... ]`).
+  # https://www.shellcheck.net/wiki/SC3015
+  if ! expr "$GIT_REFLOG_ACTION" : '^merge' >/dev/null; then
+    err "Not a merge."
+
+    return 1
+  fi
+
+  # > `GIT_REFLOG_ACTION` lets you specify the descriptive text written
+  # > to the reflog. Here’s an example:
+  # https://git-scm.com/book/en/v2/Git-Internals-Environment-Variables
+  # https://thomasvilhena.com/2021/11/prevent-merge-from-specific-branch-git-hook
+  # `GIT_REFLOG_ACTION` value is `merge patch-1`,
+  # when run `git merge patch-1`.
+  printf '%s' "$GIT_REFLOG_ACTION" |
+    cut --delimiter=' ' --fields=2
+}
+read_revision_range_of_merge() {
+  ORIG_HEAD="$(read_hash_of_ORIG_HEAD)"
+
+  if [ "$ORIG_HEAD" = '' ]; then
+    return 1
+  fi
+
+  merge_branch="$(extract_merge_branch_from_GIT_REFLOG_ACTION)"
+
+  if [ "$merge_branch" = '' ]; then
+    return 1
+  fi
+
+  printf '%s..%s' \
+    "$ORIG_HEAD" "$merge_branch"
+}
+extract_commit_messages_of_merge() {
+  revision_range="$(read_revision_range_of_merge)"
+  has_read_ranges="$?"
+
+  if [ "$has_read_ranges" != '0' ]; then
+    return 1
+  fi
+
+  extract_commit_messages "$revision_range"
+}
+
 extract_commit_messages() {
   git log --pretty=format:'%B' "$1"
 }
