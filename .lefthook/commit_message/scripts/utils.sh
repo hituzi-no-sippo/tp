@@ -104,6 +104,10 @@ extract_commit_messages_of_merge() {
   extract_commit_messages "$revision_range"
 }
 
+read_all_commit_messages() {
+  extract_commit_messages 'HEAD'
+}
+
 extract_commit_messages() {
   git log --pretty=format:'%B' "$1"
 }
