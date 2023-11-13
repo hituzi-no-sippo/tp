@@ -1,0 +1,65 @@
+---
+commit-msg:
+  commands:
+    lint-natural-language-of-commit-message: &lint
+      # Prettier will change to `&lint # yamllint ...`
+      # if prettier doesn't ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh "$(git rev-parse --show-toplevel)/.lefthook/commit_message/scripts/extract_to_first_comment_line_from_commit_message_file.sh" {1} |
+          vale --ext=.md
+      # yamllint enable rule:line-length
+      tags:
+        - commit-message
+        - natural-language
+        - spellings
+        - vale
+
+pre-push:
+  commands:
+    lint-natural-language-of-commit-message:
+      <<: *lint
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        extract_commit_messages_from_HEAD_to_last_push_or_remote_HEAD {1} |
+          vale --ext=.md
+
+pre-merge-commit:
+  commands:
+    lint-natural-language-of-commit-message:
+      <<: *lint
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        extract_commit_messages_of_merge |
+          vale --ext=.md
+
+lint-commit-messages:
+  commands:
+    lint-natural-languages-of-commit-messages:
+      <<: *lint
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        read_all_commit_messages |
+          vale --ext=.md
