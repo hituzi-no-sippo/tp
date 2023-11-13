@@ -1,9 +1,9 @@
 = Asciidoctor
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-12-19T13:07:51+09:00
-:revremark: add overview
+:revnumber: v0.5.0
+:revdate: 2023-12-19T15:56:32+09:00
+:revremark: add utilities shell script
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -13,6 +13,17 @@
 :asciidoctor_domain: asciidoctor.org
 :asciidoctor_link: https://{asciidoctor_domain}[Asciidoctor^]
 {asciidoctor_link} is text processor for parsing AsciiDoc.
+
+== Git hooks
+:hook_directory_path_for_asciidoc: .lefthook/asciidoc
+
+=== Utilities shell script
+
+:file_path_from_root: {hook_directory_path_for_asciidoc}/utils.sh
+:block_title_name: Script
+:file_lang: sh
+:display_file_path: ../../../_partials/display_file_in_details_disclosure_element.adoc
+include::{display_file_path}[]
 
 // end::main[]
 
