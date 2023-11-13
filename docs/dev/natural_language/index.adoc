@@ -1,0 +1,24 @@
+= Natural Language
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.5.0
+:revdate: 2023-10-30T21:25:54+09:00
+:revremark: add GitHub url
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+:github_url: https://github.com
+
+== Lint
+
+:vale_url: https://vale.sh
+include::./vale.adoc[tag=main, leveloffset=+1]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
