@@ -1,0 +1,35 @@
+---
+name: Output git commit message to file
+description: |
+  Output git commit message to file.
+
+  Revision range is determined the branch.
+
+  - Branch is HEAD of origin
+      All git log of HEAD of origin.
+      `git log <<HEAD>>`
+  - Branch is not HEAD of origin
+      From HEAD of origin to HEAD.
+      `git log <<ORIGIN_HEAD>>..<<HEAD>>`
+
+inputs:
+  file_path:
+    description: Outputted file
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Output git commit message to file
+      run: |
+        origin_HEAD_SHA="$(git ls-remote origin HEAD | cut --fields=1)"
+        HEAD_SHA="$(git rev-parse HEAD)"
+        revision_range=$(
+          [[ "$origin_HEAD_SHA" == "$HEAD_SHA" ]] && \
+            echo 'HEAD' || \
+            echo "$origin_HEAD_SHA..$HEAD_SHA"
+        )
+        git log --pretty=format:'%B' "$revision_range" > ${{ env.FILE_PATH }}
+      env:
+        FILE_PATH: ${{ inputs.file_path }}
+      shell: bash
