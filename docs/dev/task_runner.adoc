@@ -1,9 +1,9 @@
 = Task runner
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.9.0
-:revdate: 2023-12-19T21:47:54+09:00
-:revremark: add the task which remove HTML converted from AsciiDoc to task list
+:revnumber: v0.10.0
+:revdate: 2023-09-30T17:09:58+09:00
+:revremark: add the task which lint commit messages to task list
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -47,6 +47,9 @@ This is because to command with `sed` will change code and document.
 ====
 
 :hardbreaks-option:
+
+`lint-commit-message`::
+  Lint commit messages.
 
 `convert-asciidoc-to-html-with-css`::
   Convert AsciiDoc to HTML with CSS.
