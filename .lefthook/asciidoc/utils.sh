@@ -49,3 +49,20 @@ convert_asciidoc_with_asciidoctor() {
     --verbose \
     "$@"
 }
+
+remove_html_converted_from_asciidoc() {
+  if [ "$#" -lt 1 ]; then
+    {
+      printf 'Requires one or more arguments.\n'
+      printf 'Usage:\n'
+      printf -- '- remove_html_converted_from_asciidoc ./README.adoc\n'
+      printf -- '- remove_html_converted_from_asciidoc ./README.adoc ./USAGE.adoc\n'
+    } >&2
+
+    return 2
+  fi
+
+  echo "$@" |
+    sed --expression='s/\.adoc/.html/g' |
+    xargs rm --force
+}
