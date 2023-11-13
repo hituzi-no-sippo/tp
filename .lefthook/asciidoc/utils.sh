@@ -17,6 +17,16 @@ convert_asciidoc_to_html() {
     "$@"
 }
 
+convert_asciidoc_to_html_with_css() {
+  # Gives `--` to prevent flag to supress CSS.
+  # The flges to supress CSS are as follows:
+  # - embedded
+  # - no-header-footer
+  convert_asciidoc_to_html_with_asciidoctor \
+    '--' \
+    "$@"
+}
+
 convert_asciidoc_to_html_with_asciidoctor() {
   convert_asciidoc_with_asciidoctor \
     '--backend=html5' \
