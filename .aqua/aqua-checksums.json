@@ -1,6 +1,11 @@
 {
   "checksums": [
     {
+      "id": "github_release/github.com/errata-ai/vale/v2.30.0/vale_2.30.0_Linux_64-bit.tar.gz",
+      "checksum": "84BD735CF93C1888AB8E409B3DE82E95AB9D31F7FAFFEBB8AB915362D7A30B5A",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/evilmartians/lefthook/v1.6.0/lefthook_1.6.0_Linux_x86_64.gz",
       "checksum": "F38F59DE55AB4B3F6814BD140CE289934722A8260C3B102D124B7881573E890D",
       "algorithm": "sha256"

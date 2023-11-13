@@ -1,0 +1,193 @@
+= Vale
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.11.0
+:revdate: 2023-11-11T09:10:25+09:00
+:revremark: add a Git hook to lint file paths
+:toc:
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+:vale_url: https://vale.sh
+:github_url: https://github.com
+
+// tag::main[]
+
+:vale_topic_docs_url: {vale_url}/docs/topics
+
+Use link:{vale_url}[Vale^].
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration file
+:file_path_from_root: .vale.ini
+:file_lang: INI
+include::{display_file_path}[]
+
+.Supported formats
+* HTML
+* Markdown
+* AsciiDoc
+* Org
+* Source Code Comments
+** C
+** JavaScript
+** Python
+** Go
+** CSS
+
+For more supported file types,
+read link:{vale_topic_docs_url}/scoping[Vale Scoping^].
+
+== Vocabularies
+
+link:{vale_topic_docs_url}/vocab/[
+Vale can define preferred and avoid vocabulary terms^].
+
+You define terms into the following files:
+
+:base_directory: .vale/styles/Vocab/base
+:preferred_file_path: accept.txt
+:avoid_file_path: reject.txt
+.Term files
+[horizontal]
+Preferred (`Vale.Terms`):: `{base_directory}/{preferred_file_path}`
+Avoid (`Vale.Avoid`):: `{base_directory}/{avoid_file_path}`
+
+.File format
+* Take one entry per line
+* Case sensitive
+* Can uses RegExp
+
+.References
+* {vale_topic_docs_url}/vocab[
+  Vocabularies^]
+* {vale_topic_docs_url}/styles/#spelling[
+  spelling - Styles^]
+* link:{github_url}/errata-ai/vale/blob/v2.29.0/internal/spell/data/en_US-web.dic[
+  en_US-web.dic - GitHub Repository^]
+
+=== `Vale.Terms`
+
+.{preferred_file_path}
+* Add entered terms to every exception list in all styles +
+  Therefore, you entry word to can resolve error and warning and suggestion.
+* Add entered terms to substitution rule (`Vale.Terms`) +
+  If the capitalization of the entered term differs from the lower case,
+  Vale generate an error.
+
+:block_title_name: {preferred_file_path}
+:file_path_from_root: {base_directory}/{preferred_file_path}
+:file_lang: TXT
+include::{display_file_path}[]
+
+==== Example
+
+[source, console]
+----
+$ echo 'github actions' | vale --ext=.txt
+
+stdin.txt
+1:1  error  Did you really mean 'github'?   Vale.Spelling
+1:1  error  Use 'GitHub Actions' instead    Vale.Terms
+            of 'github actions'.
+
+✖ 2 errors, 0 warnings and 0 suggestions in stdin.
+----
+
+.`{base_directory}/{preferred_file_path}`
+[source, TXT]
+----
+GitHub Actions
+----
+
+.`vale.ini`
+[source, INI]
+----
+StylesPath = .vale/styles
+
+Vocab = base
+
+[stdin.txt]
+BasedOnStyles = Vale
+----
+
+=== `Vale.Avoid`
+
+.{avoid_file_path}
+* Add entered terms to existence rule (`Vale.Avoid`) +
+  If the entered term is in document, Vale generate an error.
+
+== Git hook
+
+=== Lint docs
+
+:hook_type: natural_language
+:config_file_path_from_hook_directory: lint.yml
+
+// tag::display_git_hook_config[]
+
+:file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_git_hook_config[]
+
+=== Lint commit messages
+
+:hook_type: commit_message
+:config_file_path_from_hook_directory: lint_natural_language.yml
+include::./vale.adoc[tag=display_git_hook_config]
+
+:script_file_path: utils.sh
+:file_path_from_root: .lefthook/{hook_type}/{script_file_path}
+
+:scripts_directory: .lefthook/{hook_type}/scripts
+:script_file_path: extract_to_first_comment_line_from_commit_message_file.sh
+:file_path_from_root: {scripts_directory}/{script_file_path}
+
+// tag::display_script_file[]
+
+:block_title_name: {script_file_path}
+:file_lang: sh
+include::{display_file_path}[]
+
+// end::display_script_file[]
+
+:script_file_path: utils.sh
+:file_path_from_root: {scripts_directory}/{script_file_path}
+include::./vale.adoc[tag=display_script_file]
+
+=== Lint file paths
+
+:hook_type: file_path
+:hook_name: lint_natural_language
+:config_file_path_from_hook_directory: {hook_name}/config.yml
+include::./vale.adoc[tag=display_git_hook_config]
+
+:script_file_path: replace_underscore_and_hyphen_to_space.sh
+:file_path_from_root: .lefthook/{hook_type}/{hook_name}/{script_file_path}
+include::./vale.adoc[tag=display_script_file]
+
+== GitHub Actions
+
+=== Lint
+
+:file_path_from_root: .github/workflows/lint.yml
+:block_title_name: Workflow file
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
