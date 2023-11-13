@@ -1,0 +1,23 @@
+---
+pre-commit: &lint
+  commands:
+    lint-asciidoc:
+      run: |
+        # Because to use `include` directive,
+        # set all AsciiDoc files to target files.
+        sh .lefthook/asciidoc/lint/main.sh \
+          {all_files}
+      glob: "*.adoc"
+      exclude: "docs/_partials"
+      tags:
+        - lint
+        - docs
+        - asciidoc
+
+pre-push: *lint
+
+pre-merge-commit: *lint
+
+lint: *lint
+
+lint-fix: *lint
