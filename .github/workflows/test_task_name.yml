@@ -41,11 +41,15 @@ jobs:
           egress-policy: block
           allowed-endpoints: >
             api.github.com:443
+            crates.io:443
             github.com:443
+            index.crates.io:443
             objects.githubusercontent.com:443
             raw.githubusercontent.com:443
             rekor.sigstore.dev:443
             tuf-repo-cdn.sigstore.dev:443
+            static.crates.io:443
+            static.rust-lang.org:443
 
       - name: Checkout
         # yamllint disable-line rule:line-length

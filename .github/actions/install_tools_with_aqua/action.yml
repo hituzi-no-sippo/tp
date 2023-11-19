@@ -21,6 +21,13 @@ runs:
       env:
         CACHE_PREFIX: v1-aqua-installer-${{ runner.os }}-${{ runner.arch }}-
 
+    - name: Install cargo
+      run: |
+        rustup toolchain install stable --component cargo --no-self-update
+      env:
+        CARGO_TERM_COLOR: always
+      shell: bash
+
     - name: Install tools with aqua
       # yamllint disable-line rule:line-length
       uses: aquaproj/aqua-installer@928a2ee4243a9ee8312d80dc8cbaca88fb602a91 # v2.2.0
