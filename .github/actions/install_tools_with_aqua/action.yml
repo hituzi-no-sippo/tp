@@ -13,6 +13,7 @@ runs:
     # Failed:       Does not create cache
     # https://github.com/actions/cache/tree/v3.3.1#using-a-combination-of-restore-and-save-actions
     - name: Cache aqua
+      id: cache
       uses: actions/cache@704facf57e6136b1bc63b828d79edcd491f0ee84 # v3.3.2
       with:
         path: ~/.local/share/aquaproj-aqua
@@ -22,6 +23,7 @@ runs:
         CACHE_PREFIX: v1-aqua-installer-${{ runner.os }}-${{ runner.arch }}-
 
     - name: Install cargo
+      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
       run: |
         rustup toolchain install stable --component cargo --no-self-update
       env:
