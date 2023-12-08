@@ -6,5 +6,5 @@ ruby file: '.ruby-version'
 
 group :development do
   gem 'asciidoctor', '2.0.20'
-  gem 'rubocop', '1.57.2'
+  gem 'rubocop', '1.58.0'
 end
