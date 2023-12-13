@@ -11,6 +11,11 @@
       "algorithm": "sha256"
     },
     {
+      "id": "github_release/github.com/watchexec/watchexec/v1.24.2/watchexec-1.24.2-x86_64-unknown-linux-musl.tar.xz",
+      "checksum": "7F0936782619C45F6BAC4CA995DA989A7CAC573C418F9E09A6A8C6E73F8EEC5CC9BFDCB4C6DA6BD2895EE09F111C9B149112EBA5C27486874E1F7220F7BF75D2",
+      "algorithm": "sha512"
+    },
+    {
       "id": "registries/github_content/github.com/aquaproj/aqua-registry/v4.110.0/registry.yaml",
       "checksum": "D4995D43A883F80F81D5738D0DC7F76BA253DE1909F722FEC0BCFC7F5E560F74",
       "algorithm": "sha256"
