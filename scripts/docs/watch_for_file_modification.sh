@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 #
-# @(#) v0.1.0 2023-12-20T13:21:11+09:00
+# @(#) v0.2.0 2023-12-20T13:48:00+09:00
 # @(#) Copyright (C) 2023 hituzi-no-sippo
 # @(#) LICENSE: MIT-0 (https://choosealicense.com/licenses/mit-0/)
 
 declare -r COMMAND_TO_CONVERT_ASCIIDOC_TO_HTML='convert-asciidoc-to-html-with-css'
+
+run_HTTP_server_on_background() {
+  devserver &
+}
 
 watch_docs_with_lefthook() {
   # Reasons for not running watchexec in Lefthook.
@@ -96,6 +100,9 @@ run_watchers() {
 }
 
 main() {
+  run_HTTP_server_on_background
+  declare -r server_PID="$!"
+
   # Skips outputs of Lefthook.
   # References
   # - https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/configuration.md#skip_output
@@ -115,10 +122,16 @@ main() {
   declare -x -r LEFTHOOK_QUIET='meta,skips,empty_summary,success'
 
   if lefthook run "$COMMAND_TO_CONVERT_ASCIIDOC_TO_HTML"; then
+    if [ "$1" != '' ]; then
+      xdg-open "https://localhost:8080/$1"
+    fi
+
     run_watchers
 
     lefthook run remove-html-converted-from-asciidoc
   fi
+
+  kill -s TERM "$server_PID"
 }
 
-main
+main "$1"
