@@ -1,9 +1,9 @@
 = Asciidoctor
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-12-19T16:34:39+09:00
-:revremark: add a GitHub Actions worfklow to lint AsciiDoc
+:revnumber: v0.8.0
+:revdate: 2023-12-20T13:09:55+09:00
+:revremark: add a script to watch document files
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -49,6 +49,42 @@ include::{display_file_path}[]
 :workflow_file_path: lint_asciidoc_with_asciidoctor.yml
 :file_path_from_root: .github/workflows/{workflow_file_path}
 :file_lang: YAML
+include::{display_file_path}[]
+
+== Preview AsciiDoc on web browser
+
+:watch_script_path_from_root: scripts/docs/watch_for_file_modification.sh
+.Run a shell script
+[source, console, subs="+attributes"]
+----
+$ bash {watch_script_path_from_root}
+----
+
+:asciidoctor_docs_url: https://docs.{asciidoctor_domain}/asciidoc/latest
+:include_doc_url: {asciidoctor_docs_url}/directives/include/
+.Features
+* Convert an AsciiDoc to HTML +
+  The script convert all AsciiDoc files managed by Git
+  when you update an AsciiDoc.
+  This is because
+  when you update an AsciiDoc included from another AsciiDoc,
+  you want to update HTML of the AsciiDoc,
+  which is including the another updated AsciiDoc.
+  AsciiDoc can includes content such as another AsciiDoc with link:{include_doc_url}[
+  include directive (`include::<FILE_PATH>[\]`).^]
+* Lint Natural Language +
+  Lint a modified file only.
+
+.The script only converts files managed by Git
+[CAUTION]
+====
+If you want to convert the new file, which is unmanaged by Git,
+you stage the new file with `git add <FILE_PATH>`.
+====
+
+:file_path_from_root: {watch_script_path_from_root}
+:block_title_name: Watch script
+:file_lang: sh
 include::{display_file_path}[]
 
 // end::main[]
