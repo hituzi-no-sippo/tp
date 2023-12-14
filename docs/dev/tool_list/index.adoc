@@ -1,9 +1,9 @@
 = Tool list
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.8.0
-:revdate: 2023-11-07T19:01:51+09:00
-:revremark: add Ruby
+:revnumber: v0.9.0
+:revdate: 2023-12-18T16:38:50+09:00
+:revremark: add documents
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -28,6 +28,10 @@ include::./task_runner.adoc[tag=main, leveloffset=+1]
 == Security
 
 include::./security.adoc[tag=main, leveloffset=+1]
+
+== Docs
+
+include::./docs.adoc[tag=main, leveloffset=+1]
 
 == Dependencies
 
