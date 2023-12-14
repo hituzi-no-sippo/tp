@@ -1,9 +1,24 @@
+= Documents
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-12-14T14:29:50+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-12-18T16:38:57+09:00
+:revremark: add Asciidoctor as AsciiDoc Processor
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+== AsciiDoc
+
+:asciidoctor_link: link:https://asciidoctor.org[Asciidoctor^]
+[horizontal]
+Processor:: {asciidoctor_link}
+
+// end::main[]
+
+// end::body[]
 
 '''
 
