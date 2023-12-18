@@ -1,9 +1,79 @@
+= AsciiDoc overview
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-12-18T21:21:02+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-12-19T12:48:20+09:00
+:revremark: add overview
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:asciidoc_link: https://asciidoc.org[AsciiDoc]
+{asciidoc_link} is a plan text markup language.
+
+:asciidoctor_docs_url: https://docs.asciidoctor.org/asciidoc/latest
+:include_doc_url: {asciidoctor_docs_url}/directives/include/
+:attributes_doc_url: {asciidoctor_docs_url}/attributes/attribute-entries/
+:toc_doc_url: {asciidoctor_docs_url}/toc/
+:admonitions_doc_url: {asciidoctor_docs_url}/blocks/admonitions/
+:revision_doc_url: {asciidoctor_docs_url}/document/revision-information/
+.Features
+* link:{include_doc_url}[
+  You can include content from another file^]
+* link:{attributes_doc_url}[
+  You can use document attributes^] +
+  Document attributes are effectively variables.
+  Scope of document attributes is a document.
+  You cannot use a document attribute, which is defined in another document
+  without that uses include directives of AsciiDoc.
++
+.Example
+[%collapsible]
+====
+.AsciiDoc Code
+[source, AsciiDoc]
+----
+:github_url: https://github.com
+GitHub URL is {github_url}
+----
+
+:github_url: https://github.com
+GitHub URL is {github_url}
+====
+* link:{toc_doc_url}[
+  Generate a Table of Contents^]
+* link:{admonitions_doc_url}[
+  Admonitions^]
++
+.Examples
+[%collapsible]
+====
+NOTE: note
+
+TIP: tip
+
+IMPORTANT: important
+
+CAUTION: caution
+
+WARNING: warning
+====
+* link:{revision_doc_url}[
+  Revision support^]
+
+.If you want to know such as AsciiDoc syntax, read following references
+* link:{asciidoctor_docs_url}/syntax-quick-reference/[
+  AsciiDoc Syntax Quick Reference^]
+* link:{asciidoctor_docs_url}[
+  AsciiDoc Language Documentation^]
+* link:{asciidoctor_docs_url}/asciidoc-vs-markdown/[
+  Compare AsciiDoc to Markdown^]
+
+// end::main[]
+
+// end::body[]
 
 '''
 
