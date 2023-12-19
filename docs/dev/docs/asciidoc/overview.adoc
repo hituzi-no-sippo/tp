@@ -21,13 +21,13 @@
 :revision_doc_url: {asciidoctor_docs_url}/document/revision-information/
 .Features
 * link:{include_doc_url}[
-  Include a content from another file^]
+  You can include content from another file^]
 * link:{attributes_doc_url}[
   You can use document attributes^] +
   Document attributes are effectively variables.
   Scope of document attributes is a document.
-  You cannot use a document attribute that is defined in another document
-  without using include directives of AsciiDoc.
+  You cannot use a document attribute which, is defined in another document
+  without that uses include directives of AsciiDoc.
 +
 .Example
 [%collapsible]
@@ -50,15 +50,15 @@ GitHub URL is {github_url}
 .Examples
 [%collapsible]
 ====
-NOTE: NOTE
+NOTE: note
 
-TIP: TIP
+TIP: tip
 
-IMPORTANT: IMPORTANT
+IMPORTANT: important
 
-CAUTION: CAUTION
+CAUTION: caution
 
-WARNING: WARNING
+WARNING: warning
 ====
 * link:{revision_doc_url}[
   Revision support^]
