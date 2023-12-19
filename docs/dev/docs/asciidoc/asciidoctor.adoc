@@ -1,9 +1,22 @@
+= Asciidoctor
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-12-19T12:57:31+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-12-19T13:07:51+09:00
+:revremark: add overview
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:asciidoctor_domain: asciidoctor.org
+:asciidoctor_link: https://{asciidoctor_domain}[Asciidoctor^]
+{asciidoctor_link} is text processor for parsing AsciiDoc.
+
+// end::main[]
+
+// end::body[]
 
 '''
 
