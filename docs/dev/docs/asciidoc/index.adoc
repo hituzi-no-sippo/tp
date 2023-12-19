@@ -1,14 +1,18 @@
 = AsciiDoc
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.4.0
-:revdate: 2023-12-19T12:52:03+09:00
-:revremark: add overview
+:revnumber: v0.5.0
+:revdate: 2023-12-19T13:09:00+09:00
+:revremark: add Asciidoctor
 :copyright: Copyright (C) 2023 {author}
 
 == Overview
 
 include::./overview.adoc[tag=main, leveloffset+=1]
+
+== Asciidoctor
+
+include::./asciidoctor.adoc[tag=main, leveloffset+=1]
 
 '''
 
