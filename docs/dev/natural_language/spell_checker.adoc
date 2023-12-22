@@ -1,9 +1,22 @@
+= Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-12-21T15:53:28+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-12-22T14:28:53+09:00
+:revremark: add overview
 :copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:github_url: https://github.com
+:typos_url: {github_url}/crate-ci/typos
+Use link:{typos_url}[typos].
+
+// end::main[]
+
+// end::body[]
 
 '''
 
