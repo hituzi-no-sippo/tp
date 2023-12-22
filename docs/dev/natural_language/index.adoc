@@ -1,9 +1,9 @@
 = Natural Language
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-10-30T21:25:54+09:00
-:revremark: add GitHub url
+:revnumber: v0.6.0
+:revdate: 2023-12-22T14:27:26+09:00
+:revremark: add spell checker
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -13,6 +13,10 @@
 
 :vale_url: https://vale.sh
 include::./vale.adoc[tag=main, leveloffset=+1]
+
+== Spell checker
+
+include::./spell_checker.adoc[tag=main, leveloffset=+1]
 
 '''
 

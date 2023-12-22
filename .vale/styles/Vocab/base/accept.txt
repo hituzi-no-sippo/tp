@@ -49,3 +49,4 @@ validate
 HEAD
 UTF
 JSON
+typos
