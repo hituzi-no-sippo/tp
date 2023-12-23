@@ -1,2 +1,6 @@
 [files]
 ignore-vcs = true
+ignore-hidden = false
+extend-exclude = [
+  '.git',
+]
