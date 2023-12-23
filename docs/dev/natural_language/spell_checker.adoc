@@ -1,22 +1,22 @@
-= Natural Language
+= Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-12-22T14:27:26+09:00
-:revremark: add spell checker
-:toc:
+:revnumber: v0.4.0
+:revdate: 2023-12-22T14:28:53+09:00
+:revremark: add overview
 :copyright: Copyright (C) 2023 {author}
 
+// tag::body[]
+
+// tag::main[]
+
 :github_url: https://github.com
+:typos_url: {github_url}/crate-ci/typos
+Use link:{typos_url}[typos].
 
-== Lint
+// end::main[]
 
-:vale_url: https://vale.sh
-include::./vale.adoc[tag=main, leveloffset=+1]
-
-== Spell checker
-
-include::./spell_checker.adoc[tag=main, leveloffset=+1]
+// end::body[]
 
 '''
 
