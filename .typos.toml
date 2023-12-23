@@ -1,0 +1,10 @@
+[files]
+ignore-vcs = true
+ignore-hidden = false
+extend-exclude = [
+  '.git',
+]
+
+[default.extend-identifiers]
+# This word used of a Renovate log
+unparseable = 'unparseable'
