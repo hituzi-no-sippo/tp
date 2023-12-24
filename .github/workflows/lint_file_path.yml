@@ -54,11 +54,43 @@ jobs:
           lefthook run lint \
             --commands=lint-natural-language-of-file-path
   # end::natural_language[]
+  # tag::detect_spelling_errors[]
+  detect_spelling_errors:
+    name: Detect spelling errors
+    runs-on: ubuntu-22.04
+    permissions: {}
+    timeout-minutes: 5
+    steps:
+      - name: Runtime security for GitHub
+        # yamllint disable-line rule:line-length
+        uses: step-security/harden-runner@eb238b55efaa70779f274895e782ed17c84f2895 # v2.6.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            github.com:443
+            objects.githubusercontent.com:443
+            raw.githubusercontent.com:443
+            rekor.sigstore.dev:443
+            tuf-repo-cdn.sigstore.dev:443
+
+      - name: Checkout
+        # yamllint disable-line rule:line-length
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Detect spelling errors in files
+        uses: ./.github/actions/run_task_runner
+        with:
+          task_name: lint
+          task_runner_args: --commands=detect-spelling-errors-of-file-name
+  # end::detect_spelling_errors[]
   create_timeline:
     name: Create timeline of this GitHub Actions workflow
     if: ${{ always() }}
     needs:
       - natural_language
+      - detect_spelling_errors
     runs-on: ubuntu-22.04
     steps:
       - name: Create timeline of this GitHub Actions workflow
