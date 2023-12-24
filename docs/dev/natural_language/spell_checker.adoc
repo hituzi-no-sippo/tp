@@ -1,9 +1,9 @@
 = Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.7.0
-:revdate: 2023-12-24T16:53:34+09:00
-:revremark: add a GitHub Actions workflow to detect
+:revnumber: v0.9.0
+:revdate: 2023-12-24T19:49:02+09:00
+:revremark: add a GitHub Actions workflow to detect of commit message
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -27,10 +27,19 @@ include::{display_file_path}[]
 :hook_type: natural_language
 :config_file_path_from_hook_directory: detect_spelling_errors.yml
 
+// tag::display_git_hook_config[]
+
 :file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
 :block_title_name: Configuration file
 :file_lang: YAML
 include::{display_file_path}[]
+
+// end::display_git_hook_config[]
+
+=== Detect spelling errors of commit message
+
+:hook_type: commit_message
+include::./spell_checker.adoc[tag=display_git_hook_config]
 
 == GitHub Actions
 
@@ -42,6 +51,26 @@ include::{display_file_path}[]
 :file_path_from_root: .github/workflows/{workflow_file_path}
 :file_lang: YAML
 include::{display_file_path}[]
+
+=== Detect spelling errors of commit message
+
+:workflow_file_path: lint_commit_messages.yml
+
+[NOTE]
+====
+The following file might omit some content
+because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../.github/workflows/{workflow_file_path}[tags="!*,detect_spelling_errors"]
+----
+====
 
 // end::main[]
 
