@@ -29,5 +29,6 @@ extends:
   - .lefthook/deps/renovate/validate.yml
   - .lefthook/deps/renovate/dry_run.yml
   - .lefthook/commit_message/lint_natural_language.yml
+  - .lefthook/commit_message/detect_spelling_errors.yml
   - .lefthook/setup/test.yml
   - .lefthook/task_runner/lefthook/test_task_name/config.yml
