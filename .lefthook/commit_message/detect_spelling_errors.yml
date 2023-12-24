@@ -1,0 +1,63 @@
+---
+commit-msg:
+  commands:
+    detect-spelling-errors-of-commit-message: &detect
+      # Prettier will change to `&detect # yamllint ...`
+      # if prettier does not ignore and run `prettier --write`.
+      # prettier-ignore
+      # yamllint disable rule:line-length
+      run: |
+        sh "$(git rev-parse --show-toplevel)/.lefthook/commit_message/scripts/extract_to_first_comment_line_from_commit_message_file.sh" {1} |
+          typos -
+      # yamllint enable rule:line-length
+      tags:
+        - commit-message
+        - spellings
+
+pre-push:
+  commands:
+    detect-spelling-errors-of-commit-message:
+      <<: *detect
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        extract_commit_message_from_HEAD_to_last_push_or_remote_HEAD {1} |
+          typos -
+
+pre-merge-commit:
+  commands:
+    detect-spelling-errors-of-commit-message:
+      <<: *detect
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        extract_commite_message_of_merge  |
+          typos -
+
+lint-commit-messages:
+  commands:
+    detect-spelling-errors-of-commit-messages:
+      <<: *detect
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        read_all_commite_message |
+          typos -
