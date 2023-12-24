@@ -16,17 +16,20 @@ extends:
   - .lefthook/file_path/detect_hyphen/config.yml
   - .lefthook/file_path/detect_conflict_in_not_case_sensitive/config.yml
   - .lefthook/file_path/lint_natural_language/config.yml
+  - .lefthook/file_path/detect_spelling_errors.yml
   - .lefthook/shebang/detect_executable_script_without_shebang/config.yml
   - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
   - .lefthook/ruby/rubocop/config.yml
   - .lefthook/asciidoc/lint/config.yml
   - .lefthook/asciidoc/convert_to_html.yml
   - .lefthook/natural_language/lint.yml
+  - .lefthook/natural_language/detect_spelling_errors.yml
   - .lefthook/deps/tool_version_manager/update_aqua_checksum.yml
   - .lefthook/deps/npm/detect_package_lock_json_updated.yml
   - .lefthook/deps/bundler/detect_gemfile_lock_updated.yml
   - .lefthook/deps/renovate/validate.yml
   - .lefthook/deps/renovate/dry_run.yml
   - .lefthook/commit_message/lint_natural_language.yml
+  - .lefthook/commit_message/detect_spelling_errors.yml
   - .lefthook/setup/test.yml
   - .lefthook/task_runner/lefthook/test_task_name/config.yml

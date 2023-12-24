@@ -49,3 +49,5 @@ validate
 HEAD
 UTF
 JSON
+typos
+(?i)VCS
