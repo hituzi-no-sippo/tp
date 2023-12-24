@@ -1,9 +1,9 @@
 = Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-12-24T20:08:41+09:00
-:revremark: add a Git hook to detect of file name
+:revnumber: v0.11.0
+:revdate: 2023-12-24T20:11:59+09:00
+:revremark: add a GitHub Actions workflow to detect of file name
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -61,6 +61,8 @@ include::{display_file_path}[]
 
 :workflow_file_path: lint_commit_messages.yml
 
+// tag::display_workflow_by_tag[]
+
 [NOTE]
 ====
 The following file might omit some content
@@ -76,6 +78,13 @@ tags attribute of include directive in AsciiDoc^] is used.
 include::../../../.github/workflows/{workflow_file_path}[tags="!*,detect_spelling_errors"]
 ----
 ====
+
+// end::display_workflow_by_tag[]
+
+=== Detect spelling errors of file name
+
+:workflow_file_path: lint_file_path.yml
+include::./spell_checker.adoc[tag=display_workflow_by_tag]
 
 // end::main[]
 
