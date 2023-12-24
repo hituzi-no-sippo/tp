@@ -1,9 +1,9 @@
 = Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2024-01-20T14:12:35+09:00
-:revremark: add Git hooks to detect spelling errors
+:revnumber: v0.7.0
+:revdate: 2023-12-24T19:35:39+09:00
+:revremark: add Git hooks to detect in commit messages
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -27,10 +27,19 @@ include::{display_file_path}[]
 :hook_type: natural_language
 :config_file_path_from_hook_directory: detect_spelling_errors.yml
 
+// tag::display_git_hook_config[]
+
 :file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
 :block_title_name: Configuration file
 :file_lang: YAML
 include::{display_file_path}[]
+
+// end::display_git_hook_config[]
+
+=== Detect spelling errors in commit message
+
+:hook_type: commit_message
+include::./spell_checker.adoc[tag=display_git_hook_config]
 
 == GitHub Actions
 
