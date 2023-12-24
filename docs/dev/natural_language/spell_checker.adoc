@@ -1,9 +1,9 @@
 = Spell checker
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.5.0
-:revdate: 2023-12-23T17:49:53+09:00
-:revremark: add a configuration file of typos
+:revnumber: v0.7.0
+:revdate: 2023-12-24T16:53:34+09:00
+:revremark: add a GitHub Actions workflow to detect
 :copyright: Copyright (C) 2023 {author}
 
 // tag::body[]
@@ -18,6 +18,29 @@ Use link:{typos_url}[typos].
 :block_title_name: Configuration file
 :file_path_from_root: .typos.toml
 :file_lang: TOML
+include::{display_file_path}[]
+
+== Git hook
+
+=== Detect spelling errors in files
+
+:hook_type: natural_language
+:config_file_path_from_hook_directory: detect_spelling_errors.yml
+
+:file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Detect spelling errors in files
+
+:workflow_file_path: detect_spelling_errors.yml
+
+:block_title_name: Workflow
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
 include::{display_file_path}[]
 
 // end::main[]
