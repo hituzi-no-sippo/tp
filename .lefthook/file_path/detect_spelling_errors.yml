@@ -1,0 +1,44 @@
+---
+pre-commit:
+  commands:
+    detect-spelling-errors-of-file-name: &detect
+      run: |
+        typos \
+          --no-check-files \
+          {staged_files}
+      tags:
+        - file-path
+        - spellings
+
+pre-push:
+  commands:
+    detect-spelling-errors-of-file-name:
+      <<: *detect
+      run: |
+        typos \
+          --no-check-files \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-spelling-errors-of-file-name:
+      <<: *detect
+
+lint:
+  commands:
+    detect-spelling-errors-of-file-name:
+      <<: *detect
+      run: |
+        typos \
+          --no-check-files \
+          {all_files}
+
+lint-fix:
+  commands:
+    detect-spelling-errors-of-file-name:
+      <<: *detect
+      run: |
+        typos \
+          --no-check-files \
+          --write-changes \
+          {all_files}

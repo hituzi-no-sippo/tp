@@ -1,6 +1,11 @@
 {
   "checksums": [
     {
+      "id": "github_release/github.com/crate-ci/typos/v1.16.25/typos-v1.16.25-x86_64-unknown-linux-musl.tar.gz",
+      "checksum": "BF87976D6CB06275D6E0993113DBEDDCEC417CA442D8ED419CB93C0C39DDDAD0",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/errata-ai/vale/v2.30.0/vale_2.30.0_Linux_64-bit.tar.gz",
       "checksum": "84BD735CF93C1888AB8E409B3DE82E95AB9D31F7FAFFEBB8AB915362D7A30B5A",
       "algorithm": "sha256"

@@ -1,0 +1,100 @@
+= Spell checker
+:author: hituzi no sippo
+:email: dev@hituzi-no-sippo.me
+:revnumber: v0.11.0
+:revdate: 2023-12-24T20:11:59+09:00
+:revremark: add a GitHub Actions workflow to detect of file name
+:copyright: Copyright (C) 2023 {author}
+
+// tag::body[]
+
+// tag::main[]
+
+:github_url: https://github.com
+:typos_url: {github_url}/crate-ci/typos
+Use link:{typos_url}[typos].
+
+:display_file_path: ../../_partials/display_file_in_details_disclosure_element.adoc
+:block_title_name: Configuration file
+:file_path_from_root: .typos.toml
+:file_lang: TOML
+include::{display_file_path}[]
+
+== Git hook
+
+=== Detect spelling errors in files
+
+:hook_type: natural_language
+:config_file_path_from_hook_directory: detect_spelling_errors.yml
+
+// tag::display_git_hook_config[]
+
+:file_path_from_root: .lefthook/{hook_type}/{config_file_path_from_hook_directory}
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
+// end::display_git_hook_config[]
+
+=== Detect spelling errors of commit message
+
+:hook_type: commit_message
+include::./spell_checker.adoc[tag=display_git_hook_config]
+
+=== Detect spelling errors of file name
+
+:hook_type: file_path
+include::./spell_checker.adoc[tag=display_git_hook_config]
+
+== GitHub Actions
+
+=== Detect spelling errors in files
+
+:workflow_file_path: detect_spelling_errors.yml
+
+:block_title_name: Workflow
+:file_path_from_root: .github/workflows/{workflow_file_path}
+:file_lang: YAML
+include::{display_file_path}[]
+
+=== Detect spelling errors of commit message
+
+:workflow_file_path: lint_commit_messages.yml
+
+// tag::display_workflow_by_tag[]
+
+[NOTE]
+====
+The following file might omit some content
+because link:https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions[
+tags attribute of include directive in AsciiDoc^] is used.
+====
+
+.Workflow
+[%collapsible]
+====
+[source, YAML]
+----
+include::../../../.github/workflows/{workflow_file_path}[tags="!*,detect_spelling_errors"]
+----
+====
+
+// end::display_workflow_by_tag[]
+
+=== Detect spelling errors of file name
+
+:workflow_file_path: lint_file_path.yml
+include::./spell_checker.adoc[tag=display_workflow_by_tag]
+
+// end::main[]
+
+// end::body[]
+
+'''
+
+The license for this document is link:https://choosealicense.com/licenses/mit-0/[
+MIT-0^] License. +
+Does not require preservation of copyright and license notices.
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
