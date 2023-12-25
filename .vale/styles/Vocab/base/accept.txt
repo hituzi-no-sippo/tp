@@ -45,9 +45,10 @@ yamllint
 watchexec
 devserver
 American
-validate
+[Vv]alidate
 HEAD
 UTF
 JSON
 typos
 (?i)VCS
+Taplo
