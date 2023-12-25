@@ -1,9 +1,13 @@
+= TOML
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.3.0
-:revdate: 2023-12-25T15:56:02+0900
-:revremark: set this document license to MIT-0
+:revnumber: v0.4.0
+:revdate: 2023-12-25T16:01:39+09:00
+:revremark: add overview
 :copyright: Copyright (C) 2023 {author}
+
+:taplo_link: link:https://taplo.tamasfe.dev[Taplo^]
+Uses {taplo_link} as a validater and formatter.
 
 '''
 
