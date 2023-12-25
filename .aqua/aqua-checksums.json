@@ -26,6 +26,11 @@
       "algorithm": "sha512"
     },
     {
+      "id": "github_release/github.com/tamasfe/taplo/0.8.1/taplo-linux-x86_64.gz",
+      "checksum": "1EDD58E05CA7C560B953C5023BD185939B3C65E83E2E1BB1D488BB66063EBAD8",
+      "algorithm": "sha256"
+    },
+    {
       "id": "github_release/github.com/watchexec/watchexec/v1.24.2/watchexec-1.24.2-x86_64-unknown-linux-musl.tar.xz",
       "checksum": "7F0936782619C45F6BAC4CA995DA989A7CAC573C418F9E09A6A8C6E73F8EEC5CC9BFDCB4C6DA6BD2895EE09F111C9B149112EBA5C27486874E1F7220F7BF75D2",
       "algorithm": "sha512"
