@@ -1,9 +1,9 @@
 = Tool list
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.10.0
-:revdate: 2023-07-17T08:30:41+09:00
-:revremark: add Natural Language
+:revnumber: v0.11.0
+:revdate: 2023-12-25T15:21:55+09:00
+:revremark: add TOML
 :toc:
 :copyright: Copyright (C) 2023 {author}
 
@@ -16,6 +16,10 @@ See `docs/dev` for more details.
 == Programming languages
 
 include::./programming_languages.adoc[tag=main, leveloffset=+1]
+
+== Configuration file formats
+
+include::./configuration_file_formats.adoc[tag=main, leveloffset=+1]
 
 == CI
 
