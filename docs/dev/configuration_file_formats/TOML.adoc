@@ -1,5 +1,11 @@
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.1.0
+:revnumber: v0.2.0
 :revdate: 2023-12-25T15:56:02+0900
-:revremark: add document header for AsciiDoc
+:revremark: add copyright
+:copyright: Copyright (C) 2023 {author}
+
+'''
+
+:author_link: link:https://github.com/hituzi-no-sippo[{author}^]
+Copyright (C) 2023 {author_link}
