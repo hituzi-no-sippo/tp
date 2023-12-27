@@ -1,0 +1,55 @@
+---
+pre-commit:
+  commands:
+    format-TOML: &format
+      run: |
+        taplo format \
+          -- \
+          {staged_files}
+      glob: "*.toml"
+      stage_fixed: true
+      tags:
+        - style
+        - TOML
+
+pre-push:
+  commands:
+    detect-style-errors-in-TOML: &detect
+      <<: *format
+      run: |
+        taplo format \
+          --check \
+          --diff \
+          -- \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    detect-style-errors-in-TOML:
+      <<: *detect
+      run: |
+        taplo format \
+          --check \
+          --diff \
+          -- \
+          {staged_files}
+
+lint:
+  commands:
+    detect-style-errors-in-TOML:
+      <<: *detect
+      run: |
+        taplo format \
+          --check \
+          --diff \
+          -- \
+          {all_files}
+
+lint-fix:
+  commands:
+    format-TOML:
+      <<: *format
+      run: |
+        taplo format \
+          -- \
+          {all_files}

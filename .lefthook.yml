@@ -21,6 +21,7 @@ extends:
   - .lefthook/shebang/detect_non_executable_script_with_shebang/config.yml
   - .lefthook/ruby/rubocop/config.yml
   - .lefthook/configuration_file/TOML/validate.yml
+  - .lefthook/configuration_file/TOML/format.yml
   - .lefthook/asciidoc/lint/config.yml
   - .lefthook/asciidoc/convert_to_html.yml
   - .lefthook/natural_language/lint.yml
