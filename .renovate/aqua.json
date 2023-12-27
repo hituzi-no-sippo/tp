@@ -85,6 +85,14 @@
       "semanticCommitScope": "natural-language"
     },
     {
+      "matchFileNames": [
+        ".aqua/imports/TOML.yml"
+      ],
+      "addLabels": [
+        "TOML"
+      ]
+    },
+    {
       "matchPackageNames": [
         "aquaproj/aqua-installer"
       ],
