@@ -1,0 +1,35 @@
+---
+pre-commit:
+  commands:
+    validate-TOML: &validate
+      run: |
+        sh .lefthook/configuration_file/scripts/validate_TOML_with_taplo.sh \
+          {staged_files}
+      glob: "*.toml"
+      tags:
+        - validate
+        - TOML
+
+pre-push:
+  commands:
+    validate-TOML:
+      <<: *validate
+      run: |
+        sh .lefthook/configuration_file/scripts/validate_TOML_with_taplo.sh \
+          {push_files}
+
+pre-merge-commit:
+  commands:
+    validate-TOML: *validate
+
+lint:
+  commands:
+    validate-TOML: &validate-all-files
+      <<: *validate
+      run: |
+        sh .lefthook/configuration_file/scripts/validate_TOML_with_taplo.sh \
+          {all_files}
+
+lint-fix:
+  commands:
+    validate-TOML: *validate-all-files
