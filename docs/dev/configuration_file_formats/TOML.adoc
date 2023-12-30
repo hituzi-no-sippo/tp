@@ -1,9 +1,9 @@
 = TOML
 :author: hituzi no sippo
 :email: dev@hituzi-no-sippo.me
-:revnumber: v0.6.0
-:revdate: 2023-12-30T16:15:06+09:00
-:revremark: add a script to validate TOML files
+:revnumber: v0.7.0
+:revdate: 2024-01-20T15:20:12+09:00
+:revremark: add Git hooks to validate
 :copyright: Copyright (C) 2023 {author}
 
 :taplo_link: link:https://taplo.tamasfe.dev[Taplo^]
@@ -19,9 +19,26 @@ include::{display_file_path}[]
 
 === Validate
 
+:hook_type: TOML
+:hook_name: validate
+
+:file_path_from_root: .lefthook/configuration_file/{hook_type}/{hook_name}.yml
+:block_title_name: Configuration file
+:file_lang: YAML
+include::{display_file_path}[]
+
 :file_path_from_root: .lefthook/configuration_file/scripts/validate_TOML_with_taplo.sh
 :block_title_name: Script to validate TOML
 :file_lang: sh
+include::{display_file_path}[]
+
+== GitHub Actions
+
+=== Lint
+
+:file_path_from_root: .github/workflows/lint.yml
+:block_title_name: Workflow file
+:file_lang: YAML
 include::{display_file_path}[]
 
 '''
