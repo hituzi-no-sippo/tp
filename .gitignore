@@ -6,6 +6,10 @@
 /lefthook-local.toml
 /.lefthook-local.toml
 
+# For Taplo
+# Taplo cache stores schemas.
+/.taplo_cache
+
 # HTML for documents
 /README.html
 /docs/**/*.html
