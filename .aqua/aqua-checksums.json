@@ -26,8 +26,8 @@
       "algorithm": "sha512"
     },
     {
-      "id": "github_release/github.com/watchexec/watchexec/v1.24.2/watchexec-1.24.2-x86_64-unknown-linux-musl.tar.xz",
-      "checksum": "7F0936782619C45F6BAC4CA995DA989A7CAC573C418F9E09A6A8C6E73F8EEC5CC9BFDCB4C6DA6BD2895EE09F111C9B149112EBA5C27486874E1F7220F7BF75D2",
+      "id": "github_release/github.com/watchexec/watchexec/v1.25.0/watchexec-1.25.0-x86_64-unknown-linux-musl.tar.xz",
+      "checksum": "FAD131FAB42B3F4B6BD17D56D689A0A1ACF7D3BBAB4FE0C9C76A552C8E53D8AFD0A31615B5E2B489D9DB70CC1F4D85CD874BCAAF2D3A11D0403FC898EA1124D7",
       "algorithm": "sha512"
     },
     {
