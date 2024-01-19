@@ -63,6 +63,11 @@ jobs:
       - name: Checkout
         # yamllint disable-line rule:line-length
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          # Gets the full git history of the repository.
+          # `Lint commit messages` action of this workflow
+          # uses the commit messages.
+          fetch-depth: 0
 
       - name: Install Natural Languages linter
         uses: ./.github/actions/install_tools_with_aqua
@@ -401,3 +406,8 @@ jobs:
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook-run
           # v1.5.5 Commit on 2023-12-01
           task_runner_args: "--all-files"
+
+      - name: Lint commit messages of this repository
+        uses: ./.github/actions/run_task_runner
+        with:
+          task_name: lint-commit-messages
