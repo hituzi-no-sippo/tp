@@ -47,3 +47,19 @@ pre-merge-commit:
 
         extract_commit_messages_of_merge |
           vale --ext=.md
+
+lint-commit-messages:
+  commands:
+    lint-natural-languages-of-commit-messages:
+      <<: *lint
+      run: |
+        root_dir="$(git rev-parse --show-toplevel)"
+
+        # References
+        # - https://www.shellcheck.net/wiki/SC1091
+        # - https://github.com/koalaman/shellcheck/wiki/directive#source
+        # shellcheck source=SCRIPTDIR/../scripts/utils.sh
+        . "$root_dir/.lefthook/commit_message/scripts/utils.sh"
+
+        read_all_commit_messages |
+          vale --ext=.md
