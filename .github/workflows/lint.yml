@@ -45,14 +45,19 @@ jobs:
           allowed-endpoints: >
             api.github.com:443
             github.com:443
+            index.rubygems.org:443
             objects.githubusercontent.com:443
             raw.githubusercontent.com:443
             rekor.sigstore.dev:443
+            rubygems.org:443
             tuf-repo-cdn.sigstore.dev:443
 
       - name: Checkout
         # yamllint disable-line rule:line-length
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Install Ruby and RubyGems
+        uses: ./.github/actions/install_ruby_and_rubygems
 
       # First of all, Lefthook is name of a task runner.
       #
