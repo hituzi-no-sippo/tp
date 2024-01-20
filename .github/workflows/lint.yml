@@ -20,6 +20,14 @@ jobs:
     runs-on: ubuntu-22.04
     permissions: {}
     timeout-minutes: 5
+    env:
+      # This value is default RuboCop cache path.
+      # https://docs.rubocop.org/rubocop/usage/caching.html#cache-path
+      # > By default,
+      # > the cache is stored in either `$XDG_CACHE_HOME/$UID/rubocop_cache`
+      # > if `$XDG_CACHE_HOME` is set
+      # > or in `$HOME/.cache/rubocop_cache/` if it’s not.
+      RUBOCOP_CACHE_PATH: "$HOME/.cache/rubocop_cache/"
     steps:
       - name: Create a timeline of this GitHub Actions workflow
         # yamllint disable-line rule:line-length
@@ -58,6 +66,54 @@ jobs:
 
       - name: Install Ruby and RubyGems
         uses: ./.github/actions/install_ruby_and_rubygems
+
+      # Does not use `actions/cache` action
+      # because hituzi no sippo (maintainer) want to save the cache
+      # if `lint` step of the job succeed.
+      # so hituzi no sippo does not want to save the cache
+      # when `lint` action fails and `Detect with ...` succeed.
+      # Does not use `save-always` flag of `actions/cache` action
+      # because the flag is used to
+      # always save cache even if another step fails.
+      # https://github.com/actions/cache/pull/1242
+      - name: Restore cached RuboCop
+        id: cache-rubocop-restore
+        # yamllint disable-line rule:line-length
+        uses: actions/cache/restore@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
+        with:
+          path: ${{ env.RUBOCOP_CACHE_PATH }}
+          # RuBoCop Cache Validity
+          # https://docs.rubocop.org/rubocop/usage/caching.html#cache-validity
+          # > Later runs will be able to retrieve this information and
+          # > present the stored information instead of inspecting
+          # > the file again.
+          # > This will be done if the cache for the file is still valid,
+          # > which it is if there are no changes in:
+          # > - the contents of the inspected file
+          # > - RuboCop configuration for the file
+          # > - the options given to rubocop, with some exceptions that
+          # >   have no bearing on which offenses are reported
+          # > - the Ruby version used to invoke rubocop
+          # > - version of the rubocop program
+          # >   (or to be precise, anything in the source code
+          # >    of the invoked rubocop program)
+          # - RuboCop configuration for the file
+          #   - .rubocop.yml
+          #   - .rubocop_todo.yml
+          # - the options given to rubocop, with some exceptions that
+          #   have no bearing on which offenses are reported
+          #   - ${{ steps.decide_sub_command.outputs.sub_command }}
+          #     Decide CLI option to filter COPS (`--only`, `--except`)
+          #     by ${{ steps.decide_sub_command.outputs.sub_command }}
+          # - the Ruby version used to invoke rubocop
+          #   - .ruby-version
+          # - version of the rubocop program
+          #   - Gemfile.lock
+          # yamllint disable-line rule:line-length
+          key: ${{ env.CACHE_PREFIX }}${{ hashFiles('.rubocop.yml', '.rubocop_todo.yml', '.ruby-version', 'Gemfile.lock') }}
+          restore-keys: ${{ env.CACHE_PREFIX }}
+        env:
+          CACHE_PREFIX: rubocop-cache-
 
       # First of all, Lefthook is name of a task runner.
       #
@@ -307,6 +363,12 @@ jobs:
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook_exclude
           LEFTHOOK_EXCLUDE: |
             validate-renovate-configuration
+
+      - name: Save RuboCop cache
+        uses: actions/cache/save@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
+        with:
+          path: ${{ env.RUBOCOP_CACHE_PATH }}
+          key: ${{ steps.cache-rubocop-restore.outputs.cache-primary-key }}
 
       # Runs the detect commands which, is not in `lint` task of Lefthook.
       # `lint` task of Lefthook does not contain this commands to be run.
