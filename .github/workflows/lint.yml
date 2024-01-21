@@ -27,7 +27,7 @@ jobs:
       # > the cache is stored in either `$XDG_CACHE_HOME/$UID/rubocop_cache`
       # > if `$XDG_CACHE_HOME` is set
       # > or in `$HOME/.cache/rubocop_cache/` if it’s not.
-      RUBOCOP_CACHE_PATH: "$HOME/.cache/rubocop_cache/"
+      RUBOCOP_CACHE_PATH: "~/.cache/rubocop_cache/"
     steps:
       - name: Create a timeline of this GitHub Actions workflow
         # yamllint disable-line rule:line-length
@@ -408,7 +408,6 @@ jobs:
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook-run
           # v1.5.5 Commit on 2023-12-01
           task_runner_args: "\
-            --all-files \
             --commands=\
               trim-trailing-blank-line,\
               join-consecutive-blank-lines,\
