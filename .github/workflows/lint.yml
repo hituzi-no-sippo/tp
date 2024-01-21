@@ -373,7 +373,8 @@ jobs:
           #   The configuration files are under `<GIT_ROOT>/.leftook` directory.
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook_exclude
           LEFTHOOK_EXCLUDE: |
-            validate-renovate-configuration,
+            validate-renovate-configuration, \
+            lint-asciidoc,
 
       - name: Save RuboCop cache
         uses: actions/cache/save@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
