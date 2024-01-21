@@ -22,7 +22,6 @@ extends:
   - .lefthook/ruby/rubocop/config.yml
   - .lefthook/configuration_file/TOML/validate.yml
   - .lefthook/configuration_file/TOML/format.yml
-  - .lefthook/asciidoc/lint/config.yml
   - .lefthook/asciidoc/convert_to_html.yml
   - .lefthook/natural_language/lint.yml
   - .lefthook/natural_language/detect_spelling_errors.yml
