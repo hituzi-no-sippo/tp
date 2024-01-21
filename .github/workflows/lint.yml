@@ -372,9 +372,10 @@ jobs:
           #   look at the configuration file of the command to be skipped.
           #   The configuration files are under `<GIT_ROOT>/.leftook` directory.
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook_exclude
-          LEFTHOOK_EXCLUDE: |
-            validate-renovate-configuration, \
-            lint-asciidoc,
+          LEFTHOOK_EXCLUDE: "\
+            validate-renovate-configuration,\
+            lint-asciidoc,\
+            "
 
       - name: Save RuboCop cache
         uses: actions/cache/save@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
@@ -406,7 +407,14 @@ jobs:
           # References
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook-run
           # v1.5.5 Commit on 2023-12-01
-          task_runner_args: "--all-files"
+          task_runner_args: "\
+            --all-files \
+            --commands=\
+              trim-trailing-blank-line,\
+              join-consecutive-blank-lines,\
+              insert-final-newline,\
+              remove-bom-for-utf-8,\
+          "
 
       - name: Lint commit messages of this repository
         uses: ./.github/actions/run_task_runner
