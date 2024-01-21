@@ -408,13 +408,13 @@ jobs:
           # https://github.com/evilmartians/lefthook/blob/9b072e6622857ceb8d40a173ba39ae97afb35957/docs/usage.md#lefthook-run
           # v1.5.5 Commit on 2023-12-01
           task_runner_args: "\
-            '--all-files' \
-            '--commands=\
+            --all-files \
+            --commands=\
               detect-trailing-blank-line,\
               detect-consecutive-blank-lines,\
               detect-file-without-final-newline,\
               detect-utf-8-with-bom,\
-          '"
+          "
 
       - name: Lint commit messages of this repository
         uses: ./.github/actions/run_task_runner
