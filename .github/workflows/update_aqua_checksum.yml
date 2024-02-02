@@ -43,7 +43,7 @@ jobs:
     permissions:
       contents: read
     with:
-      aqua_version: v2.21.3
+      aqua_version: v2.22.0
       # When rollback to a previously used version,
       # `prune: false` is more secure.
       # This is because it is possible to detect checksums tampered
